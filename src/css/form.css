@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway');
+
+body {
+    background-color: #84d8f2;
+    font-family: "Lato";
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+.menu {
+    margin-top: 200px;
+    margin-left: 500px;
+    margin-right: 500px;
+}
+
+.menu button {
+    width: 280px;
+    height: 30px;
+    margin-bottom: 10px;
+    font-weight: 100;
+}
+
+.menu img {
+    width: 280px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+
+/*------------------------*/
+
+
+.form-signin {
+    margin-top: 180px;
+    margin-left: 500px;
+    margin-right: 500px;
+}
+
+.form-signin button {
+    height: 30px;
+    width: 205px;
+}
+
+.form-label-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.form-input {
+    height: 20px;
+    width: 200px;
+    margin-bottom: 10px;
+}
