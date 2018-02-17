@@ -11,17 +11,15 @@
 
 </head>
 <body>
-    <form class="form-signin">
-        <p>Sign up</p>
-        <input type="text" id="inputLogin" class="form-input" placeholder="Login" required>
-        <input type="email" id="inputEmail" class="form-input" placeholder="Email address" required>
-        <input type="password" id="inputPassword" class="form-input" placeholder="Password" required>
-        <input type="password" id="inputConfirmPassword" class="form-input" placeholder="Confirm Password" required>
+    <form class="menu">
+        <p class="menu-input">Sign up</p>
+        <input type="text" id="inputLogin" class="menu-input" placeholder="Login" required>
+        <input type="email" id="inputEmail" class="menu-input" placeholder="Email address" required>
+        <input type="password" id="inputPassword" class="menu-input" placeholder="Password" required>
+        <input type="password" id="inputConfirmPassword" class="menu-input" placeholder="Confirm Password" required>
         <div>
-            <label>
-                <input type="checkbox" value="remember-me">
-                Remember me
-            </label>
+            <input type="checkbox" id="rememberMe">
+            <label for="rememberMe">Remember me</label>
         </div>
         <button class="form-input" type="submit" id="btnRegistration">Create Account</button>
     </form>
