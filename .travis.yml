@@ -1,0 +1,9 @@
+deploy:
+  provider: heroku
+  api_key:
+    secure: $key
+  app: broforce-frontend
+  on:
+    repo: frontend-park-mail-ru/2018_1_BroForce
+    branch: develop
+  skip_cleanup: true
