@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+
+body {
+    background-color: #84d8f2;
+    font-family: 'Bangers';
+}
+
+.menu {
+    margin-top: 200px;
+    margin-left: 500px;
+    margin-right: 500px;
+}
+
+.menu-input {
+    height: 20px;
+    width: 280px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.menu button {
+    font-family: 'Bangers';
+    font-size: 20px;
+    background-color: white;
+    width: 286px;
+    height: 30px;
+    margin-bottom: 10px;
+    font-weight: 100;
+    border-radius: 5px;
+}
+
+.menu p {
+    font-size: 30px;
+}
+
+.menu img {
+    width: 280px;
+    height: 100px;
+    margin-bottom: 10px;
+}
