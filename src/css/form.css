@@ -6,35 +6,36 @@ body {
 }
 
 .menu {
-    margin-top: 200px;
-    margin-left: 500px;
-    margin-right: 500px;
+    margin-top: 17%;
+    margin-left: 40%;
+    margin-right: 40%;
 }
 
 .menu-input {
     height: 20px;
-    width: 280px;
+    width: 100%;
     margin-bottom: 10px;
     border-radius: 5px;
 }
 
 .menu button {
     font-family: 'Bangers';
-    font-size: 20px;
+    font-size: 120%;
     background-color: white;
-    width: 286px;
+    width: 102%;
     height: 30px;
     margin-bottom: 10px;
-    font-weight: 100;
+    /*margin-bottom: 4%;*/
     border-radius: 5px;
 }
 
 .menu p {
-    font-size: 30px;
+    font-size: 200%;
+    margin-bottom: 5%;
 }
 
 .menu img {
-    width: 280px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
     margin-bottom: 10px;
 }

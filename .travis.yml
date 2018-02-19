@@ -11,3 +11,5 @@ deploy:
     repo: frontend-park-mail-ru/2018_1_BroForce
     branch: develop
   skip_cleanup: true
+script:
+  - npm run eslint
