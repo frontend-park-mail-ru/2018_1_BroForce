@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server/server.js",
-    "eslint": "./node_modules/.bin/eslint server/server.js "
+    "eslint": "./node_modules/.bin/eslint ./src/ "
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "eslint-plugin-react": "^7.6.1",
     "express": "^4.16.2",
     "fs": "0.0.1-security",
+    "hogan.js": "^3.0.2",
     "http": "0.0.0"
   }
 }
