@@ -1,7 +1,3 @@
-/**
- * Created by Arthur on 2/21/18.
- */
-
 'use strict';
 
 const mainForm = '<div class="menu">' +
