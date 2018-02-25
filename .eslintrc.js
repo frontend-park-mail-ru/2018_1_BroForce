@@ -12,7 +12,6 @@ module.exports = {
         "prefer-const": 0,
         "max-len": 0,
         "no-unused-vars": 0,
-        "no-invalid-this": 0,
         "guard-for-in": 0,
 
         "require-jsdoc": ["error", {
@@ -24,5 +23,9 @@ module.exports = {
                 "FunctionExpression": false
             }
         }]
+    },
+
+    "parserOptions": {
+        "sourceType": "module"
     }
 };

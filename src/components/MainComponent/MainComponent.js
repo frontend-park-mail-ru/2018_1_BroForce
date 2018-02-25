@@ -1,9 +1,9 @@
 'use strict';
 
-class MainComponent {
+export default class MainComponent {
     constructor(tagName = 'div', classes = [], attrs = {}) {
         this.element = document.createElement(tagName);
-        classes.forEach(function(className) {
+        classes.forEach((className) => {
             this.element.classList.add(className);
         });
         for (let name in attrs) {
