@@ -10,6 +10,10 @@ module.exports = {
         "no-var": 0,
         "object-shorthand": 0,
         "prefer-const": 0,
+        "max-len": 0,
+        "no-unused-vars": 0,
+        "no-invalid-this": 0,
+        "guard-for-in": 0,
 
         "require-jsdoc": ["error", {
             "require": {
@@ -19,9 +23,6 @@ module.exports = {
                 "ArrowFunctionExpression": false,
                 "FunctionExpression": false
             }
-        }],
-
-        "max-len": 0,
-        "no-unused-vars": 0
+        }]
     }
 };
