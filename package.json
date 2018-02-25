@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server/server.js",
-    "eslint": "./node_modules/.bin/eslint ./src/ "
+    "eslint": "./node_modules/.bin/eslint ./src/",
+    "eslintFix": "./node_modules/.bin/eslint --fix ./src/ "
   },
   "author": "",
   "license": "ISC",
