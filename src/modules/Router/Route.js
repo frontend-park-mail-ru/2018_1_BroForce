@@ -4,30 +4,30 @@ class Route {
     constructor() {
         console.log('Route');
 
-        let Router = function (name, routes) {
+        let Router = function(name, routes) {
             return {
                 name: name,
-                routes: routes
-            }
+                routes: routes,
+            };
         };
 
         let myFirstRouter = new Router('myFirstRouter', [
             {
                 path: '/',
-                name: 'Root'
+                name: 'Root',
             },
             {
                 path: '/signin/',
-                name: 'SignIn'
+                name: 'SignIn',
             },
             {
                 path: '/signup/',
-                name: 'SignUp'
+                name: 'SignUp',
             },
             {
                 path: '/leaderboard',
-                name: 'LeaderBoard'
-            }
+                name: 'LeaderBoard',
+            },
         ]);
 
         let currentPath = window.location.pathname;
@@ -38,7 +38,7 @@ class Route {
             const main = new Main();
             main.show();
         } else {
-            let route = myFirstRouter.routes.filter(function (r) {
+            let route = myFirstRouter.routes.filter(function(r) {
                 return r.path === currentPath;
             })[0];
             console.log(route);
