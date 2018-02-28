@@ -1,5 +1,7 @@
 'use strict';
 
+import MainComponent from '../../components/MainComponent/MainComponent.js';
+
 const mainForm = '<div class="menu">' +
     '<img src="../img/broforce.png">' +
     '<button type="submit" id="singlPlayerBtn">Singleplayer</button>' +
@@ -10,12 +12,15 @@ const mainForm = '<div class="menu">' +
     '<button type="submit" id="aboutBtn">About</button>' +
     '</div>';
 
-class Main {
+export default class Main extends MainComponent {
     constructor() {
+        super();
         this.template = Hogan.compile(mainForm);
     }
 
-    show() {
-        document.getElementById('main').innerHTML = this.template.render();
+    build() {
+        // console.log(typeof this.template.render());
+        this.render().innerHTML = this.template.render();
+        document.getElementById('main').appendChild(this.render());
     }
 }
