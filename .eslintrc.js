@@ -13,6 +13,7 @@ module.exports = {
         "max-len": 0,
         "no-unused-vars": 0,
         "guard-for-in": 0,
+        "new-cap": 0,
 
         "require-jsdoc": ["error", {
             "require": {

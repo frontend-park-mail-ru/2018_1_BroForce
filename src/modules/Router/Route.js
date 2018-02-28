@@ -8,7 +8,7 @@ export default class Route {
     }
 
     createView() {
-        if(!this.view) {
+        if (!this.view) {
             this.view = new this.viewClass();
             this.view.build();
         } else {

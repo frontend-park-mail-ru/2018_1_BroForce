@@ -7,5 +7,4 @@ export default class Button extends MainComponent {
         super('button', ['menu-input'], {type: type});
         this.render().innerHTML = text;
     }
-
 }

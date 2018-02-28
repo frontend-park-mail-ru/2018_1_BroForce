@@ -17,9 +17,9 @@ export default class Router {
     }
 
     getRoute(path) {
-        return this.routes.find(route => {
+        return this.routes.find((route) => {
             return route.isThisPath(path);
-        })
+        });
     }
 
     changeView() {
@@ -45,7 +45,7 @@ export default class Router {
     start() {
         console.log('Start');
         window.addEventListener('popstate', () => {
-            console.log("In event Listener");
+            console.log('In event Listener');
             return this.changeView();
         });
         this.changeView();

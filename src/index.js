@@ -1,10 +1,10 @@
 'use strict';
 
-//Components
+// Components
 import MainComponent from './components/MainComponent/MainComponent.js';
 import Button from './components/Button/Button.js';
 
-//Router
+// Router
 import Router from './modules/Router/Router.js';
 
 // Views
