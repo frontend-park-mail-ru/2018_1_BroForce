@@ -4,12 +4,18 @@ import Route from './Route.js';
 
 export default class Router {
     constructor() {
+        if (Router.instance === this) {
+            return Router.instance;
+        }
+
+        Router.instance = this;
+
         this.routes =[];
     }
 
     use(path, viewClass) {
         this.routes.push(new Route(path, viewClass));
-        // this.routes.pop().createView();
+        return this;
     }
 
     static getPath() {
@@ -17,37 +23,35 @@ export default class Router {
     }
 
     getRoute(path) {
-        return this.routes.find((route) => {
-            return route.isThisPath(path);
-        });
+        return this.routes.find(route => route.isThisPath(path));
     }
 
     changeView() {
-        console.log(Router.getPath());
         const route = this.getRoute(Router.getPath());
-        console.log('Route', route);
 
         if (!route) {
             return;
         }
-
+        this.hideAll();
         route.createView();
     }
 
-    // меняет историю, и переходит по урлу
+    hideAll() {
+        this.routes.forEach(route => {
+            if (route.getView()) {
+                route.getView().hide();
+            }
+        })
+    }
+
+    // change history and view
     go(path) {
         window.history.pushState({}, '', path);
         this.changeView();
-        // this.metod(); // не должно быть
     }
 
-    // запускает обработчик событий, чтобы автоматически работало
     start() {
-        console.log('Start');
-        window.addEventListener('popstate', () => {
-            console.log('In event Listener');
-            return this.changeView();
-        });
+        window.addEventListener('popstate', () => this.changeView());
         this.changeView();
     }
 }

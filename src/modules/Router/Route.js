@@ -19,4 +19,8 @@ export default class Route {
     isThisPath(path) {
         return this.path === path;
     }
+
+    getView() {
+        return this.view;
+    }
 }

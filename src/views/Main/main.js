@@ -19,7 +19,6 @@ export default class Main extends MainComponent {
     }
 
     build() {
-        // console.log(typeof this.template.render());
         this.render().innerHTML = this.template.render();
         document.getElementById('main').appendChild(this.render());
     }
