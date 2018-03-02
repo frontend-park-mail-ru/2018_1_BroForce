@@ -2,7 +2,7 @@
 
 import Route from './Route.js';
 
-export default class Router {
+class Router {
     constructor() {
         if (Router.instance === this) {
             return Router.instance;
@@ -55,3 +55,6 @@ export default class Router {
         this.changeView();
     }
 }
+
+const router = new Router();
+export default router;
