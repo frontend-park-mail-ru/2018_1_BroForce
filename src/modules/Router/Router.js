@@ -23,7 +23,7 @@ export default class Router {
     }
 
     getRoute(path) {
-        return this.routes.find(route => route.isThisPath(path));
+        return this.routes.find((route) => route.isThisPath(path));
     }
 
     changeView() {
@@ -37,11 +37,11 @@ export default class Router {
     }
 
     hideAll() {
-        this.routes.forEach(route => {
+        this.routes.forEach((route) => {
             if (route.getView()) {
                 route.getView().hide();
             }
-        })
+        });
     }
 
     // change history and view
