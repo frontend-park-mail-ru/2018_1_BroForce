@@ -18,7 +18,7 @@ export default class SignUp extends MainComponent {
     }
 
     build() {
-        this.render().innerHTML = this.template.render();
+        this.innerHTML(this.template.render());
         document.getElementById('main').appendChild(this.render());
     }
 }
