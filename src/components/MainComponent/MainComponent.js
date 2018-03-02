@@ -26,4 +26,8 @@ export default class MainComponent {
     remove() {
         this.element.parentElement.removeChild(this.element);
     }
+
+    innerHTML(html) {
+        this.element.innerHTML = html;
+    }
 }

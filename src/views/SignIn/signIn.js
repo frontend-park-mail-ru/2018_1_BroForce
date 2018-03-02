@@ -1,5 +1,7 @@
 'use strict';
 
+import MainComponent from '../../components/MainComponent/MainComponent.js';
+
 const signInForm = '<form class="menu"> ' +
     '<p class="menu-input">Log in or Sign up</p> ' +
     '<input type="email" id="signInEmailInput" class="menu-input" placeholder="Email address" required>' +
@@ -8,12 +10,14 @@ const signInForm = '<form class="menu"> ' +
     '<button class="menu-input" type="submit" id="signInSubmitBtn">Sign in</button>' +
     '</form>';
 
-class SignIn {
+export default class SignIn extends MainComponent {
     constructor() {
+        super();
         this.template = Hogan.compile(signInForm);
     }
 
-    show() {
-        document.getElementById('main').innerHTML = this.template.render();
+    build() {
+        this.innerHTML(this.template.render());
+        document.getElementById('main').appendChild(this.render());
     }
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-import MainComponent from '../MainComponent/MainComponent';
+import MainComponent from '../MainComponent/MainComponent.js';
 
 export default class Form extends MainComponent {
     constructor(type) {
