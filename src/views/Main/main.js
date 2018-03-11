@@ -2,7 +2,7 @@
 
 import MainComponent from '../../components/MainComponent/MainComponent.js';
 import Button from '../../components/Button/Button.js';
-import Image from '../../components/ImageComp/ImageComp.js';
+import ImageComp from '../../components/ImageComp/ImageComp.js';
 import Router from '../../modules/Router/Router.js';
 
 export default class Main extends MainComponent {
@@ -15,7 +15,7 @@ export default class Main extends MainComponent {
         //     this.innerHTML(this.template.render());
         //     document.getElementById('main').appendChild(this.render());
 
-        this.append((new Image('../img/broforce.png', [], 'logo')).render());
+        this.append((new ImageComp('../img/broforce.png', [], 'logo')).render());
         this.append((new Button('Singleplayer', 'submit', ['main-input'], 'singlPlayerBtn')).render());
         this.append((new Button('Multiplayer', 'submit', ['main-input'], 'multiplayerBtn').render()));
         this.append((new Button('Sign Up', 'submit', ['main-input'], 'signUpBtn').render()));
