@@ -12,12 +12,14 @@ const signInForm = '<form class="menu"> ' +
 
 export default class SignIn extends MainComponent {
     constructor() {
-        super();
-        this.template = Hogan.compile(signInForm);
+        super('form', ['menu'], {});
+        // this.template = Hogan.compile(signInForm);
     }
 
     build() {
-        this.innerHTML(this.template.render());
-        document.getElementById('main').appendChild(this.render());
+        // this.innerHTML(this.template.render());
+        // document.getElementById('main').appendChild(this.render());
+
+
     }
 }
