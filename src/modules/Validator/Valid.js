@@ -1,70 +1,42 @@
 'use strict';
 
-class Validator {
-    constructor(formWVpm, emailpm, passwdpm, passwdCpm, fieldpm) {
-        this.form = document.querySelector(formWVpm);
-        this.email = this.form.querySelector(emailpm);
-        this.password = this.form.querySelector(passwdpm);
-        this.passwordConfirmation = this.form.querySelector(passwdCpm);
-        this.fields = this.form.querySelectorAll(fieldpm);
-    }
-
-    static generateError(text) {
+  const Validator = (asArray) => {
+      generateError:(text) => {
         let error = document.createElement('div');
         error.className = 'error';
         error.style.color = 'red';
         error.innerHTML = text;
         return error;
-    }
+    };
 
-    static removeValidation() {
-        let errors = this.form.querySelectorAll('.error');
-
-        for (let i = 0; i < errors.length; i++) {
-            errors[i].remove();
-        }
-    }
-
-
-    checkFieldsPresence() {
-        for (let i = 0; i < this.fields.length; i++) {
-            if (!this.fields[i].value) {
-                let error = this.generateError('field is empty');
-                this.form[i].parentElement.insertBefore(error, this.fields[i]);
+    checkFieldsPresence:(field) => {
+            if (!field.value) {
+                let error = generateError('field is empty');
             }
-        }
-    }
+        };
 
-    checkPasswordMatch() {
-        if (this.password.value !== this.passwordConfirmation.value) {
-            let error = this.generateError('Password doesnt match');
-            this.password.parentElement.insertBefore(error, this.password);
+    checkPasswordMatch:(pswad, paswdc) => {
+        if (paswd.value !== paswdc.value) {
+            let error = generateError('Password doesnt match');
         }
-    }
+    };
 
-    checkEmailCorr() {
+    checkEmailCorr:(field) => {
         const reg = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/i;
-        if (!reg.test(this.email.value)) {
-            let error = this.generateError('Wrong email');
-            this.email.parentElement.insertBefore(error, this.email);
+        if (!reg.test(field.value)) {
+            let error = generateError('Wrong email');
         }
-    }
-
-    check() {
-        this.removeValidation();
-
-        this.checkFieldsPresence();
-
-        this.checkEmailCorr();
-
-        this.checkPasswordMatch();
-
-        this.form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const valid = new Validator();
-            valid.check();
-        });
-    }
-}
+    };
+      for (let value in asArray) {
+          switch (asArray) {
+              case 'login': checkFieldsPresence(asArray[value]);
+              case 'email': {checkEmailCorr(asArray[value]); checkFieldsPresence(asArray[value]);}
+              case 'password': {checkFieldsPresence(asArray[value]); const passwd = asArray[value];}
+              case 'passwordconf': {checkFieldsPresence(asArray[value]); const passwdc = asArray[value];}
+              default: ;
+          }
+      }
+      checkPasswordMatch(passwd, passwdc);
+};
 
 
