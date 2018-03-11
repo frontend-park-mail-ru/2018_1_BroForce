@@ -32,6 +32,6 @@ export default class MainComponent {
     }
 
     append(element) {
-        this.element.appendChild(element)
+        this.element.appendChild(element);
     }
 }

@@ -2,7 +2,7 @@
 
 import MainComponent from '../../components/MainComponent/MainComponent.js';
 
-const signInForm = '<form class="menu"> ' +
+const signInForm = '<form class="menu">' +
     '<p class="menu-input">Log in or Sign up</p> ' +
     '<input type="email" id="signInEmailInput" class="menu-input" placeholder="Email address" required>' +
     '<input type="password" id="signInPasswordInput" class="menu-input" placeholder="Password" required>' +
@@ -13,13 +13,11 @@ const signInForm = '<form class="menu"> ' +
 export default class SignIn extends MainComponent {
     constructor() {
         super('form', ['menu'], {});
-        // this.template = Hogan.compile(signInForm);
+        this.template = Hogan.compile(signInForm);
     }
 
     build() {
-        // this.innerHTML(this.template.render());
-        // document.getElementById('main').appendChild(this.render());
-
-
+        this.innerHTML(this.template.render());
+        document.getElementById('main').appendChild(this.render());
     }
 }
