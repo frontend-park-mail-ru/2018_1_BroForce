@@ -1,64 +1,70 @@
 'use strict';
 
-let form = document.querySelector('.formWithValidation');
-let email = form.querySelector('.email');
-let password = form.querySelector('.password');
-let passwordConfirmation = form.querySelector('.passwordConfirmation');
-let fields = form.querySelectorAll('.field');
-
-
-let generateError = function(text) {
-    let error = document.createElement('div');
-    error.className = 'error';
-    error.style.color = 'red';
-    error.innerHTML = text;
-    return error;
-};
-
-let removeValidation = function() {
-    let errors = form.querySelectorAll('.error');
-
-    for (let i = 0; i < errors.length; i++) {
-        errors[i].remove();
+class Validator {
+    constructor(formWVpm, emailpm, passwdpm, passwdCpm, fieldpm) {
+        this.form = document.querySelector(formWVpm);
+        this.email = this.form.querySelector(emailpm);
+        this.password = this.form.querySelector(passwdpm);
+        this.passwordConfirmation = this.form.querySelector(passwdCpm);
+        this.fields = this.form.querySelectorAll(fieldpm);
     }
-};
 
+    static generateError(text) {
+        let error = document.createElement('div');
+        error.className = 'error';
+        error.style.color = 'red';
+        error.innerHTML = text;
+        return error;
+    }
 
-let checkFieldsPresence = function() {
-    for (let i = 0; i < fields.length; i++) {
-        if (!fields[i].value) {
-            let error = generateError('field is empty');
-            form[i].parentElement.insertBefore(error, fields[i]);
+    static removeValidation() {
+        let errors = this.form.querySelectorAll('.error');
+
+        for (let i = 0; i < errors.length; i++) {
+            errors[i].remove();
         }
     }
-};
 
-let checkPasswordMatch = function() {
-    if (password.value !== passwordConfirmation.value) {
-        let error = generateError('Password doesnt match');
-        password.parentElement.insertBefore(error, password);
+
+    checkFieldsPresence() {
+        for (let i = 0; i < this.fields.length; i++) {
+            if (!this.fields[i].value) {
+                let error = this.generateError('field is empty');
+                this.form[i].parentElement.insertBefore(error, this.fields[i]);
+            }
+        }
     }
-};
 
-let checkEmailCorr = function() {
-    let reg = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/i;
-    if (!reg.test(email.value)) {
-        let error = generateError('Wrong email');
-        email.parentElement.insertBefore(error, email);
+    checkPasswordMatch() {
+        if (this.password.value !== this.passwordConfirmation.value) {
+            let error = this.generateError('Password doesnt match');
+            this.password.parentElement.insertBefore(error, this.password);
+        }
     }
-};
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
+    checkEmailCorr() {
+        const reg = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/i;
+        if (!reg.test(this.email.value)) {
+            let error = this.generateError('Wrong email');
+            this.email.parentElement.insertBefore(error, this.email);
+        }
+    }
 
-    removeValidation();
+    check() {
+        this.removeValidation();
 
-    checkFieldsPresence();
+        this.checkFieldsPresence();
 
-    console.log(email.innerHTML);
+        this.checkEmailCorr();
 
-    checkEmailCorr();
+        this.checkPasswordMatch();
 
-    checkPasswordMatch();
-});
+        this.form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const valid = new Validator();
+            valid.check();
+        });
+    }
+}
+
 
