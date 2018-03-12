@@ -35,9 +35,9 @@ const Validator = (asArray) => {
                   break;
               case 'email': checkEmailCorr(asArray[property]); checkFieldsPresence(asArray[property]);
                   break;
-              case 'password': checkFieldsPresence(asArray[property]); passwd = property;
+              case 'password': checkFieldsPresence(asArray[property]); passwd = asArray[property];
                   break;
-              case 'passwordconf': checkFieldsPresence(asArray[property]); passwdc = property;
+              case 'passwordconf': checkFieldsPresence(asArray[property]); passwdc = asArray[property];
                   break;
               default: ;
           }
