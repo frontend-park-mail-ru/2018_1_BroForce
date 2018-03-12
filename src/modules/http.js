@@ -2,60 +2,44 @@
     'use strict';
 
     class http {
-        Get({url = '/', callback = noop} = {}) {
-            return new Promise(function(succeed, fail) {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', http.baseUrl + url, true);
-            xhr.addEventListener('load', function() {
-                if (xhr.readyState != 4) {
-                    return;
-                }
-
-                if (xhr.status === 200) {
-                   succeed(xhr.responseText);
-                } else {
-                    fail(new Error('Req fail - ' + xhr.responseText));
-                }
-        });
-            xhr.addEventListener('error', function() {
-                fail(new Error('error'));
-            });
-            xhr.send(null);
-        });
+        constructor() {
+            const domen = '';
+            const Pt = '';
+            const Gt = '';
+            const htype = '';
+            const jtype = '';
         }
 
-        Post({url = '/', callback = noop, data = {}} = {}) {
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', http.baseUrl + url, true);
+        Get(url, assarr = [{name: htype, value: jtype}]) {
+            return this.doRequest(Gt, url, assarr);
+        }
 
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState != 4) {
-                    return;
-                }
+        Post(url, data = null, assarr = [{name: htype, value: jtype}]) {
+            return this.doRequest(Pt, url, data, assarr);
+        }
 
-                if (xhr.status < 300) {
-                    const responseText = xhr.responseText;
+        Req(method, url, inf, assarr) {
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open(method, `${this.domen}${url}`, true);
 
-                    try {
-                        const response = JSON.parse(responseText);
-                        callback(null, response);
-                    } catch (err) {
-                        console.error('doPost error: ', err);
-                        callback(err);
+                xhr.addEventListener('load', () => {
+                    const response = JSON.parse(xhr.responseText);
+
+                    if (xhr.status < 400) {
+                        resolve(response);
+                    } else {
+                        reject(response.message);
                     }
-                } else {
-                    callback(xhr);
+                });
+
+                for (let prop in assarr ) {
+                    xhr.setRequestHeader(current.name, current.value);
                 }
-            };
+                xhr.withCredentials = true;
 
-            xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-            xhr.withCredentials = true;
-
-            xhr.send(JSON.stringify(data));
+                inf ? xhr.send(JSON.stringify(data)) : xhr.send();
+            });
         }
     }
-
-    http.baseUrl = '';
-
-    window.http = http;
 })();
