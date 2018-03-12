@@ -8,19 +8,16 @@ import Router from '../../modules/Router/Router.js';
 export default class Main extends MainComponent {
     constructor() {
         super('div', ['menu'], {});
-        // this.template = Hogan.compile(mainForm);
     }
 
     build() {
-        //     this.innerHTML(this.template.render());
-        //     document.getElementById('main').appendChild(this.render());
-
-        this.append((new ImageComp('../img/broforce.png', [], 'logo')).render());
+        this.append((new ImageComp('../img/broforce.png', ['menu-logo'], 'logo')).render());
         this.append((new Button('Singleplayer', 'submit', ['main-input'], 'singlPlayerBtn')).render());
         this.append((new Button('Multiplayer', 'submit', ['main-input'], 'multiplayerBtn').render()));
         this.append((new Button('Sign Up', 'submit', ['main-input'], 'signUpBtn').render()));
         this.append((new Button('Sign In', 'submit', ['main-input'], 'signInBtn').render()));
         this.append((new Button('Leaders', 'submit', ['main-input'], 'leadersBtn').render()));
+        this.append((new Button('Profile', 'submit', ['main-input'], 'profileBtn').render()));
         this.append((new Button('About', 'submit', ['main-input'], 'aboutBtn').render()));
         document.getElementById('main').appendChild(this.render());
 
@@ -32,5 +29,8 @@ export default class Main extends MainComponent {
 
         const leadersBtn = document.getElementById('leadersBtn');
         leadersBtn.addEventListener('click', () => Router.go('/leaderboard/'));
+
+        const profileBtn = document.getElementById('profileBtn');
+        profileBtn.addEventListener('click', () => Router.go('/profile/'));
     }
 }

@@ -8,12 +8,9 @@ import Button from '../../components/Button/Button.js';
 export default class SignIn extends MainComponent {
     constructor() {
         super('form', ['menu'], {});
-        // this.template = Hogan.compile(signInForm);
     }
 
     build() {
-        // this.innerHTML(this.template.render());
-        // document.getElementById('main').appendChild(this.render());
         this.append((new Block('p', 'Log in or Sign up', ['menu-input'], {})).render());
         this.append((new Input('email', 'signInEmailInput', ['menu-input'], 'Email address')).render());
         this.append((new Input('password', 'signInPasswordInput', ['menu-input'], 'Password')).render());
