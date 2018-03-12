@@ -1,15 +1,15 @@
 'use strict';
-  const Validator = (asArray) => {
+const Validator = (asArray) => {
       let passwd = null;
       let passwdc = null;
-      let errors = [];
+      const errors = [];
       const generateError = (text) => {
         const error = document.createElement('div');
         error.className = 'error';
         error.style.color = 'red';
         error.innerHTML = text;
         return error;
-    };
+      };
 
     const checkFieldsPresence = (field) => {
             if (!field.value) {
@@ -17,7 +17,7 @@
             }
         };
 
-    const checkPasswordMatch = (pswad, paswdc) => {
+    const checkPasswordMatch = (paswd, paswdc) => {
         if (paswd.value !== paswdc.value) {
             errors.push(generateError('Password doesnt match'));
         }
@@ -29,21 +29,22 @@
             errors.push(generateError('Wrong email'));
         }
     };
-      for (let value in asArray) {
-          switch (value) {
-              case 'login': checkFieldsPresence(asArray[value]);
+      for (let property in asArray) {
+          switch (property) {
+              case 'login': checkFieldsPresence(asArray[property]);
                   break;
-              case 'email': checkEmailCorr(asArray[value]); checkFieldsPresence(asArray[value]);
+              case 'email': checkEmailCorr(asArray[property]); checkFieldsPresence(asArray[property]);
                   break;
-              case 'password': checkFieldsPresence(asArray[value]); passwd = value;
+              case 'password': checkFieldsPresence(asArray[property]); passwd = property;
                   break;
-              case 'passwordconf': checkFieldsPresence(asArray[value]); passwdc = value;
+              case 'passwordconf': checkFieldsPresence(asArray[property]); passwdc = property;
                   break;
               default: ;
           }
       }
-      checkPasswordMatch(passwd, passwdc);
+      if (passwd && passwdc) {
+          checkPasswordMatch(passwd, passwdc);
+      }
       return errors;
 };
-
-
+export default Validator;
