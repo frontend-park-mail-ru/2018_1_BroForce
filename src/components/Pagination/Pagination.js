@@ -1,7 +1,7 @@
 'use strict';
 
 import MainComponent from '../MainComponent/MainComponent.js';
-import Block from '../Block/Block.js'
+import Block from '../Block/Block.js';
 
 export default class Pagination extends MainComponent {
     constructor(countOfPages, attrs ={}) {

@@ -7,4 +7,8 @@ export default class Block extends MainComponent {
         super(tag, classes, attrs);
         this.innerHTML(text);
     }
+
+    changeBlock(newBlock) {
+        this.element = newBlock;
+    }
 }
