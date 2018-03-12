@@ -4,7 +4,7 @@ import MainComponent from '../../components/MainComponent/MainComponent.js';
 import Block from '../../components/Block/Block.js';
 import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
-import ImageComp from "../../components/ImageComp/ImageComp.js";
+import ImageComp from '../../components/ImageComp/ImageComp.js';
 
 export default class Profile extends MainComponent {
     constructor() {
@@ -14,10 +14,10 @@ export default class Profile extends MainComponent {
     build() {
         const userData = {
             name: 'Arthur',
-            email: 'arthurunique24@gmail.com'
+            email: 'arthurunique24@gmail.com',
         };
 
-        const template = Hogan.compile("{{name}}");
+        const template = Hogan.compile('{{name}}');
         const name = template.render(userData);
 
         this.append((new ImageComp('../img/user-default.png', ['profile-img'], 'logo')).render());

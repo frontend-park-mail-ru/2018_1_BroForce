@@ -8,7 +8,7 @@ import MainForm from './views/Main/main.js';
 import SignIn from './views/SignIn/signIn.js';
 import SignUp from './views/SignUp/signUp.js';
 import LeaderBoard from './views/Leaderboard/Leaderboard.js';
-import Profile from './views/Profile/Profile.js'
+import Profile from './views/Profile/Profile.js';
 
 Router.use('/', MainForm)
     .use('/signin/', SignIn)
