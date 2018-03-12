@@ -11,20 +11,20 @@ export default class SignIn extends MainComponent {
     }
 
     build() {
-        const users = {"users" : [
+        const users = {'users': [
                 {
                     'email': 'arthurunique24@gmail.com',
                     'name': 'Arthur',
-                    'score': '15000'
+                    'score': '15000',
                 },
                 {
                     'email': 'bigPapa@gmail.com',
                     'name': 'Papa',
-                    'score': '100500'
-                }
+                    'score': '100500',
+                },
             ]};
 
-        const template = Hogan.compile("{{#users}} - {{name}}! - {{score}} <br/> {{/users}}");
+        const template = Hogan.compile('{{#users}} - {{name}}! - {{score}} <br/> {{/users}}');
         const output = template.render(users);
 
         this.append((new Block('p', output, ['menu-input'], {})).render());

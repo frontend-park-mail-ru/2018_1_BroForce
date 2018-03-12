@@ -31,6 +31,6 @@ export default class Main extends MainComponent {
         signUpBtn.addEventListener('click', () => Router.go('/signup/'));
 
         const leadersBtn = document.getElementById('leadersBtn');
-        leadersBtn.addEventListener('click', () => Router.go('/leaderboard/'))
+        leadersBtn.addEventListener('click', () => Router.go('/leaderboard/'));
     }
 }
