@@ -1,8 +1,8 @@
 'use strict';
 
 import MainComponent from '../../components/MainComponent/MainComponent.js';
-import Block from '../../components/Block/Block.js'
-import Input from '../../components/Input/Input.js'
+import Block from '../../components/Block/Block.js';
+import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
 
 export default class SignIn extends MainComponent {
