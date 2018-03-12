@@ -1,45 +1,42 @@
-(function() {
-    'use strict';
-
-    class http {
+class http {
         constructor() {
-            const domen = '';
-            const Pt = '';
-            const Gt = '';
-            const htype = '';
-            const jtype = '';
+            this.domen = '';
+            this.Pt = '';
+            this.Gt = '';
+            this.htype = '';
+            this.jtype = '';
         }
 
         Get(url, assarr = [{name: htype, value: jtype}]) {
-            return this.doRequest(Gt, url, assarr);
+            return this.Req(this.Gt, url, assarr);
         }
 
         Post(url, data = null, assarr = [{name: htype, value: jtype}]) {
-            return this.doRequest(Pt, url, data, assarr);
+            return this.Req(this.Pt, url, data, assarr);
         }
 
         Req(method, url, inf, assarr) {
-            return new Promise((resolve, reject) => {
-                const xhr = new XMLHttpRequest();
-                xhr.open(method, `${this.domen}${url}`, true);
+            const param = {
+                method: method,
+                mode: 'cors',
+                credentials: 'include',
+            };
 
-                xhr.addEventListener('load', () => {
-                    const response = JSON.parse(xhr.responseText);
+            if (method === this.Pt) {
+                const harr = new Headers();
+                harr.append(assarr);
 
-                    if (xhr.status < 400) {
-                        resolve(response);
-                    } else {
-                        reject(response.message);
-                    }
-                });
+                param.body = JSON.stringify(body);
+                param.headers = harr;
+            }
 
-                for (let prop in assarr ) {
-                    xhr.setRequestHeader(current.name, current.value);
-                }
-                xhr.withCredentials = true;
+        return fetch(this.domen + url, param)
+            .then((response) => {
+                 if (response.status >= 400) {
+                    throw response;
+                 }
 
-                inf ? xhr.send(JSON.stringify(data)) : xhr.send();
+                return response.json();
             });
         }
-    }
-})();
+}
