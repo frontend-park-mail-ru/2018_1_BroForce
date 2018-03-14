@@ -40,12 +40,38 @@ export default class SignIn extends MainComponent {
         this.append((new Pagination(2, {style: 'margin-top: 60px', id: 'leaderboardpagination'}).render()));
         document.getElementById('main').appendChild(this.render());
 
+        const isNumeric = n => !isNaN(parseFloat(n)) && isFinite(n);
+
         const page = document.querySelector('.pagination');
         page.addEventListener('click', (event) => {
-            page.querySelector('.active').classList.remove('active');
-            event.srcElement.setAttribute('class', 'active');
+            let currentPage = 1;
 
-            usersTable.innerHTML(this.pagination(users, event.srcElement.textContent - 1, 2));
+            if (isNumeric(event.srcElement.textContent)) {
+                page.querySelector('.active').classList.remove('active');
+                event.srcElement.setAttribute('class', 'active');
+                currentPage = event.srcElement.textContent
+            } else {
+                if (event.srcElement.textContent === '<<') {
+                    const activePage = page.querySelector('.active').textContent;
+                    if (activePage - 1 !== 0) {
+                        page.querySelector('.active').classList.remove('active');
+                        page.querySelectorAll('a')[activePage - 1].setAttribute('class', 'active');
+                        currentPage = activePage - 1;
+                    }
+                }
+                if (event.srcElement.textContent === '>>') {
+                    const activePage = page.querySelector('.active').textContent;
+                    if (parseInt(activePage) + 1 !== 3) {
+                        page.querySelector('.active').classList.remove('active');
+                        page.querySelectorAll('a')[parseInt(activePage) + 1].setAttribute('class', 'active');
+                        currentPage = parseInt(activePage) + 1;
+                    } else {
+                        currentPage = parseInt(activePage);
+                    }
+                }
+            }
+
+            usersTable.innerHTML(this.pagination(users, currentPage - 1, 2));
         });
     }
 
