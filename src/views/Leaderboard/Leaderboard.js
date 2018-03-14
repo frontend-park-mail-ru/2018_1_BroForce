@@ -8,7 +8,7 @@ import Pagination from '../../components/Pagination/Pagination.js';
 
 export default class SignIn extends MainComponent {
     constructor() {
-        super('table', ['menu'], {});
+        super('table', ['leaderBoard'], {});
     }
 
     build() {
@@ -37,7 +37,7 @@ export default class SignIn extends MainComponent {
 
         const usersTable = new Block('p', this.pagination(users, 0, 2), ['menu-input'], {});
         this.append(usersTable.render());
-        this.append((new Pagination(2, {style: 'margin-top: 60px', id: 'leaderboardpagination'}).render()));
+        this.append((new Pagination(2, {id: 'leaderboardpagination'}).render()));
         document.getElementById('main').appendChild(this.render());
 
         const isNumeric = (n) => !isNaN(parseFloat(n)) && isFinite(n);

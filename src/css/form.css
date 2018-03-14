@@ -48,6 +48,7 @@ body {
 }
 
 .pagination a {
+    margin-top: 60px;
     color: black;
     float: left;
     padding: 8px 16px;
@@ -64,4 +65,15 @@ body {
 .pagination a:hover:not(.active) {
     background-color: #ddd;
     border-radius: 5px;
+}
+
+.leaderBoard {
+    margin-top: 17%;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+.leaderBoard p {
+    font-size: 200%;
+    margin-bottom: 5%;
 }
