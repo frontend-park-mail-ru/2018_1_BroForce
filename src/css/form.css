@@ -56,8 +56,12 @@ body {
 }
 
 .pagination a.active {
-    background-color: dodgerblue;
-    color: white;
+    background-color: black;
+    color: #84d8f2;
+    border-radius: 5px;
 }
 
-.pagination a:hover:not(.active) {background-color: #ddd;}
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+}

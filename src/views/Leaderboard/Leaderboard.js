@@ -36,14 +36,15 @@ export default class SignIn extends MainComponent {
             ]};
 
         const usersTable = new Block('p', this.pagination(users, 0, 2), ['menu-input'], {});
-        console.log(usersTable);
         this.append(usersTable.render());
         this.append((new Pagination(2, {style: 'margin-top: 60px', id: 'leaderboardpagination'}).render()));
         document.getElementById('main').appendChild(this.render());
 
         const page = document.querySelector('.pagination');
         page.addEventListener('click', (event) => {
-            console.log(event.srcElement.textContent);
+            page.querySelector('.active').classList.remove('active');
+            event.srcElement.setAttribute('class', 'active');
+
             usersTable.innerHTML(this.pagination(users, event.srcElement.textContent - 1, 2));
         });
     }
