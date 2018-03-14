@@ -9,7 +9,9 @@ export default class Pagination extends MainComponent {
 
         this.append((new Block('a', '<<', [], {})).render());
         this.append((new Block('a', 1, ['active'], {})).render());
-        this.append((new Block('a', 2, [], {})).render());
+        for (let i = 1; i < countOfPages; i++) {
+            this.append((new Block('a', i + 1, [], {})).render());
+        }
         this.append((new Block('a', '>>', [], {})).render());
     }
 }

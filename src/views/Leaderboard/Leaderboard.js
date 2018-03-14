@@ -46,22 +46,20 @@ export default class SignIn extends MainComponent {
         page.addEventListener('click', (event) => {
             const activePage = parseInt(page.querySelector('.active').textContent);
             let currentPage = activePage;
+            const selectedPage = event.srcElement;
 
-            if (isNumeric(event.srcElement.textContent)) {
+            if (isNumeric(selectedPage.textContent)) {
                 page.querySelector('.active').classList.remove('active');
-                event.srcElement.setAttribute('class', 'active');
-                currentPage = event.srcElement.textContent;
-            } else {
-                if (event.srcElement.textContent === '<<' && activePage - 1 !== 0) {
-                    page.querySelector('.active').classList.remove('active');
-                    page.querySelectorAll('a')[activePage - 1].setAttribute('class', 'active');
-                    currentPage = activePage - 1;
-                }
-                if (event.srcElement.textContent === '>>' && activePage + 1 !== 3) {
-                    page.querySelector('.active').classList.remove('active');
-                    page.querySelectorAll('a')[activePage + 1].setAttribute('class', 'active');
-                    currentPage = activePage + 1;
-                }
+                selectedPage.setAttribute('class', 'active');
+                currentPage = selectedPage.textContent;
+            } else if (selectedPage.textContent === '<<' && activePage - 1 !== 0) {
+                page.querySelector('.active').classList.remove('active');
+                page.querySelectorAll('a')[activePage - 1].setAttribute('class', 'active');
+                currentPage = activePage - 1;
+            } else if (selectedPage.textContent === '>>' && activePage + 1 !== 3) {
+                page.querySelector('.active').classList.remove('active');
+                page.querySelectorAll('a')[activePage + 1].setAttribute('class', 'active');
+                currentPage = activePage + 1;
             }
 
             usersTable.innerHTML(this.pagination(users, currentPage - 1, 2));
