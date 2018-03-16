@@ -8,6 +8,7 @@ export default class Pagination extends MainComponent {
         super('div', ['pagination'], attrs);
 
         this.currentPage = 0;
+        this.initEvents();
 
         this.append((new Block('a', '<<', [], {})).render());
         this.append((new Block('a', 1, ['active'], {})).render());
@@ -38,7 +39,7 @@ export default class Pagination extends MainComponent {
     }
 
     initEvents() {
-        this.render().addEventListener('click', event => {
+        this.render().addEventListener('click', (event) => {
             const page = document.querySelector('.pagination');
             const activePage = parseInt(page.querySelector('.active').textContent);
             let currentPage = activePage;
@@ -49,7 +50,6 @@ export default class Pagination extends MainComponent {
     }
 
     getCurrentPage() {
-        this.initEvents();
         return this.currentPage;
     }
 }
