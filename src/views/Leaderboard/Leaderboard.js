@@ -42,12 +42,14 @@ export default class Leaderboard extends MainComponent {
         document.getElementById('main').appendChild(this.render());
 
         const page = document.querySelector('.pagination');
-        page.addEventListener('click', (event) => {
-            const activePage = parseInt(page.querySelector('.active').textContent);
-            let currentPage = activePage;
-            const selectedPage = event.srcElement;
-
-            currentPage = pagination.getNewPage(page, activePage, currentPage, selectedPage);
+        page.addEventListener('click', event => {
+            // const activePage = parseInt(page.querySelector('.active').textContent);
+            // let currentPage = activePage;
+            // const selectedPage = event.srcElement;
+            //
+            // currentPage = pagination.getNewPage(page, activePage, currentPage, selectedPage);
+            const currentPage = pagination.getCurrentPage();
+            console.log(currentPage);
             usersTable.innerHTML(this.pagination(users, currentPage - 1, 2));
         });
     }

@@ -7,6 +7,8 @@ export default class Pagination extends MainComponent {
     constructor(countOfPages, attrs ={}) {
         super('div', ['pagination'], attrs);
 
+        this.currentPage = 0;
+
         this.append((new Block('a', '<<', [], {})).render());
         this.append((new Block('a', 1, ['active'], {})).render());
         for (let i = 1; i < countOfPages; i++) {
@@ -33,5 +35,21 @@ export default class Pagination extends MainComponent {
         }
 
         return currentPage;
+    }
+
+    initEvents() {
+        this.render().addEventListener('click', event => {
+            const page = document.querySelector('.pagination');
+            const activePage = parseInt(page.querySelector('.active').textContent);
+            let currentPage = activePage;
+            const selectedPage = event.srcElement;
+
+            this.currentPage = this.getNewPage(page, activePage, currentPage, selectedPage);
+        });
+    }
+
+    getCurrentPage() {
+        this.initEvents();
+        return this.currentPage;
     }
 }
