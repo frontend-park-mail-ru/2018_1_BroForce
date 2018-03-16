@@ -32,7 +32,7 @@ export default class Leaderboard extends MainComponent {
                     'email': 'lol@mail.ru',
                     'name': 'Lol',
                     'score': '100',
-                }
+                },
             ]};
 
         const usersTable = new Block('p', this.pagination(users, 0, 2), ['menu-input'], {});
