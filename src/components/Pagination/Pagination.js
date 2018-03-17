@@ -22,18 +22,18 @@ export default class Pagination extends MainComponent {
     getNewPage(selectedPage) {
         const isNumeric = (n) => !isNaN(parseFloat(n)) && isFinite(n);
 
-        if (isNumeric(selectedPage.textContent)) {
-            this.changeActive(selectedPage.textContent);
-            this.currentPage = parseInt(selectedPage.textContent);
-        } else if (selectedPage.textContent === '<<' && this.currentPage - 1 !== 0) {
+        if (isNumeric(selectedPage)) {
+            this.changeActive(selectedPage);
+            this.currentPage = +selectedPage;
+        } else if (selectedPage === '<<' && this.currentPage - 1 !== 0) {
             this.changeActive(--this.currentPage);
-        } else if (selectedPage.textContent === '>>' && this.currentPage + 1 !== this.countOfPages + 1) {
+        } else if (selectedPage === '>>' && this.currentPage + 1 !== this.countOfPages + 1) {
             this.changeActive(++this.currentPage);
         }
     }
 
     initEvents() {
-        this.render().addEventListener('click', (event) => this.getNewPage(event.srcElement));
+        this.render().addEventListener('click', (event) => this.getNewPage(event.srcElement.textContent));
     }
 
     getCurrentPage() {
