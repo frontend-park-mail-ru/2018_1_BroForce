@@ -23,8 +23,10 @@ export default class Pagination extends MainComponent {
         const isNumeric = (n) => !isNaN(parseFloat(n)) && isFinite(n);
 
         if (isNumeric(selectedPage.textContent)) {
+            // this.render().querySelector('.active').classList.remove('active');
+            // selectedPage.setAttribute('class', 'active');
             this.changeActive(selectedPage.textContent);
-            this.currentPage = selectedPage.textContent;
+            this.currentPage = parseInt(selectedPage.textContent);
         } else if (selectedPage.textContent === '<<' && this.currentPage - 1 !== 0) {
             this.changeActive(--this.currentPage);
         } else if (selectedPage.textContent === '>>' && this.currentPage + 1 !== this.countOfPages + 1) {
