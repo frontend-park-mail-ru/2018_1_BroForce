@@ -6,8 +6,9 @@ import Block from '../Block/Block.js';
 export default class Pagination extends MainComponent {
     constructor(countOfPages, attrs ={}) {
         super('div', ['pagination'], attrs);
+        this.countOfPages = countOfPages;
+        this.newPage = 1;
 
-        this.currentPage = 0;
         this.initEvents();
 
         this.append((new Block('a', '<<', [], {})).render());
@@ -18,38 +19,36 @@ export default class Pagination extends MainComponent {
         this.append((new Block('a', '>>', [], {})).render());
     }
 
-    getNewPage(page, activePage, currentPage, selectedPage) {
+    getNewPage(selectedPage) {
         const isNumeric = (n) => !isNaN(parseFloat(n)) && isFinite(n);
+        const activePage = parseInt(this.render().querySelector('.active').textContent);
 
         if (isNumeric(selectedPage.textContent)) {
-            page.querySelector('.active').classList.remove('active');
+            this.render().querySelector('.active').classList.remove('active');
             selectedPage.setAttribute('class', 'active');
-            currentPage = selectedPage.textContent;
+            this.newPage = selectedPage.textContent;
         } else if (selectedPage.textContent === '<<' && activePage - 1 !== 0) {
-            page.querySelector('.active').classList.remove('active');
-            page.querySelectorAll('a')[activePage - 1].setAttribute('class', 'active');
-            currentPage = activePage - 1;
-        } else if (selectedPage.textContent === '>>' && activePage + 1 !== 3) {
-            page.querySelector('.active').classList.remove('active');
-            page.querySelectorAll('a')[activePage + 1].setAttribute('class', 'active');
-            currentPage = activePage + 1;
+            this.changeActive(activePage, -1);
+            this.newPage = activePage - 1;
+        } else if (selectedPage.textContent === '>>' && activePage + 1 !== this.countOfPages + 1) {
+            this.changeActive(activePage, 1);
+            this.newPage = activePage + 1;
         }
-
-        return currentPage;
     }
 
     initEvents() {
         this.render().addEventListener('click', (event) => {
-            const page = document.querySelector('.pagination');
-            const activePage = parseInt(page.querySelector('.active').textContent);
-            let currentPage = activePage;
             const selectedPage = event.srcElement;
-
-            this.currentPage = this.getNewPage(page, activePage, currentPage, selectedPage);
+            this.getNewPage(selectedPage);
         });
     }
 
     getCurrentPage() {
-        return this.currentPage;
+        return this.newPage;
+    }
+
+    changeActive(page, n) {
+        this.render().querySelector('.active').classList.remove('active');
+        this.render().querySelectorAll('a')[page + n].setAttribute('class', 'active');
     }
 }

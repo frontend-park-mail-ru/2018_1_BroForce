@@ -37,12 +37,11 @@ export default class Leaderboard extends MainComponent {
 
         const usersTable = new Block('p', this.pagination(users, 0, 2), ['menu-input'], {});
         this.append(usersTable.render());
-        const pagination = new Pagination(2, {id: 'leaderboardpagination'});
+        const pagination = new Pagination(2, {});
         this.append(pagination.render());
         document.getElementById('main').appendChild(this.render());
 
-        const page = document.querySelector('.pagination');
-        page.addEventListener('click', (event) => {
+        this.render().addEventListener('click', () => {
             const currentPage = pagination.getCurrentPage();
             usersTable.innerHTML(this.pagination(users, currentPage - 1, 2));
         });
