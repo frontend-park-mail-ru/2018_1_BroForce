@@ -1,9 +1,5 @@
 'use strict';
 
-// Components
-import MainComponent from './components/MainComponent/MainComponent.js';
-import Button from './components/Button/Button.js';
-
 // Router
 import Router from './modules/Router/Router.js';
 
@@ -11,14 +7,12 @@ import Router from './modules/Router/Router.js';
 import MainForm from './views/Main/main.js';
 import SignIn from './views/SignIn/signIn.js';
 import SignUp from './views/SignUp/signUp.js';
+import LeaderBoard from './views/Leaderboard/Leaderboard.js';
+import Profile from './views/Profile/Profile.js';
 
 Router.use('/', MainForm)
     .use('/signin/', SignIn)
     .use('/signup/', SignUp)
+    .use('/leaderboard/', LeaderBoard)
+    .use('/profile/', Profile)
     .start();
-
-const signInBtn = document.getElementById('signInBtn');
-signInBtn.addEventListener('click', () => Router.go('/signin/'));
-
-const signUpBtn = document.getElementById('signUpBtn');
-signUpBtn.addEventListener('click', () => Router.go('/signup/'));

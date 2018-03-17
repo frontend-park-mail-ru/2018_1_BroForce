@@ -30,4 +30,8 @@ export default class MainComponent {
     innerHTML(html) {
         this.element.innerHTML = html;
     }
+
+    append(element) {
+        this.element.appendChild(element);
+    }
 }
