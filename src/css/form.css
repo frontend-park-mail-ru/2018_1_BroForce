@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Bangers');
 
 body {
-    background-color: #2A363B;
+    /*background-color: #2A363B;*/
     /*background-image: url("../img/background1.jpg");*/
+    background: linear-gradient(to right, #2A363B , #E8175D);
     font-family: 'Bangers';
 }
 
