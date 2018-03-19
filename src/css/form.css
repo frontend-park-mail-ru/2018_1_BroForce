@@ -18,12 +18,13 @@ html {
     outline: none;
     font-family: 'Raleway';
     font-size: 150%;
-    background-color: #E84A5F;
-    color: #2A363B;
+    background-color: #2A363B;
+    color: #E8175D;
     width: 102%;
     height: 35px;
     margin-bottom: 10px;
     border-radius: 15px;
+    border-color: #E8175D;
 }
 
 .menu button:hover:not(.active) {
