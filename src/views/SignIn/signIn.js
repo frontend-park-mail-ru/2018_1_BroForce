@@ -11,11 +11,12 @@ export default class SignIn extends MainComponent {
     }
 
     build() {
-        this.append((new Block('p', 'Log in or Sign up', ['menu-input'], {})).render());
+        this.append((new Block('p', 'Sign in', ['menu-input'], {})).render());
         this.append((new Input('email', 'signInEmailInput', ['menu-input'], 'Email address')).render());
         this.append((new Input('password', 'signInPasswordInput', ['menu-input'], 'Password')).render());
-        this.append((new Block('a', 'Create an account', ['menu-input'], {href: '', id: 'createAccountLink'})).render());
+        // this.append((new Block('a', 'Create an account', ['menu-input'], {href: '', id: 'createAccountLink'})).render());
         this.append((new Button('Sign In', 'submit', ['main-input'], 'signInSubmitBtn').render()));
+        this.append((new Button('Back', 'submit', ['main-input'], 'signInBackBnt').render()));
         document.getElementById('main').appendChild(this.render());
     }
 }

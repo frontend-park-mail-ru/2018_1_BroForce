@@ -35,7 +35,7 @@ export default class Leaderboard extends MainComponent {
                 },
             ]};
 
-        const usersTable = new Block('p', this.pagination(users, 0, 2), ['menu-input'], {});
+        const usersTable = new Block('p', this.pagination(users, 0, 2), ['leaderBoard-input'], {});
         this.append(usersTable.render());
         const pagination = new Pagination(2, {});
         this.append(pagination.render());
