@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Bangers');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Monoton|PT+Sans|Raleway|Bangers');
 
-body {
+html {
     /*background-color: #2A363B;*/
-    /*background-image: url("../img/background1.jpg");*/
-    background: linear-gradient(to right, #2A363B , #E8175D);
-    font-family: 'Bangers';
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top right, #2A363B 60%, #E8175D);
+    font-family: 'Raleway';
 }
 
 .menu {
@@ -13,26 +14,14 @@ body {
     margin-right: 35%;
 }
 
-@keyframes neon {
-    0% {
-        box-shadow: 0 0 10px 2px #E8175D;
-    }
-    50% {
-        box-shadow: 0 0 15px 4px #E8175D;
-    }
-    100% {
-        box-shadow: 0 0 20px 6px #E8175D;
-    }
-}
-
 .menu button {
     outline: none;
-    font-family: 'Bangers';
-    font-size: 120%;
+    font-family: 'Raleway';
+    font-size: 150%;
     background-color: #E84A5F;
     color: #2A363B;
     width: 102%;
-    height: 30px;
+    height: 35px;
     margin-bottom: 10px;
     border-radius: 15px;
 }
@@ -64,7 +53,7 @@ body {
 }
 
 .menu-input {
-    height: 20px;
+    height: 30px;
     width: 100%;
     margin-bottom: 3%;
     border-radius: 15px;
@@ -74,6 +63,7 @@ body {
     width: 100%;
     height: 100%;
     margin-bottom: 10px;
+    font-family: Monoton;
 }
 
 .profile-img {
@@ -87,7 +77,7 @@ body {
 .pagination a {
     cursor: default;
     user-select: none;
-    margin-top: 60px;
+    margin-top: 30%;
     margin-bottom: 5%;
     color: #E84A5F;
     float: left;
@@ -121,7 +111,7 @@ body {
 
 .leaderBoard button {
     outline: none;
-    font-family: 'Bangers';
+    font-family: 'Raleway';
     font-size: 120%;
     background-color: #E84A5F;
     color: #2A363B;
@@ -141,4 +131,16 @@ body {
     width: 100%;
     margin-bottom: 10px;
     border-radius: 5px;
+}
+
+@keyframes neon {
+    0% {
+        box-shadow: 0 0 10px 2px #E8175D;
+    }
+    50% {
+        box-shadow: 0 0 15px 4px #E8175D;
+    }
+    100% {
+        box-shadow: 0 0 20px 6px #E8175D;
+    }
 }
