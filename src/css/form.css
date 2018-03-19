@@ -2,13 +2,14 @@
 
 body {
     background-color: #2A363B;
+    /*background-image: url("../img/background1.jpg");*/
     font-family: 'Bangers';
 }
 
 .menu {
-    margin-top: 17%;
-    margin-left: 40%;
-    margin-right: 40%;
+    margin-top: 10%;
+    margin-left: 35%;
+    margin-right: 35%;
 }
 
 @keyframes neon {
@@ -64,7 +65,7 @@ body {
 .menu-input {
     height: 20px;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 3%;
     border-radius: 15px;
 }
 
@@ -86,6 +87,7 @@ body {
     cursor: default;
     user-select: none;
     margin-top: 60px;
+    margin-bottom: 5%;
     color: #E84A5F;
     float: left;
     padding: 8px 16px;
@@ -114,6 +116,22 @@ body {
 .leaderBoard p {
     font-size: 200%;
     margin-bottom: 5%;
+}
+
+.leaderBoard button {
+    outline: none;
+    font-family: 'Bangers';
+    font-size: 120%;
+    background-color: #E84A5F;
+    color: #2A363B;
+    width: 102%;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+
+.leaderBoard button:hover:not(.active) {
+    animation: neon 2s infinite alternate;
 }
 
 .leaderBoard-input {

@@ -18,10 +18,10 @@ export default class SignUp extends MainComponent {
         this.append((new Input('password', 'inputPassword', ['menu-input'], 'Password')).render());
         this.append((new Input('password', 'inputConfirmPassword', ['menu-input'], 'Confirm Password')).render());
         this.append((new Button('Create Account', 'submit', ['menu-input'], 'btnRegistration').render()));
-        this.append((new Button('Back', 'submit', ['main-input'], 'signUpBackBnt').render()));
+        this.append((new Button('Back', 'button', ['menu-input'], 'signUpBackBtn').render()));
         document.getElementById('main').appendChild(this.render());
 
-        const signUpBackBnt = document.getElementById('signUpBackBnt');
-        signUpBackBnt.addEventListener('click', () => Router.go('/'));
+        const signUpBackBtn = document.getElementById('signUpBackBtn');
+        signUpBackBtn.addEventListener('click', () => Router.go('/'));
     }
 }

@@ -12,13 +12,13 @@ export default class Main extends MainComponent {
 
     build() {
         this.append((new ImageComp('../img/broforce.png', ['menu-logo'], 'logo')).render());
-        this.append((new Button('Singleplayer', 'submit', ['main-input'], 'singlPlayerBtn')).render());
-        this.append((new Button('Multiplayer', 'submit', ['main-input'], 'multiplayerBtn').render()));
-        this.append((new Button('Sign Up', 'submit', ['main-input'], 'signUpBtn').render()));
-        this.append((new Button('Sign In', 'submit', ['main-input'], 'signInBtn').render()));
-        this.append((new Button('Leaders', 'submit', ['main-input'], 'leadersBtn').render()));
-        this.append((new Button('Profile', 'submit', ['main-input'], 'profileBtn').render()));
-        this.append((new Button('About', 'submit', ['main-input'], 'aboutBtn').render()));
+        this.append((new Button('Singleplayer', 'submit', ['menu-input'], 'singlPlayerBtn')).render());
+        this.append((new Button('Multiplayer', 'submit', ['menu-input'], 'multiplayerBtn').render()));
+        this.append((new Button('Sign Up', 'submit', ['menu-input'], 'signUpBtn').render()));
+        this.append((new Button('Sign In', 'submit', ['menu-input'], 'signInBtn').render()));
+        this.append((new Button('Leaders', 'submit', ['menu-input'], 'leadersBtn').render()));
+        this.append((new Button('Profile', 'submit', ['menu-input'], 'profileBtn').render()));
+        this.append((new Button('About', 'submit', ['menu-input'], 'aboutBtn').render()));
         document.getElementById('main').appendChild(this.render());
 
         const signInBtn = document.getElementById('signInBtn');
