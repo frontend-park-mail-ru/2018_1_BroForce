@@ -17,7 +17,7 @@ html {
     outline: none;
     font-family: 'Raleway';
     font-size: 150%;
-    background-color: #2A363B;
+    background-color: rgba(0, 0, 0, 0.01);
     color: #E8175D;
     width: 102%;
     height: 35px;
@@ -35,7 +35,7 @@ html {
     font-family: Monoton;
     color: #E8175D;
     font-size: 365%;
-    animation: neon-text 5s infinite alternate;
+    animation: neon-text 1s infinite alternate;
 }
 
 .form-input {
@@ -103,21 +103,20 @@ html {
     user-select: none;
     margin-top: 30%;
     margin-bottom: 5%;
-    color: #E84A5F;
+    color: #E8175D;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
-    transition: background-color .3s;
 }
 
 .pagination a.active {
-    background-color: #E84A5F;
+    background-color: #E8175D;
     color: #2A363B;
     border-radius: 10px;
 }
 
 .pagination a:hover:not(.active) {
-    background-color: #E84A5F;
+    background-color: #E8175D;
     color: #2A363B;
     border-radius: 10px;
 }
@@ -136,13 +135,14 @@ html {
 .leaderBoard button {
     outline: none;
     font-family: 'Raleway';
-    font-size: 120%;
-    background-color: #E84A5F;
-    color: #2A363B;
+    font-size: 150%;
+    background-color: rgba(0, 0, 0, 0.01);
+    color: #E8175D;
     width: 102%;
-    height: 30px;
+    height: 35px;
     margin-bottom: 10px;
     border-radius: 15px;
+    border-color: #E8175D;
 }
 
 .leaderBoard button:hover:not(.active) {

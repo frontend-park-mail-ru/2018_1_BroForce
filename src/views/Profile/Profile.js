@@ -20,7 +20,7 @@ export default class Profile extends MainComponent {
         const template = Hogan.compile('{{name}}');
         const name = template.render(userData);
 
-        this.append((new ImageComp('../img/user-default.png', ['profile-img'], 'logo')).render());
+        this.append((new ImageComp('../img/user-default.jpg', ['profile-img'], 'logo')).render());
         this.append((new Block('input', '', ['form-input'], {type: 'file', style: 'margin-left: 22%'})).render());
         this.append((new Block('p', 'Hello, ' + name + '!', ['form-input'], {style: 'text-align: center;'})).render());
         document.getElementById('main').appendChild(this.render());
