@@ -35,7 +35,7 @@ html {
     font-family: Monoton;
     color: #E8175D;
     font-size: 365%;
-    animation: neon-text 3s infinite reverse;
+    animation: neon-text 5s infinite alternate;
 }
 
 .form-input {
