@@ -35,6 +35,7 @@ html {
     font-family: Monoton;
     color: #E8175D;
     font-size: 365%;
+    animation: neon-text 3s infinite reverse;
 }
 
 .form-input {
@@ -165,5 +166,31 @@ html {
     }
     100% {
         box-shadow: 0 0 20px 6px #E8175D;
+    }
+}
+
+@keyframes neon-text {
+    0% {
+        text-shadow: 0 0 10px #E8175D;
+    }
+
+    20% {
+        text-shadow: 0 0 20px #E8175D;
+    }
+
+    40% {
+        text-shadow: 0 0 40px #E8175D;
+    }
+
+    60% {
+        text-shadow: 0 0 60px #E8175D;
+    }
+
+    80% {
+        text-shadow: 0 0 80px #E8175D;
+    }
+
+    100% {
+        text-shadow: 0 0 100px #E8175D;
     }
 }
