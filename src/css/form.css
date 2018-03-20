@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa|Monoton|PT+Sans|Raleway|Bangers');
 
 html {
-    /*background-color: #2A363B;*/
     width: 100%;
     height: 100%;
     background: linear-gradient(to top right, #2A363B 60%, #E8175D);
@@ -31,40 +30,63 @@ html {
     animation: neon 2s infinite alternate;
 }
 
-.menu p {
-    color: #E84A5F;
-    font-size: 200%;
-    margin-bottom: 5%;
+.menu-logo {
+    margin-bottom: 10px;
+    font-family: Monoton;
+    color: #E8175D;
+    font-size: 365%;
 }
 
-.menu a {
-    color: #FF847C;
-}
-
-.menu input {
-    outline: none;
-}
-
-.menu input:hover {
-    animation: neon 2s infinite alternate;
-}
-
-.menu input:focus {
-    animation: neon 2s infinite alternate;
-}
-
-.menu-input {
+.form-input {
     height: 30px;
     width: 100%;
     margin-bottom: 3%;
     border-radius: 15px;
 }
 
-.menu-logo {
-    width: 100%;
-    height: 100%;
+.login {
+    margin-top: 10%;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.login button {
+    outline: none;
+    font-family: 'Raleway';
+    font-size: 150%;
+    background-color: #2A363B;
+    color: #E8175D;
+    width: 102%;
+    height: 35px;
     margin-bottom: 10px;
-    font-family: Monoton;
+    border-radius: 15px;
+    border-color: #E8175D;
+}
+
+.login button:hover:not(.active) {
+    animation: neon 2s infinite alternate;
+}
+
+.login p {
+    color: #E84A5F;
+    font-size: 200%;
+    margin-bottom: 5%;
+}
+
+.login a {
+    color: #FF847C;
+}
+
+.login input {
+    outline: none;
+}
+
+.login input:hover {
+    animation: neon 2s infinite alternate;
+}
+
+.login input:focus {
+    animation: neon 2s infinite alternate;
 }
 
 .profile-img {
@@ -126,7 +148,7 @@ html {
     animation: neon 2s infinite alternate;
 }
 
-.leaderBoard-input {
+.leaderBoard-block {
     color: #FF847C;
     height: 20px;
     width: 100%;

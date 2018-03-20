@@ -21,8 +21,8 @@ export default class Profile extends MainComponent {
         const name = template.render(userData);
 
         this.append((new ImageComp('../img/user-default.png', ['profile-img'], 'logo')).render());
-        this.append((new Block('input', '', ['menu-input'], {type: 'file', style: 'margin-left: 22%'})).render());
-        this.append((new Block('p', 'Hello, ' + name + '!', ['menu-input'], {style: 'text-align: center;'})).render());
+        this.append((new Block('input', '', ['form-input'], {type: 'file', style: 'margin-left: 22%'})).render());
+        this.append((new Block('p', 'Hello, ' + name + '!', ['form-input'], {style: 'text-align: center;'})).render());
         document.getElementById('main').appendChild(this.render());
     }
 }

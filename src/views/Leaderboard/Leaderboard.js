@@ -5,7 +5,7 @@ import Block from '../../components/Block/Block.js';
 import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
 import Pagination from '../../components/Pagination/Pagination.js';
-import Router from "../../modules/Router/Router.js";
+import Router from '../../modules/Router/Router.js';
 
 export default class Leaderboard extends MainComponent {
     constructor() {
@@ -36,11 +36,11 @@ export default class Leaderboard extends MainComponent {
                 },
             ]};
 
-        const usersTable = new Block('p', this.pagination(users, 0, 2), ['leaderBoard-input'], {});
+        const usersTable = new Block('p', this.pagination(users, 0, 2), ['leaderBoard-block'], {});
         this.append(usersTable.render());
         const pagination = new Pagination(2, {});
         this.append(pagination.render());
-        this.append((new Button('Back', 'button', ['leaderBoard-input'], 'leaderBoardBackBtn').render()));
+        this.append((new Button('Back', 'button', ['leaderBoard-block'], 'leaderBoardBackBtn').render()));
         document.getElementById('main').appendChild(this.render());
 
         this.render().addEventListener('click', () => {
