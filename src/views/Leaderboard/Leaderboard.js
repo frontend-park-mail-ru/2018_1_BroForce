@@ -5,6 +5,7 @@ import Block from '../../components/Block/Block.js';
 import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
 import Pagination from '../../components/Pagination/Pagination.js';
+import Router from '../../modules/Router/Router.js';
 
 export default class Leaderboard extends MainComponent {
     constructor() {
@@ -35,23 +36,27 @@ export default class Leaderboard extends MainComponent {
                 },
             ]};
 
-        const usersTable = new Block('p', this.pagination(users, 0, 2), ['menu-input'], {});
+        const usersTable = new Block('p', this.pagination(users, 0, 2), [], {});
         this.append(usersTable.render());
         const pagination = new Pagination(2, {});
         this.append(pagination.render());
+        this.append((new Button('Back', 'button', [], 'leaderBoardBackBtn').render()));
         document.getElementById('main').appendChild(this.render());
 
         this.render().addEventListener('click', () => {
             const currentPage = pagination.getCurrentPage();
             usersTable.innerHTML(this.pagination(users, currentPage - 1, 2));
         });
+
+        const leaderBoardBackBtn = document.getElementById('leaderBoardBackBtn');
+        leaderBoardBackBtn.addEventListener('click', () => Router.go('/'));
     }
 
     pagination(users, page, countOf) {
         const usersOnPage = {'users': []};
         usersOnPage.users = users.users.slice(page * countOf, countOf + page * countOf);
 
-        const template = Hogan.compile('{{#users}}-{{name}}! - {{score}}<br/> {{/users}}');
+        const template = Hogan.compile('{{#users}} {{name}}! - {{score}}<br/> {{/users}}');
         const output = template.render(usersOnPage);
 
         return output;

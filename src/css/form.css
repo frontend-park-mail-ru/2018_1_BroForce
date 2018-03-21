@@ -1,79 +1,273 @@
-@import url('https://fonts.googleapis.com/css?family=Bangers');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Monoton|PT+Sans|Raleway|Bangers');
 
-body {
-    background-color: #84d8f2;
-    font-family: 'Bangers';
+html {
+    width: 100%;
+    height: 100%;
+    /*#2A363B*/
+    background: linear-gradient(to top right, black 60%, #E8175D);
+    font-family: 'Raleway';
 }
 
 .menu {
-    margin-top: 17%;
-    margin-left: 40%;
-    margin-right: 40%;
-}
-
-.menu-input {
-    height: 20px;
-    width: 100%;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    margin-top: 10%;
+    margin-left: 35%;
+    margin-right: 35%;
 }
 
 .menu button {
-    font-family: 'Bangers';
-    font-size: 120%;
-    background-color: white;
+    outline: none;
+    font-family: 'Raleway';
+    font-size: 150%;
+    background-color: rgba(0, 0, 0, 0.01);
+    color: #E8175D;
     width: 102%;
-    height: 30px;
+    height: 35px;
     margin-bottom: 10px;
-    border-radius: 5px;
+    border-radius: 25px;
+    border-color: #E8175D;
 }
 
-.menu p {
-    font-size: 200%;
-    margin-bottom: 5%;
+.menu button:hover:not(.active) {
+    animation: neon 2s infinite alternate;
 }
 
 .menu-logo {
-    width: 100%;
-    height: 100%;
     margin-bottom: 10px;
+    font-family: Monoton;
+    color: #E8175D;
+    font-size: 365%;
+    animation: neon-text 1s infinite alternate;
 }
 
-.profile-img {
-    height: 100px;
-    width: 100px;
-    margin-left: 33%;
-    margin-right: 33%;
-    border-radius: 50%;
+.form-input {
+    height: 30px;
+    width: 100%;
+    margin-bottom: 3%;
+    border-radius: 25px;
+    padding-left: 15px;
+    font-size: 80%;
+}
+
+.login {
+    margin-top: 10%;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.login button {
+    outline: none;
+    font-family: 'Raleway';
+    font-size: 150%;
+    background-color: rgba(0, 0, 0, 0.01);
+    color: #E8175D;
+    width: 102%;
+    height: 35px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    border-color: #E8175D;
+}
+
+.login button:hover:not(.active) {
+    animation: neon 2s infinite alternate;
+}
+
+.login p {
+    color: #E84A5F;
+    font-size: 200%;
+    margin-bottom: 5%;
+    animation: neon-text 1s infinite alternate;
+}
+
+.login a {
+    color: #FF847C;
+}
+
+.login input {
+    outline: none;
+    /*background-color: grey;*/
+}
+
+.login input:hover {
+    animation: neon 2s infinite alternate;
+}
+
+.login input:focus {
+    animation: neon 2s infinite alternate;
+}
+
+.pagination {
+    margin-left: 30%;
 }
 
 .pagination a {
-    margin-top: 60px;
-    color: black;
+    cursor: default;
+    user-select: none;
+    margin-bottom: 5%;
+    color: #E8175D;
     float: left;
     padding: 8px 16px;
+    margin-left: 1px;
+    margin-right: 1px;
     text-decoration: none;
-    transition: background-color .3s;
 }
 
 .pagination a.active {
-    background-color: black;
-    color: #84d8f2;
-    border-radius: 5px;
+    background-color: #E8175D;
+    color: black;
+    border-radius: 10px;
 }
 
 .pagination a:hover:not(.active) {
-    background-color: #ddd;
-    border-radius: 5px;
+    background-color: #E8175D;
+    color: black;
+    border-radius: 10px;
 }
 
 .leaderBoard {
     margin-top: 17%;
-    margin-left: 40%;
-    margin-right: 40%;
+    margin-left: 35%;
+    margin-right: 35%;
 }
 
 .leaderBoard p {
+    margin-left: 25%;
     font-size: 200%;
+    color: #FF847C;
+    animation: neon-text 1s infinite alternate;
+}
+
+.leaderBoard button {
+    /*Whaaaaaaat????*/
+    /*width: 102%;*/
+    width: 400px;
+    height: 35px;
+    font-family: 'Raleway';
+    font-size: 150%;
+    background-color: rgba(0, 0, 0, 0.01);
+    color: #E8175D;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    border-color: #E8175D;
+}
+
+.leaderBoard button:hover:not(.active) {
+    animation: neon 2s infinite alternate;
+}
+
+.about {
+    margin-top: 10%;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.about p {
+    color: #FF847C;
+    font-size: 20px;
+    margin-bottom: 10%;
+    animation: neon-text 1s infinite alternate;
+}
+
+.about button {
+    outline: none;
+    font-family: 'Raleway';
+    font-size: 150%;
+    background-color: rgba(0, 0, 0, 0.01);
+    color: #E8175D;
+    width: 102%;
+    height: 35px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    border-color: #E8175D;
+}
+
+.about button:hover:not(.active) {
+    animation: neon 2s infinite alternate;
+}
+
+.profile {
+    margin-top: 10%;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.profile input[type='file'] {
+    margin-left: 30%;
     margin-bottom: 5%;
+    position: relative;
+    overflow: hidden;
+    color: #E8175D;
+}
+
+.profile img {
+    height: 120px;
+    width: 120px;
+    margin-top: 10%;
+    margin-left: 33%;
+    margin-right: 33%;
+    border-radius: 50%;
+    animation: neon 1s infinite alternate;
+}
+
+.profile button {
+    /*Whaaaaaaat????*/
+    /*width: 102%;*/
+    width: 400px;
+    height: 35px;
+    font-family: 'Raleway';
+    font-size: 150%;
+    background-color: rgba(0, 0, 0, 0.01);
+    color: #E8175D;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    border-color: #E8175D;
+}
+
+.profile button:hover:not(.active) {
+    animation: neon 2s infinite alternate;
+}
+
+.profile p {
+    font-size: 40px;
+    margin-left: 20%;
+    margin-bottom: 40px;
+    color: #FF847C;
+    animation: neon-text 1s infinite alternate;
+}
+
+@keyframes neon {
+    0% {
+        box-shadow: 0 0 10px 2px #E8175D;
+    }
+    50% {
+        box-shadow: 0 0 15px 4px #E8175D;
+    }
+    100% {
+        box-shadow: 0 0 20px 6px #E8175D;
+    }
+}
+
+@keyframes neon-text {
+    0% {
+        text-shadow: 0 0 10px #E8175D;
+    }
+
+    20% {
+        text-shadow: 0 0 20px #E8175D;
+    }
+
+    40% {
+        text-shadow: 0 0 40px #E8175D;
+    }
+
+    60% {
+        text-shadow: 0 0 60px #E8175D;
+    }
+
+    80% {
+        text-shadow: 0 0 80px #E8175D;
+    }
+
+    100% {
+        text-shadow: 0 0 100px #E8175D;
+    }
 }
