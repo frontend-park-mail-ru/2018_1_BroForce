@@ -8,11 +8,11 @@ import Router from '../../modules/Router/Router.js';
 
 export default class About extends MainComponent {
     constructor() {
-        super('div', ['menu'], {});
+        super('div', ['about'], {});
     }
 
     build() {
-        const aboutText = 'Neon light - it is web game about neon and fights!';
+        const aboutText = 'Neon light - it is web game about neon and fights! Developed by BroForce team.';
         this.append((new Block('p', aboutText, ['form-input'], {})).render());
         this.append((new Button('Back', 'button', ['form-input'], 'AboutBackBtn').render()));
         document.getElementById('main').appendChild(this.render());

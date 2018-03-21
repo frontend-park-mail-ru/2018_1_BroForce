@@ -3,7 +3,8 @@
 html {
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top right, #2A363B 60%, #E8175D);
+    /*#2A363B*/
+    background: linear-gradient(to top right, black 60%, #E8175D);
     font-family: 'Raleway';
 }
 
@@ -22,7 +23,7 @@ html {
     width: 102%;
     height: 35px;
     margin-bottom: 10px;
-    border-radius: 15px;
+    border-radius: 25px;
     border-color: #E8175D;
 }
 
@@ -42,7 +43,9 @@ html {
     height: 30px;
     width: 100%;
     margin-bottom: 3%;
-    border-radius: 15px;
+    border-radius: 25px;
+    padding-left: 15px;
+    font-size: 80%;
 }
 
 .login {
@@ -55,12 +58,12 @@ html {
     outline: none;
     font-family: 'Raleway';
     font-size: 150%;
-    background-color: #2A363B;
+    background-color: rgba(0, 0, 0, 0.01);
     color: #E8175D;
     width: 102%;
     height: 35px;
     margin-bottom: 10px;
-    border-radius: 15px;
+    border-radius: 25px;
     border-color: #E8175D;
 }
 
@@ -72,6 +75,7 @@ html {
     color: #E84A5F;
     font-size: 200%;
     margin-bottom: 5%;
+    animation: neon-text 1s infinite alternate;
 }
 
 .login a {
@@ -80,6 +84,7 @@ html {
 
 .login input {
     outline: none;
+    /*background-color: grey;*/
 }
 
 .login input:hover {
@@ -90,49 +95,79 @@ html {
     animation: neon 2s infinite alternate;
 }
 
-.profile-img {
-    height: 100px;
-    width: 100px;
-    margin-left: 33%;
-    margin-right: 33%;
-    border-radius: 50%;
+.pagination {
+    margin-left: 30%;
 }
 
 .pagination a {
     cursor: default;
     user-select: none;
-    margin-top: 30%;
     margin-bottom: 5%;
     color: #E8175D;
     float: left;
     padding: 8px 16px;
+    margin-left: 1px;
+    margin-right: 1px;
     text-decoration: none;
 }
 
 .pagination a.active {
     background-color: #E8175D;
-    color: #2A363B;
+    color: black;
     border-radius: 10px;
 }
 
 .pagination a:hover:not(.active) {
     background-color: #E8175D;
-    color: #2A363B;
+    color: black;
     border-radius: 10px;
 }
 
 .leaderBoard {
     margin-top: 17%;
-    margin-left: 40%;
-    margin-right: 40%;
+    margin-left: 35%;
+    margin-right: 35%;
 }
 
 .leaderBoard p {
+    margin-left: 25%;
     font-size: 200%;
-    margin-bottom: 5%;
+    color: #FF847C;
+    animation: neon-text 1s infinite alternate;
 }
 
 .leaderBoard button {
+    /*Whaaaaaaat????*/
+    /*width: 102%;*/
+    width: 400px;
+    height: 35px;
+    font-family: 'Raleway';
+    font-size: 150%;
+    background-color: rgba(0, 0, 0, 0.01);
+    color: #E8175D;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    border-color: #E8175D;
+}
+
+.leaderBoard button:hover:not(.active) {
+    animation: neon 2s infinite alternate;
+}
+
+.about {
+    margin-top: 10%;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.about p {
+    color: #FF847C;
+    font-size: 20px;
+    margin-bottom: 10%;
+    animation: neon-text 1s infinite alternate;
+}
+
+.about button {
     outline: none;
     font-family: 'Raleway';
     font-size: 150%;
@@ -141,20 +176,62 @@ html {
     width: 102%;
     height: 35px;
     margin-bottom: 10px;
-    border-radius: 15px;
+    border-radius: 25px;
     border-color: #E8175D;
 }
 
-.leaderBoard button:hover:not(.active) {
+.about button:hover:not(.active) {
     animation: neon 2s infinite alternate;
 }
 
-.leaderBoard-block {
-    color: #FF847C;
-    height: 20px;
-    width: 100%;
+.profile {
+    margin-top: 10%;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.profile input[type='file'] {
+    margin-left: 30%;
+    margin-bottom: 5%;
+    position: relative;
+    overflow: hidden;
+    color: #E8175D;
+}
+
+.profile img {
+    height: 120px;
+    width: 120px;
+    margin-top: 10%;
+    margin-left: 33%;
+    margin-right: 33%;
+    border-radius: 50%;
+    animation: neon 1s infinite alternate;
+}
+
+.profile button {
+    /*Whaaaaaaat????*/
+    /*width: 102%;*/
+    width: 400px;
+    height: 35px;
+    font-family: 'Raleway';
+    font-size: 150%;
+    background-color: rgba(0, 0, 0, 0.01);
+    color: #E8175D;
     margin-bottom: 10px;
-    border-radius: 5px;
+    border-radius: 25px;
+    border-color: #E8175D;
+}
+
+.profile button:hover:not(.active) {
+    animation: neon 2s infinite alternate;
+}
+
+.profile p {
+    font-size: 40px;
+    margin-left: 20%;
+    margin-bottom: 40px;
+    color: #FF847C;
+    animation: neon-text 1s infinite alternate;
 }
 
 @keyframes neon {

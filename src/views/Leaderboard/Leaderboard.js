@@ -36,11 +36,11 @@ export default class Leaderboard extends MainComponent {
                 },
             ]};
 
-        const usersTable = new Block('p', this.pagination(users, 0, 2), ['leaderBoard-block'], {});
+        const usersTable = new Block('p', this.pagination(users, 0, 2), [], {});
         this.append(usersTable.render());
         const pagination = new Pagination(2, {});
         this.append(pagination.render());
-        this.append((new Button('Back', 'button', ['leaderBoard-block'], 'leaderBoardBackBtn').render()));
+        this.append((new Button('Back', 'button', [], 'leaderBoardBackBtn').render()));
         document.getElementById('main').appendChild(this.render());
 
         this.render().addEventListener('click', () => {
@@ -56,7 +56,7 @@ export default class Leaderboard extends MainComponent {
         const usersOnPage = {'users': []};
         usersOnPage.users = users.users.slice(page * countOf, countOf + page * countOf);
 
-        const template = Hogan.compile('{{#users}}-{{name}}! - {{score}}<br/> {{/users}}');
+        const template = Hogan.compile('{{#users}} {{name}}! - {{score}}<br/> {{/users}}');
         const output = template.render(usersOnPage);
 
         return output;
