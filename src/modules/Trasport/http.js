@@ -25,7 +25,7 @@ export default class Transport {
             credentials: 'include',
             body: JSON.stringify(body),
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json; charset=utf-8',
             },
         }).then((response) => {
                 if (response.status >= 400) {
