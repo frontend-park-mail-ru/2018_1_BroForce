@@ -23,14 +23,11 @@ export default class Profile extends MainComponent {
 
         this.append((new ImageComp('../img/user-default.jpg', [], 'logo')).render());
         this.append((new Block('p', 'Hello, ' + name + '!', ['form-input'], {})).render());
-        // this.append((new Block('input', '', ['form-upload'], {type: 'file'})).render());
-        // this.append((new Block('span', 'kek', [], {})).render());
-        // For a time
-        this.append((new Button('Change avatar', 'button', [], '').render()));
-        this.append((new Button('Back', 'button', [], 'aboutBackBtn').render()));
+        this.append(new Button('Change avatar', ['btnDiv'], '').render());
+        this.append((new Button('Back', ['btnDiv'], 'profileBackBtn')).render());
         document.getElementById('main').appendChild(this.render());
 
-        const aboutBackBtn = document.getElementById('aboutBackBtn');
-        aboutBackBtn.addEventListener('click', () => Router.go('/'));
+        const profileBackBtn = document.getElementById('profileBackBtn');
+        profileBackBtn.addEventListener('click', () => Router.go('/'));
     }
 }

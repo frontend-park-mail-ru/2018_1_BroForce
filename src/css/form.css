@@ -14,6 +14,26 @@ html {
     margin-right: 35%;
 }
 
+.btnDiv {
+    background-color: rgba(0, 0, 0, 0.01);
+    border-radius: 25px;
+    border: thin #E8175D solid;
+    color: #E8175D;
+    display: block;
+    width: 105%;
+    height: 35px;
+    line-height: 40px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 150%;
+    margin-bottom: 4%;
+    cursor: pointer
+}
+
+.btnDiv:hover:not(.active) {
+    animation: neon 2s infinite alternate;
+}
+
 .menu button {
     outline: none;
     font-family: 'Raleway';
@@ -97,6 +117,7 @@ html {
 
 .pagination {
     margin-left: 30%;
+    margin-bottom: 25%;
 }
 
 .pagination a {
@@ -127,6 +148,7 @@ html {
     margin-top: 17%;
     margin-left: 35%;
     margin-right: 35%;
+    width: 30%;
 }
 
 .leaderBoard p {
@@ -136,23 +158,21 @@ html {
     animation: neon-text 1s infinite alternate;
 }
 
-.leaderBoard button {
-    /*Whaaaaaaat????*/
-    /*width: 102%;*/
-    width: 400px;
-    height: 35px;
-    font-family: 'Raleway';
-    font-size: 150%;
-    background-color: rgba(0, 0, 0, 0.01);
-    color: #E8175D;
-    margin-bottom: 10px;
-    border-radius: 25px;
-    border-color: #E8175D;
-}
+/*.leaderBoard button {*/
+    /*width: 400px;*/
+    /*height: 35px;*/
+    /*font-family: 'Raleway';*/
+    /*font-size: 150%;*/
+    /*background-color: rgba(0, 0, 0, 0.01);*/
+    /*color: #E8175D;*/
+    /*margin-bottom: 10px;*/
+    /*border-radius: 25px;*/
+    /*border-color: #E8175D;*/
+/*}*/
 
-.leaderBoard button:hover:not(.active) {
-    animation: neon 2s infinite alternate;
-}
+/*.leaderBoard button:hover:not(.active) {*/
+    /*animation: neon 2s infinite alternate;*/
+/*}*/
 
 .about {
     margin-top: 10%;
