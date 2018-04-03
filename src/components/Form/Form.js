@@ -12,7 +12,6 @@ export default class Form extends MainComponent {
             this.append((new Input(field.type, field.id, [field.class], field.placeholder)).render());
         });
 
-        // this.backBtn = new Button(data.button.text, 'button', [], data.button.id).render();
         this.backBtn = new Button(data.button.text, ['btnDiv'], data.button.id).render();
         this.append(this.backBtn);
 

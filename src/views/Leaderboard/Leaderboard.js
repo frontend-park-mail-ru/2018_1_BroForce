@@ -40,7 +40,6 @@ export default class Leaderboard extends MainComponent {
         this.append(usersTable.render());
         const pagination = new Pagination(2, {});
         this.append(pagination.render());
-        // this.append((new Button('Back', 'button', [], 'leaderBoardBackBtn').render()));
         this.append(new Button('Back', ['btnDiv'], 'leaderBoardBackBtn').render());
         document.getElementById('main').appendChild(this.render());
 
