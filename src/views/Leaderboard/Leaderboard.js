@@ -9,7 +9,7 @@ import Router from '../../modules/Router/Router.js';
 
 export default class Leaderboard extends MainComponent {
     constructor() {
-        super('table', ['leaderBoard'], {});
+        super('div', ['leaderBoard'], {});
     }
 
     build() {
