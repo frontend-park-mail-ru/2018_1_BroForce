@@ -14,7 +14,8 @@ export default class About extends MainComponent {
     build() {
         const aboutText = 'Neon light - it is web game about neon and fights! Developed by BroForce team.';
         this.append((new Block('p', aboutText, ['form-input'], {})).render());
-        this.append((new Button('Back', 'button', ['form-input'], 'AboutBackBtn').render()));
+        // this.append((new Button('Back', 'button', ['form-input'], 'AboutBackBtn').render()));
+        this.append((new Button('Back', ['btnDiv'], 'AboutBackBtn')).render());
         document.getElementById('main').appendChild(this.render());
 
         const AboutBackBtn = document.getElementById('AboutBackBtn');
