@@ -38,7 +38,7 @@ export default class Form extends MainComponent {
                     fields[input].style.background = 'red';
                     if (fields[input].type === 'password') {
                         fields[input].type = 'text';
-                        itIsPassword = true
+                        itIsPassword = true;
                     }
                     const value = fields[input].value;
                     fields[input].value = errText;
@@ -52,5 +52,7 @@ export default class Form extends MainComponent {
                 }
             }
         }
+
+        // Do something
      }
 }
