@@ -30,16 +30,25 @@ export default class Form extends MainComponent {
         if (this.isValid() !== undefined) {
             const result = this.isValid().class[1];
             const errText = this.isValid().innerHTML;
+            let itIsPassword = false;
 
             const fields = [...document.getElementsByClassName(this.classToFind)];
             for (let input in fields) {
-                if (fields[input].name == result) {
+                if (fields[input].name === result) {
                     fields[input].style.background = 'red';
+                    if (fields[input].type === 'password') {
+                        fields[input].type = 'text';
+                        itIsPassword = true
+                    }
                     const value = fields[input].value;
                     fields[input].value = errText;
                     setTimeout(function() {
-fields[input].style.background = 'white'; fields[input].value = value;
-}, 1000);
+                        if (itIsPassword === true) {
+                            fields[input].type = 'password';
+                        }
+                        fields[input].style.background = 'white';
+                        fields[input].value = value;
+                    }, 1000);
                 }
             }
         }

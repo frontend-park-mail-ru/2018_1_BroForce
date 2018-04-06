@@ -24,7 +24,7 @@ const Validator = (asArray) => {
             return;
         }
 
-        if (field.value.length < 4) {
+        if (field.value.length < 3) {
             errors.push(generateError('Login is too short', 'login'));
         }
     };
