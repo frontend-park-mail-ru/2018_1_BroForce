@@ -3,7 +3,7 @@
 import MainComponent from '../MainComponent/MainComponent.js';
 import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
-import Validator from '../../modules/Validator/Valid.js';
+import Validator from '../../modules/Validator/Validator.js';
 
 export default class Form extends MainComponent {
     constructor(data) {
