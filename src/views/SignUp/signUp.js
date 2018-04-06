@@ -33,7 +33,7 @@ const data = {
         {
             type: 'password',
             name: 'passwordConfirm',
-            id: 'inputConfirmPassword',
+            id: 'confirmPassword',
             class: ['form-input', 'signUpInput'],
             placeholder: 'Confirm Password',
         },

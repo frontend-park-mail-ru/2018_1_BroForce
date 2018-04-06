@@ -28,9 +28,20 @@ export default class Form extends MainComponent {
 
     onSubmit() {
         if (this.isValid() !== undefined) {
-            console.log(this.isValid().innerHTML);
-        } else {
-            console.log('all ok');
+            const result = this.isValid().class[1];
+            const errText = this.isValid().innerHTML;
+
+            const fields = [...document.getElementsByClassName(this.classToFind)];
+            for (let input in fields) {
+                if (fields[input].name == result) {
+                    fields[input].style.background = 'red';
+                    const value = fields[input].value;
+                    fields[input].value = errText;
+                    setTimeout(function() {
+fields[input].style.background = 'white'; fields[input].value = value;
+}, 1000);
+                }
+            }
         }
      }
 }
