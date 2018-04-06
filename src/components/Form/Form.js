@@ -53,9 +53,9 @@ export default class Form extends MainComponent {
                 errorField[i].innerHTML = '';
                 inputs[i].style.borderColor = 'white';
                 inputs[i].style.boxShadow = 'none';
-                this.isValid(inputs, errorField)
+                this.isValid(inputs, errorField);
             });
         }
-        this.isValid(inputs, errorField)
+        this.isValid(inputs, errorField);
      }
 }
