@@ -45,7 +45,7 @@ const data = {
             class: 'form-input',
     },
 
-    classToFind: 'signUpInput'
+    classToFind: 'signUpInput',
 };
 
 export default class SignUp extends MainComponent {

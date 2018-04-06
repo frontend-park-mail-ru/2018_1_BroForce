@@ -27,7 +27,7 @@ const Validator = (asArray) => {
     const checkLoginCorrect = (field) => {
         if (!checkFieldsPresenceBool(field)) {
             errors.push(generateError('Login field is empty'));
-            return
+            return;
         }
 
         if (field.value.length < 4) {
@@ -38,7 +38,7 @@ const Validator = (asArray) => {
     const checkEmailCorr = (field) => {
         if (!checkFieldsPresenceBool(field)) {
             errors.push(generateError('Email field is empty'));
-            return
+            return;
         }
         const reg = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/i;
 
@@ -50,11 +50,11 @@ const Validator = (asArray) => {
     const checkPasswordCorrect = (field) => {
         if (!checkFieldsPresenceBool(field)) {
             errors.push(generateError('Password field is empty'));
-            return
+            return;
         }
         if (field.value.length < 6) {
             errors.push(generateError('Password is too short'));
-            return
+            return;
         }
         if (field.value.length > 15) {
             errors.push(generateError('Password is too long'));
