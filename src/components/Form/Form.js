@@ -30,7 +30,6 @@ export default class Form extends MainComponent {
 
     onSubmit() {
         const result = [...this.isValid()];
-        console.log(result);
 
         if (result !== undefined) {
             const errorField = [...document.getElementsByClassName('error')];
