@@ -21,6 +21,18 @@ export default class Form extends MainComponent {
         this.append(this.backBtn);
 
         this.backBtn.addEventListener('click', this.onSubmit.bind(this));
+
+        this.inputs = [...this.render().getElementsByClassName(this.classToFind)];
+        this.errorField = [...this.render().getElementsByClassName('error')];
+
+        for (let i in [...this.inputs]) {
+            this.inputs[i].addEventListener('blur', () => {
+                this.errorField[i].innerHTML = '';
+                this.inputs[i].style.borderColor = 'white';
+                this.inputs[i].style.boxShadow = 'none';
+                this.isValid(this.inputs, this.errorField);
+            });
+        }
     }
 
     isValid(inputs = [], errorField = []) {
@@ -45,17 +57,6 @@ export default class Form extends MainComponent {
     }
 
     onSubmit() {
-        const inputs = [...document.getElementsByClassName(this.classToFind)];
-        const errorField = [...document.getElementsByClassName('error')];
-
-        for (let i in inputs) {
-            inputs[i].addEventListener('blur', () => {
-                errorField[i].innerHTML = '';
-                inputs[i].style.borderColor = 'white';
-                inputs[i].style.boxShadow = 'none';
-                this.isValid(inputs, errorField);
-            });
-        }
-        this.isValid(inputs, errorField);
+        this.isValid(this.inputs, this.errorField);
      }
 }
