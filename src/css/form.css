@@ -6,6 +6,8 @@ html {
     /*#2A363B*/
     background: linear-gradient(to top right, black 60%, #E8175D);
     font-family: 'Raleway';
+    user-select: none;
+    cursor: default;
 }
 
 .menu {

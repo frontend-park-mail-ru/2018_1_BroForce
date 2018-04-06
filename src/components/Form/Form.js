@@ -13,8 +13,8 @@ export default class Form extends MainComponent {
         this.classToFind = data.classToFind;
 
         data.fields.forEach((field) => {
-            this.append(new Input(field.type, field.id, field.name, field.class, field.placeholder).render());
             this.append(new Block('div', '', ['error'], {name: field.name}).render());
+            this.append(new Input(field.type, field.id, field.name, field.class, field.placeholder).render());
         });
 
         this.backBtn = new Button(data.button.text, ['btnDiv'], data.button.id).render();
@@ -39,6 +39,7 @@ export default class Form extends MainComponent {
                 if (fields[input].getAttribute('name') === result) {
                     fields[input].style.color = '#E8175D';
                     fields[input].style.marginLeft = '5%';
+                    fields[input].style.marginBottom = '2%';
                     fields[input].style.animation = 'neon-text 1s infinite alternate';
                     fields[input].innerHTML = errText;
                     inputs[input].style.borderColor = '#E8175D';
