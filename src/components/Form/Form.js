@@ -44,13 +44,12 @@ export default class Form extends MainComponent {
                     fields[input].innerHTML = errText;
                     inputs[input].style.borderColor = '#E8175D';
                     inputs[input].style.boxShadow = '0 0 15px 4px #E8175D';
-
-                    setTimeout(function() {
-                        fields[input].innerHTML = '';
-                        inputs[input].style.borderColor = 'white';
-                        inputs[input].style.boxShadow = 'none';
-                    }, 3000);
                 }
+                inputs[input].addEventListener('focus', () => {
+                    fields[input].innerHTML = '';
+                    inputs[input].style.borderColor = 'white';
+                    inputs[input].style.boxShadow = 'none';
+                });
             }
         }
 
