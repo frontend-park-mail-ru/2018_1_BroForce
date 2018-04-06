@@ -41,7 +41,7 @@ export default class Form extends MainComponent {
 
         if (result !== undefined) {
             errorField.forEach((input, i) => {
-                result.forEach(err => {
+                result.forEach((err) => {
                     if (input.getAttribute('name') === err.class[1]) {
                         input.style.color = '#E8175D';
                         input.style.marginLeft = '5%';
