@@ -11,14 +11,16 @@ const data = {
     fields: [
         {
             type: 'email',
+            name: 'email',
             id: 'signInEmailInput',
-            class: 'form-input',
+            class: ['form-input', 'signInInput'],
             placeholder: 'Email address',
         },
         {
             type: 'password',
+            name: 'password',
             id: 'signInPasswordInput',
-            class: 'form-input',
+            class: ['form-input', 'signInInput'],
             placeholder: 'Password',
         },
     ],
@@ -28,6 +30,8 @@ const data = {
         id: 'signInSubmitBtn',
         class: 'form-input',
     },
+
+    classToFind: 'signInInput'
 };
 
 export default class SignIn extends MainComponent {

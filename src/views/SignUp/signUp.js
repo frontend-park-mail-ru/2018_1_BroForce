@@ -11,26 +11,30 @@ const data = {
     fields: [
         {
             type: 'text',
+            name: 'login',
             id: 'signUpLoginInput',
-            class: 'form-input',
+            class: ['form-input', 'signUpInput'],
             placeholder: 'Login',
         },
         {
             type: 'email',
+            name: 'email',
             id: 'signUpEmailInput',
-            class: 'form-input',
+            class: ['form-input', 'signUpInput'],
             placeholder: 'Email address',
         },
         {
             type: 'password',
+            name: 'password',
             id: 'inputPassword',
-            class: 'form-input',
+            class: ['form-input', 'signUpInput'],
             placeholder: 'Password',
         },
         {
             type: 'password',
+            name: 'passwordConfirm',
             id: 'inputConfirmPassword',
-            class: 'form-input',
+            class: ['form-input', 'signUpInput'],
             placeholder: 'Confirm Password',
         },
     ],
@@ -40,6 +44,8 @@ const data = {
             id: 'btnRegistration',
             class: 'form-input',
     },
+
+    classToFind: 'signUpInput'
 };
 
 export default class SignUp extends MainComponent {
