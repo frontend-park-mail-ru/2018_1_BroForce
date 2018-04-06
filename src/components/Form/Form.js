@@ -25,28 +25,31 @@ export default class Form extends MainComponent {
 
     isValid() {
         const fields = [...document.getElementsByClassName(this.classToFind)];
-        return Validator(fields)[0];
+        return Validator(fields);
     }
 
     onSubmit() {
-        if (this.isValid() !== undefined) {
-            const result = this.isValid().class[1];
-            const errText = this.isValid().innerHTML;
-            const fields = [...document.getElementsByClassName('error')];
-            const inputs = [...document.getElementsByClassName(this.classToFind)];
+        const result = [...this.isValid()];
+        console.log(result);
 
-            for (let input in fields) {
-                if (fields[input].getAttribute('name') === result) {
-                    fields[input].style.color = '#E8175D';
-                    fields[input].style.marginLeft = '5%';
-                    fields[input].style.marginBottom = '2%';
-                    fields[input].style.animation = 'neon-text 1s infinite alternate';
-                    fields[input].innerHTML = errText;
-                    inputs[input].style.borderColor = '#E8175D';
-                    inputs[input].style.boxShadow = '0 0 15px 4px #E8175D';
+        if (result !== undefined) {
+            const errorField = [...document.getElementsByClassName('error')];
+            const inputs = [...document.getElementsByClassName(this.classToFind)];
+            for (let input in errorField) {
+                for (let err in result) {
+                    if (errorField[input].getAttribute('name') === result[err].class[1]) {
+                        errorField[input].style.color = '#E8175D';
+                        errorField[input].style.marginLeft = '5%';
+                        errorField[input].style.marginBottom = '2%';
+                        errorField[input].style.animation = 'neon-text 1s infinite alternate';
+                        errorField[input].innerHTML = result[err].innerHTML;
+                        inputs[input].style.borderColor = '#E8175D';
+                        inputs[input].style.boxShadow = '0 0 15px 4px #E8175D';
+                    }
                 }
+
                 inputs[input].addEventListener('focus', () => {
-                    fields[input].innerHTML = '';
+                    errorField[input].innerHTML = '';
                     inputs[input].style.borderColor = 'white';
                     inputs[input].style.boxShadow = 'none';
                 });

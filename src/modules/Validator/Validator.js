@@ -61,6 +61,12 @@ const Validator = (asArray) => {
         }
     };
 
+    const checkPasswordConfirm = (field) => {
+        if (!checkFieldsPresenceBool(field)) {
+            errors.push(generateError('Password confirm field is empty', 'passwordConfirm'));
+        }
+    };
+
     for (let property in asArray) {
         switch (asArray[property].name) {
             case 'login':
@@ -74,6 +80,7 @@ const Validator = (asArray) => {
                 passwd = asArray[property];
                 break;
             case 'passwordConfirm':
+                checkPasswordConfirm(asArray[property]);
                 passwdc = asArray[property];
                 break;
             default:
