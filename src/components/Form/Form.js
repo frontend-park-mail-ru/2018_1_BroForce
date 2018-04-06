@@ -23,17 +23,11 @@ export default class Form extends MainComponent {
         this.backBtn.addEventListener('click', this.onSubmit.bind(this));
     }
 
-    isValid() {
+    isValid(inputs = [], errorField = []) {
         const fields = [...document.getElementsByClassName(this.classToFind)];
-        return Validator(fields);
-    }
-
-    onSubmit() {
-        const result = [...this.isValid()];
+        const result = Validator(fields);
 
         if (result !== undefined) {
-            const errorField = [...document.getElementsByClassName('error')];
-            const inputs = [...document.getElementsByClassName(this.classToFind)];
             for (let input in errorField) {
                 for (let err in result) {
                     if (errorField[input].getAttribute('name') === result[err].class[1]) {
@@ -46,15 +40,22 @@ export default class Form extends MainComponent {
                         inputs[input].style.boxShadow = '0 0 15px 4px #E8175D';
                     }
                 }
-
-                inputs[input].addEventListener('focus', () => {
-                    errorField[input].innerHTML = '';
-                    inputs[input].style.borderColor = 'white';
-                    inputs[input].style.boxShadow = 'none';
-                });
             }
         }
+    }
 
-        // Do something
+    onSubmit() {
+        const inputs = [...document.getElementsByClassName(this.classToFind)];
+        const errorField = [...document.getElementsByClassName('error')];
+
+        for (let i in inputs) {
+            inputs[i].addEventListener('blur', () => {
+                errorField[i].innerHTML = '';
+                inputs[i].style.borderColor = 'white';
+                inputs[i].style.boxShadow = 'none';
+                this.isValid(inputs, errorField)
+            });
+        }
+        this.isValid(inputs, errorField)
      }
 }
