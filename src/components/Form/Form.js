@@ -23,40 +23,44 @@ export default class Form extends MainComponent {
         this.backBtn.addEventListener('click', this.onSubmit.bind(this));
 
         this.inputs = [...this.render().getElementsByClassName(this.classToFind)];
-        this.errorField = [...this.render().getElementsByClassName('error')];
+        this.errorFields = [...this.render().getElementsByClassName('error')];
 
         this.inputs.forEach((input, i) => {
                 input.addEventListener('blur', () => {
-                this.errorField[i].innerHTML = '';
+                this.errorFields[i].innerHTML = '';
                 input.style.borderColor = 'white';
                 input.style.boxShadow = 'none';
-                this.isValid([input], [this.errorField[i]]);
+                this.isValid([input], [this.errorFields[i]]);
             });
         });
     }
 
-    isValid(inputs = [], errorField = []) {
-        const fields = [...document.getElementsByClassName(this.classToFind)];
-        const result = Validator(fields);
-
-        if (result !== undefined) {
-            errorField.forEach((input, i) => {
-                result.forEach((err) => {
-                    if (input.getAttribute('name') === err.class[1]) {
-                        input.style.color = '#E8175D';
-                        input.style.marginLeft = '5%';
-                        input.style.marginBottom = '2%';
-                        input.style.animation = 'neon-text 1s infinite alternate';
-                        input.innerHTML = err.innerHTML;
-                        inputs[i].style.borderColor = '#E8175D';
-                        inputs[i].style.boxShadow = '0 0 15px 4px #E8175D';
-                    }
-                });
+    showErrors(errors, errorFields, inputs) {
+        errorFields.forEach((input, i) => {
+            errors.forEach((err) => {
+                if (input.getAttribute('name') === err.class[1]) {
+                    input.innerHTML = err.innerHTML;
+                    inputs[i].style.borderColor = '#E8175D';
+                    inputs[i].style.boxShadow = '0 0 15px 4px #E8175D';
+                }
             });
+        });
+    }
+
+    isValid(inputs = [], errorFields = []) {
+        const fields = [...document.getElementsByClassName(this.classToFind)];
+        const errors = Validator(fields);
+
+        if (errors === undefined) {
+            return true;
         }
+
+        this.showErrors(errors, errorFields, inputs);
+
+        return false;
     }
 
     onSubmit() {
-        this.isValid(this.inputs, this.errorField);
-     }
+        this.isValid(this.inputs, this.errorFields);
+    }
 }

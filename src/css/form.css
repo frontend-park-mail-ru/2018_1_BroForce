@@ -256,6 +256,13 @@ html {
     animation: neon-text 1s infinite alternate;
 }
 
+.error {
+    color: #E8175D;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    animation: neon-text 1s infinite alternate;
+}
+
 @keyframes neon {
     0% {
         box-shadow: 0 0 10px 2px #E8175D;
