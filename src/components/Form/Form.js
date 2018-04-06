@@ -25,14 +25,14 @@ export default class Form extends MainComponent {
         this.inputs = [...this.render().getElementsByClassName(this.classToFind)];
         this.errorField = [...this.render().getElementsByClassName('error')];
 
-        for (let i in [...this.inputs]) {
-            this.inputs[i].addEventListener('blur', () => {
+        this.inputs.forEach((input, i) => {
+                input.addEventListener('blur', () => {
                 this.errorField[i].innerHTML = '';
-                this.inputs[i].style.borderColor = 'white';
-                this.inputs[i].style.boxShadow = 'none';
-                this.isValid(this.inputs, this.errorField);
+                input.style.borderColor = 'white';
+                input.style.boxShadow = 'none';
+                this.isValid([input], [this.errorField[i]]);
             });
-        }
+        });
     }
 
     isValid(inputs = [], errorField = []) {
@@ -40,19 +40,19 @@ export default class Form extends MainComponent {
         const result = Validator(fields);
 
         if (result !== undefined) {
-            for (let input in errorField) {
-                for (let err in result) {
-                    if (errorField[input].getAttribute('name') === result[err].class[1]) {
-                        errorField[input].style.color = '#E8175D';
-                        errorField[input].style.marginLeft = '5%';
-                        errorField[input].style.marginBottom = '2%';
-                        errorField[input].style.animation = 'neon-text 1s infinite alternate';
-                        errorField[input].innerHTML = result[err].innerHTML;
-                        inputs[input].style.borderColor = '#E8175D';
-                        inputs[input].style.boxShadow = '0 0 15px 4px #E8175D';
+            errorField.forEach((input, i) => {
+                result.forEach(err => {
+                    if (input.getAttribute('name') === err.class[1]) {
+                        input.style.color = '#E8175D';
+                        input.style.marginLeft = '5%';
+                        input.style.marginBottom = '2%';
+                        input.style.animation = 'neon-text 1s infinite alternate';
+                        input.innerHTML = err.innerHTML;
+                        inputs[i].style.borderColor = '#E8175D';
+                        inputs[i].style.boxShadow = '0 0 15px 4px #E8175D';
                     }
-                }
-            }
+                });
+            });
         }
     }
 
