@@ -6,6 +6,8 @@ html {
     /*#2A363B*/
     background: linear-gradient(to top right, black 60%, #E8175D);
     font-family: 'Raleway';
+    user-select: none;
+    cursor: default;
 }
 
 .menu {
@@ -251,6 +253,13 @@ html {
     margin-left: 20%;
     margin-bottom: 40px;
     color: #FF847C;
+    animation: neon-text 1s infinite alternate;
+}
+
+.error {
+    color: #E8175D;
+    margin-left: 5%;
+    margin-bottom: 2%;
     animation: neon-text 1s infinite alternate;
 }
 
