@@ -5,6 +5,7 @@ import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
 import Validator from '../../modules/Validator/Validator.js';
 import Block from '../Block/Block.js';
+import Transport from "../../modules/Transport/Trasport.js";
 
 export default class Form extends MainComponent {
     constructor(data) {
@@ -51,16 +52,33 @@ export default class Form extends MainComponent {
         const fields = [...document.getElementsByClassName(this.classToFind)];
         const errors = Validator(fields);
 
-        if (errors === undefined) {
+        if (errors.length === 0) {
             return true;
         }
 
         this.showErrors(errors, errorFields, inputs);
-
         return false;
     }
 
     onSubmit() {
-        this.isValid(this.inputs, this.errorFields);
+        if (this.isValid(this.inputs, this.errorFields)) {
+            let request = {};
+            this.inputs.forEach(input => {
+                if (input.name === 'login') {
+                    request.login = input.value;
+                }
+                if (input.name === 'email') {
+                    request.email = input.value;
+                }
+                if (input.name === 'password') {
+                    request.password = input.value;
+                }
+            });
+
+            const adr = request.login === undefined ? 'localhost:8081/signin' : 'localhost:8081/signup';
+
+            const response = Transport.Post(adr, request);
+            console.log(response);
+        }
     }
 }
