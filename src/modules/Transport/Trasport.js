@@ -12,9 +12,9 @@ export default class Transport {
     static FSend(adr, method, body = {}) {
         const url = server+adr;
         const fPar = {
-            method: 'method',
+            method: method,
             // mode: 'cors',
-            credentials: 'include',
+            // credentials: 'include',
         };
         if (method === 'post') {
             fPar.body = JSON.stringify(body);

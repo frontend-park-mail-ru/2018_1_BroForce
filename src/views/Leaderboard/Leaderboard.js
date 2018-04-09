@@ -6,6 +6,7 @@ import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
 import Pagination from '../../components/Pagination/Pagination.js';
 import Router from '../../modules/Router/Router.js';
+import Transport from "../../modules/Transport/Trasport.js";
 
 export default class Leaderboard extends MainComponent {
     constructor() {
@@ -21,7 +22,7 @@ export default class Leaderboard extends MainComponent {
                 },
                 {
                     'email': 'bigPapa@gmail.com',
-                    'name': 'Papa',
+                    'name': 'SuperKek',
                     'score': '100500',
                 },
                 {
@@ -47,6 +48,8 @@ export default class Leaderboard extends MainComponent {
             const currentPage = pagination.getCurrentPage();
             usersTable.innerHTML(this.pagination(users, currentPage - 1, 2));
         });
+
+        // console.log(Transport.Get('http://localhost:8081/stop?limit=2&since=1'));
 
         const leaderBoardBackBtn = document.getElementById('leaderBoardBackBtn');
         leaderBoardBackBtn.addEventListener('click', () => Router.go('/'));

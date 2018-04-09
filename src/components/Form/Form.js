@@ -75,9 +75,10 @@ export default class Form extends MainComponent {
                 }
             });
 
-            const adr = request.login === undefined ? 'localhost:8081/signin' : 'localhost:8081/signup';
+            const adr = request.login === undefined ? 'http://localhost:8081/signin' : 'http://localhost:8081/signup';
 
-            const response = Transport.Post(adr, request);
+            console.log(JSON.stringify(request));
+            const response = Transport.Post(adr, JSON.stringify(request));
             console.log(response);
         }
     }
