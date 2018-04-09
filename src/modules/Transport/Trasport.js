@@ -14,7 +14,7 @@ export default class Transport {
         const fPar = {
             method: method,
             // mode: 'cors',
-            // credentials: 'include',
+            credentials: 'include',
         };
         if (method === 'post') {
             fPar.body = JSON.stringify(body);

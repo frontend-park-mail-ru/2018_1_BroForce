@@ -5,7 +5,8 @@ import Button from '../../components/Button/Button.js';
 import ImageComp from '../../components/ImageComp/ImageComp.js';
 import Block from '../../components/Block/Block.js';
 import Router from '../../modules/Router/Router.js';
-import Transport from "../../modules/Transport/Trasport.js";
+import Transport from '../../modules/Transport/Trasport.js';
+import UserService from '../../Services/UserService.js';
 
 export default class Main extends MainComponent {
     constructor() {
@@ -21,6 +22,7 @@ export default class Main extends MainComponent {
         this.append(new Button('Leaders', ['btnDiv'], 'leadersBtn').render());
         this.append(new Button('Profile', ['btnDiv'], 'profileBtn').render());
         this.append(new Button('About', ['btnDiv'], 'aboutBtn').render());
+        this.append(new Button('Sign Out', ['btnDiv'], 'signOutBtn').render());
         document.getElementById('main').appendChild(this.render());
 
         const signInBtn = document.getElementById('signInBtn');
@@ -38,17 +40,13 @@ export default class Main extends MainComponent {
         const aboutBtn = document.getElementById('aboutBtn');
         aboutBtn.addEventListener('click', () => Router.go('/about/'));
 
-        // Transport.Post('http://localhost:8081/logout', {});
-
-        Transport.Get('http://localhost:8081/user').then(response => {
-            console.log('All ok main');
-            console.log(response)
-        }).catch(response => {
-            if (!response.json()) {
-                console.log(response);
-                return;
-            }
-            response.json().then(json => console.log(json))
+        const signOutBtn = document.getElementById('signOutBtn');
+        signOutBtn.addEventListener('click', () => {
+            const userService = new UserService('http://localhost:8081');
+            console.log(userService.LogOut());
         });
+
+        const userService = new UserService('http://localhost:8081');
+        userService.GetData();
     }
 }

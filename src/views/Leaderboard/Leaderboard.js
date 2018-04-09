@@ -6,7 +6,8 @@ import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
 import Pagination from '../../components/Pagination/Pagination.js';
 import Router from '../../modules/Router/Router.js';
-import Transport from "../../modules/Transport/Trasport.js";
+import Transport from '../../modules/Transport/Trasport.js';
+import UserService from '../../Services/UserService.js';
 
 export default class Leaderboard extends MainComponent {
     constructor() {
@@ -49,7 +50,18 @@ export default class Leaderboard extends MainComponent {
             usersTable.innerHTML(this.pagination(users, currentPage - 1, 2));
         });
 
-        // console.log(Transport.Get('http://localhost:8081/stop?limit=2&since=1'));
+        // Transport.Get('http://localhost:8081/stop?limit=2&since=1').then((response) => {
+        //     console.log(response[0]);
+        // }).catch((response) => {
+        //     if (!response.json) {
+        //         console.log(response);
+        //         return;
+        //     }
+        //     response.json().then((json) => console.log(json));
+        // });
+
+        const userService = new UserService('http://localhost:8081');
+        console.log(userService.GetLeaders(2, 0));
 
         const leaderBoardBackBtn = document.getElementById('leaderBoardBackBtn');
         leaderBoardBackBtn.addEventListener('click', () => Router.go('/'));

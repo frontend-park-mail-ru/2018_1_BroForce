@@ -5,7 +5,8 @@ import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
 import Validator from '../../modules/Validator/Validator.js';
 import Block from '../Block/Block.js';
-import Transport from "../../modules/Transport/Trasport.js";
+import Transport from '../../modules/Transport/Trasport.js';
+import UserService from '../../Services/UserService.js';
 
 export default class Form extends MainComponent {
     constructor(data) {
@@ -65,7 +66,7 @@ export default class Form extends MainComponent {
 
         if (this.isValid(this.inputs, this.errorFields)) {
             let request = {};
-            this.inputs.forEach(input => {
+            this.inputs.forEach((input) => {
                 if (input.name === 'login') {
                     request.login = input.value;
                 }
@@ -77,20 +78,26 @@ export default class Form extends MainComponent {
                 }
             });
 
-            const adr = request.email === undefined ? 'http://localhost:8081/signin' : 'http://localhost:8081/signup';
+            const userService = new UserService('http://localhost:8081');
+            const adr = request.email === undefined ? 'signin' : 'signup';
 
-            console.log(adr);
-            // Transport.Post('http://localhost:8081/logout', {});
-            Transport.Post(adr, request).then(response => {
-                console.log('Response', response);
-                console.log('All ok form');
-            }).catch(response => {
-               if (!response.json()) {
-                   console.log(response);
-                   return;
-               }
-               response.json().then(json => console.log(json))
-            });
+            if (request.email === undefined) {
+                userService.SignIn(request);
+            } else {
+                userService.SignUp(request);
+            }
+
+
+            // Transport.Post(adr, request).then((response) => {
+            //     console.log('Response', response);
+            //     console.log('All ok form');
+            // }).catch((response) => {
+            //    if (!response.json) {
+            //        console.log(response);
+            //        return;
+            //    }
+            //    response.json().then((json) => console.log(json));
+            // });
         }
     }
 }
