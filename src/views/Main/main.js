@@ -5,6 +5,7 @@ import Button from '../../components/Button/Button.js';
 import ImageComp from '../../components/ImageComp/ImageComp.js';
 import Block from '../../components/Block/Block.js';
 import Router from '../../modules/Router/Router.js';
+import Transport from "../../modules/Transport/Trasport.js";
 
 export default class Main extends MainComponent {
     constructor() {
@@ -36,5 +37,18 @@ export default class Main extends MainComponent {
 
         const aboutBtn = document.getElementById('aboutBtn');
         aboutBtn.addEventListener('click', () => Router.go('/about/'));
+
+        // Transport.Post('http://localhost:8081/logout', {});
+
+        Transport.Get('http://localhost:8081/user').then(response => {
+            console.log('All ok main');
+            console.log(response)
+        }).catch(response => {
+            if (!response.json()) {
+                console.log(response);
+                return;
+            }
+            response.json().then(json => console.log(json))
+        });
     }
 }

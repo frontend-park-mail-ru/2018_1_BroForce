@@ -61,6 +61,8 @@ export default class Form extends MainComponent {
     }
 
     onSubmit() {
+        console.log('submit');
+
         if (this.isValid(this.inputs, this.errorFields)) {
             let request = {};
             this.inputs.forEach(input => {
@@ -75,11 +77,20 @@ export default class Form extends MainComponent {
                 }
             });
 
-            const adr = request.login === undefined ? 'http://localhost:8081/signin' : 'http://localhost:8081/signup';
+            const adr = request.email === undefined ? 'http://localhost:8081/signin' : 'http://localhost:8081/signup';
 
-            console.log(JSON.stringify(request));
-            const response = Transport.Post(adr, JSON.stringify(request));
-            console.log(response);
+            console.log(adr);
+            // Transport.Post('http://localhost:8081/logout', {});
+            Transport.Post(adr, request).then(response => {
+                console.log('Response', response);
+                console.log('All ok form');
+            }).catch(response => {
+               if (!response.json()) {
+                   console.log(response);
+                   return;
+               }
+               response.json().then(json => console.log(json))
+            });
         }
     }
 }

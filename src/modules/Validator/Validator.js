@@ -46,11 +46,11 @@ const Validator = (asArray) => {
             errors.push(generateError('Password field is empty', 'password'));
             return;
         }
-        if (field.value.length < 6) {
+        if (field.value.length < 8) {
             errors.push(generateError('Password is too short', 'password'));
             return;
         }
-        if (field.value.length > 15) {
+        if (field.value.length > 20) {
             errors.push(generateError('Password is too long', 'password'));
         }
     };

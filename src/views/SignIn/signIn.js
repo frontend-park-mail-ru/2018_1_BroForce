@@ -10,11 +10,11 @@ import Form from '../../components/Form/Form.js';
 const data = {
     fields: [
         {
-            type: 'email',
-            name: 'email',
-            id: 'signInEmailInput',
+            type: 'text',
+            name: 'login',
+            id: 'signUpLoginInput',
             class: ['form-input', 'signInInput'],
-            placeholder: 'Email address',
+            placeholder: 'Login',
         },
         {
             type: 'password',
