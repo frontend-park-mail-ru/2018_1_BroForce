@@ -4,14 +4,14 @@
 import Router from './modules/Router/Router.js';
 
 // Views
-import MainForm from './views/Main/main.js';
+import MainForm from './views/Main/Main.js';
 import SignIn from './views/SignIn/signIn.js';
 import SignUp from './views/SignUp/signUp.js';
 import LeaderBoard from './views/Leaderboard/Leaderboard.js';
 import Profile from './views/Profile/Profile.js';
 import About from './views/About/About.js';
 
-import UserService from './Services/UserService.js'
+import UserService from './Services/UserService.js';
 
 UserService.GetData().catch((response) => {
     console.log(response);

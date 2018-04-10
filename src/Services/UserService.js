@@ -23,14 +23,7 @@ class UserService {
 
     LogOut() {
         return Transport.Post('/logout', {}).then((response) => {
-            return response;
-        }).catch((response) => {
-            if (!response.json) {
-                return response;
-            }
-            response.json().then((json) => {
-                return json;
-            });
+            this.user = null;
         });
     }
 }
