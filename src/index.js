@@ -11,10 +11,16 @@ import LeaderBoard from './views/Leaderboard/Leaderboard.js';
 import Profile from './views/Profile/Profile.js';
 import About from './views/About/About.js';
 
-Router.use('/', MainForm)
-    .use('/signin/', SignIn)
-    .use('/signup/', SignUp)
-    .use('/leaderboard/', LeaderBoard)
-    .use('/profile/', Profile)
-    .use('/about/', About)
-    .start();
+import UserService from './Services/UserService.js'
+
+UserService.GetData().catch((response) => {
+    console.log(response);
+}).then(() => {
+    Router.use('/', MainForm)
+        .use('/signin/', SignIn)
+        .use('/signup/', SignUp)
+        .use('/leaderboard/', LeaderBoard)
+        .use('/profile/', Profile)
+        .use('/about/', About)
+        .start();
+});

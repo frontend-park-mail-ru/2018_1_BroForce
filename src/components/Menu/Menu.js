@@ -8,21 +8,35 @@ import UserService from '../../Services/UserService.js';
 export default class Menu extends MainComponent {
     constructor(data) {
         super('div', [], {});
+        this.data = data;
 
-        data.buttons.forEach((item) => {
+        this.Build();
+    }
+
+    Build() {
+        this.data.buttons.forEach((item) => {
             this.append(new Button(item.text, [item.class], item.id).render());
         });
-
         setTimeout(() => {
-            data.buttons.forEach((item) => {
+            this.data.buttons.forEach((item) => {
                 if (item.url === '/') {
                     document.getElementById(item.id).addEventListener('click', () => {
                         UserService.LogOut();
-                        location.reload();
+                        UserService.GetData().catch((response) => {
+                            console.log(response);
+                        }).then(() => {
+                            console.log('rebuild');
+                            this.Rebuild();
+                        });
                     });
                 }
                 document.getElementById(item.id).addEventListener('click', () => Router.go(item.url));
             });
         }, 100);
+    }
+
+    Rebuild() {
+        this.remove();
+        this.Build();
     }
 }
