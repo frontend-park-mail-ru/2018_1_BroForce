@@ -42,20 +42,12 @@ export default class Main extends MainComponent {
 
         const signOutBtn = document.getElementById('signOutBtn');
         signOutBtn.addEventListener('click', () => {
-            // Transport.Post('/logout', {}).then((response) => {
-            //     return response;
-            // }).catch((response) => {
-            //     if (!response.json) {
-            //         return response;
-            //     }
-            //     response.json().then((json) => {
-            //         return json;
-            //     });
-            // });
             UserService.LogOut();
         });
 
         UserService.GetData();
-        console.log('Get User', UserService.GetUser());
+        setTimeout(() => {
+            console.log('Get User', UserService.GetUser());
+        }, 100);
     }
 }

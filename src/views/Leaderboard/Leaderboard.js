@@ -12,82 +12,64 @@ import UserService from '../../Services/UserService.js';
 export default class Leaderboard extends MainComponent {
     constructor() {
         super('div', ['leaderBoard'], {});
+        this.usersFromBack = null;
     }
 
     build() {
-        const users = {'users': [
-                {
-                    'email': 'arthurunique24@gmail.com',
-                    'name': 'Arthur',
-                    'score': '15000',
-                },
-                {
-                    'email': 'bigPapa@gmail.com',
-                    'name': 'SuperKek',
-                    'score': '100500',
-                },
-                {
-                    'email': 'master@gmail.com',
-                    'name': 'master',
-                    'score': '125000',
-                },
-                {
-                    'email': 'lol@mail.ru',
-                    'name': 'Lol',
-                    'score': '100',
-                },
-            ]};
+        const usersOnLeaderBoard = 2;
 
-        let limit = 2;
-        let since = 0;
-        let usersFromBack = null;
+        this.GetUsersFromBack(usersOnLeaderBoard, 0);
 
+        setTimeout(() => {
+            const usersTable = new Block('p', this.pagination(this.usersFromBack), [], {});
+            this.append(usersTable.render());
+            const pagination = new Pagination(usersOnLeaderBoard, {});
+            this.append(pagination.render());
+            this.append(new Button('Back', ['btnDiv'], 'leaderBoardBackBtn').render());
+            document.getElementById('main').appendChild(this.render());
+
+            this.render().addEventListener('click', () => {
+                const currentPage = pagination.getCurrentPage();
+                this.GetUsersFromBack(usersOnLeaderBoard, currentPage * 2 - 2);
+
+                setTimeout(() => {
+                    usersTable.innerHTML(this.pagination(this.usersFromBack));
+                }, 1000);
+            });
+
+            const leaderBoardBackBtn = document.getElementById('leaderBoardBackBtn');
+            leaderBoardBackBtn.addEventListener('click', () => Router.go('/'));
+        }, 1000);
+    }
+
+    GetUsersFromBack(limit, since) {
         Transport.Get('/stop?limit=' + limit + '&since=' + since).then((response) => {
-            usersFromBack = response;
-            console.log(usersFromBack);
+            this.usersFromBack = response;
+            console.log(this.usersFromBack);
         }).catch((response) => {
             if (!response.json) {
                 console.log(response);
                 return;
             }
             response.json().then((json) => {
-console.log(json);
-});
+                console.log(json);
+            });
         });
-
-
-        const usersTable = new Block('p', this.pagination(users, 0, 2), [], {});
-        this.append(usersTable.render());
-        const pagination = new Pagination(2, {});
-        this.append(pagination.render());
-        this.append(new Button('Back', ['btnDiv'], 'leaderBoardBackBtn').render());
-        document.getElementById('main').appendChild(this.render());
-
-        this.render().addEventListener('click', () => {
-            const currentPage = pagination.getCurrentPage();
-            usersTable.innerHTML(this.pagination(users, currentPage - 1, 2));
-        });
-
-        const leaderBoardBackBtn = document.getElementById('leaderBoardBackBtn');
-        leaderBoardBackBtn.addEventListener('click', () => Router.go('/'));
     }
 
-    pagination(users, page, countOf) {
+    pagination(users) {
         const usersOnPage = {'users': []};
 
-
-        // const usersFromBack = {};
-        // usersFromBack.email = users[0].email;
-        // usersFromBack.name = users[0].login;
-        // usersFromBack.score = users[0].score;
-        // usersOnPage.users.push(usersFromBack);
-
-
-        usersOnPage.users = users.users.slice(page * countOf, countOf + page * countOf);
+        users.forEach((item, i) => {
+            const usersFromBack = {};
+            usersFromBack.email = users[i].email;
+            usersFromBack.name = users[i].login;
+            usersFromBack.score = users[i].sscore;
+            usersOnPage.users.push(usersFromBack);
+            console.log(usersFromBack);
+        });
 
         const template = Hogan.compile('{{#users}} {{name}}! - {{score}}<br/> {{/users}}');
-        const output = template.render(usersOnPage);
-
-        return output;
+        return template.render(usersOnPage);
     }
 }
