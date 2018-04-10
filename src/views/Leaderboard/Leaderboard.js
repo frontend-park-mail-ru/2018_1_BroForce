@@ -18,9 +18,9 @@ export default class Leaderboard extends MainComponent {
     build() {
         const usersOnLeaderBoard = 2;
 
-        this.GetUsersFromBack(usersOnLeaderBoard, 0);
-
-        setTimeout(() => {
+        this.GetUsersFromBack(usersOnLeaderBoard, 0).catch((response) => {
+            console.log(response);
+        }).then(() => {
             const usersTable = new Block('p', this.pagination(this.usersFromBack), [], {});
             this.append(usersTable.render());
             const pagination = new Pagination(usersOnLeaderBoard, {});
@@ -30,22 +30,21 @@ export default class Leaderboard extends MainComponent {
 
             this.render().addEventListener('click', () => {
                 const currentPage = pagination.getCurrentPage();
-                this.GetUsersFromBack(usersOnLeaderBoard, currentPage * 2 - 2);
-
-                setTimeout(() => {
+                this.GetUsersFromBack(usersOnLeaderBoard, currentPage * 2 - 2).catch((response) => {
+                    console.log(response);
+                }).then(() => {
                     usersTable.innerHTML(this.pagination(this.usersFromBack));
-                }, 1000);
+                });
             });
 
             const leaderBoardBackBtn = document.getElementById('leaderBoardBackBtn');
             leaderBoardBackBtn.addEventListener('click', () => Router.go('/'));
-        }, 1000);
+        });
     }
 
     GetUsersFromBack(limit, since) {
-        Transport.Get('/stop?limit=' + limit + '&since=' + since).then((response) => {
+        return Transport.Get('/stop?limit=' + limit + '&since=' + since).then((response) => {
             this.usersFromBack = response;
-            console.log(this.usersFromBack);
         }).catch((response) => {
             if (!response.json) {
                 console.log(response);
@@ -66,7 +65,6 @@ export default class Leaderboard extends MainComponent {
             usersFromBack.name = users[i].login;
             usersFromBack.score = users[i].sscore;
             usersOnPage.users.push(usersFromBack);
-            console.log(usersFromBack);
         });
 
         const template = Hogan.compile('{{#users}} {{name}}! - {{score}}<br/> {{/users}}');

@@ -8,6 +8,7 @@ import Block from '../Block/Block.js';
 import Transport from '../../modules/Transport/Trasport.js';
 import UserService from '../../Services/UserService.js';
 import Router from '../../modules/Router/Router.js';
+import Menu from '../Menu/Menu.js';
 
 export default class Form extends MainComponent {
     constructor(data) {
@@ -82,9 +83,10 @@ export default class Form extends MainComponent {
             const adr = request.email === undefined ? '/signin' : '/signup';
 
             Transport.Post(adr, request).then((response) => {
-                console.log('Response', response);
-                // hmm
+                console.log(response);
+
                 Router.go('/');
+                // new Menu().Rebuild();
                 location.reload();
             }).catch((response) => {
                if (!response.json) {

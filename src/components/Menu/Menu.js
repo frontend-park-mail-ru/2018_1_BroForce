@@ -15,7 +15,6 @@ export default class Menu extends MainComponent {
     }
 
     Build() {
-        console.log(this.data);
         this.data.buttons.forEach((item) => {
             const button = new Button(item.text, [item.class], item.id).render();
 
@@ -37,9 +36,8 @@ export default class Menu extends MainComponent {
     }
 
     Rebuild() {
-        console.log('rebuild');
         this.removeItems();
-        this.data = new Main().GetData();
+        this.data = Main.GetData();
         this.Build();
     }
 }

@@ -85,14 +85,12 @@ export default class Main extends MainComponent {
     }
 
     build() {
-        // const userParam = UserService.IsLogIn() ? logged : unlogged;
-
         this.append((new Block('p', 'Neon Light', ['menu-logo'], {})).render());
-        this.append(new Menu(this.GetData()).render());
+        this.append(new Menu(Main.GetData()).render());
         document.getElementById('main').appendChild(this.render());
     }
 
-    GetData() {
+    static GetData() {
         return UserService.IsLogIn() ? logged : unlogged;
     }
 }
