@@ -78,26 +78,17 @@ export default class Form extends MainComponent {
                 }
             });
 
-            const userService = new UserService('http://localhost:8081');
-            const adr = request.email === undefined ? 'signin' : 'signup';
+            const adr = request.email === undefined ? '/signin' : '/signup';
 
-            if (request.email === undefined) {
-                userService.SignIn(request);
-            } else {
-                userService.SignUp(request);
-            }
-
-
-            // Transport.Post(adr, request).then((response) => {
-            //     console.log('Response', response);
-            //     console.log('All ok form');
-            // }).catch((response) => {
-            //    if (!response.json) {
-            //        console.log(response);
-            //        return;
-            //    }
-            //    response.json().then((json) => console.log(json));
-            // });
+            Transport.Post(adr, request).then((response) => {
+                console.log('Response', response);
+            }).catch((response) => {
+               if (!response.json) {
+                   console.log(response);
+                   return;
+               }
+               response.json().then((json) => console.log(json));
+            });
         }
     }
 }

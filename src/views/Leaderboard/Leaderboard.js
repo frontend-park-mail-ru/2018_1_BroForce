@@ -38,6 +38,24 @@ export default class Leaderboard extends MainComponent {
                 },
             ]};
 
+        let limit = 2;
+        let since = 0;
+        let usersFromBack = null;
+
+        Transport.Get('/stop?limit=' + limit + '&since=' + since).then((response) => {
+            usersFromBack = response;
+            console.log(usersFromBack);
+        }).catch((response) => {
+            if (!response.json) {
+                console.log(response);
+                return;
+            }
+            response.json().then((json) => {
+console.log(json);
+});
+        });
+
+
         const usersTable = new Block('p', this.pagination(users, 0, 2), [], {});
         this.append(usersTable.render());
         const pagination = new Pagination(2, {});
@@ -50,25 +68,21 @@ export default class Leaderboard extends MainComponent {
             usersTable.innerHTML(this.pagination(users, currentPage - 1, 2));
         });
 
-        // Transport.Get('http://localhost:8081/stop?limit=2&since=1').then((response) => {
-        //     console.log(response[0]);
-        // }).catch((response) => {
-        //     if (!response.json) {
-        //         console.log(response);
-        //         return;
-        //     }
-        //     response.json().then((json) => console.log(json));
-        // });
-
-        const userService = new UserService('http://localhost:8081');
-        console.log(userService.GetLeaders(2, 0));
-
         const leaderBoardBackBtn = document.getElementById('leaderBoardBackBtn');
         leaderBoardBackBtn.addEventListener('click', () => Router.go('/'));
     }
 
     pagination(users, page, countOf) {
         const usersOnPage = {'users': []};
+
+
+        // const usersFromBack = {};
+        // usersFromBack.email = users[0].email;
+        // usersFromBack.name = users[0].login;
+        // usersFromBack.score = users[0].score;
+        // usersOnPage.users.push(usersFromBack);
+
+
         usersOnPage.users = users.users.slice(page * countOf, countOf + page * countOf);
 
         const template = Hogan.compile('{{#users}} {{name}}! - {{score}}<br/> {{/users}}');

@@ -1,12 +1,14 @@
 const server='';
 
+const urlBack = 'http://localhost:8081';
+
 export default class Transport {
     static Get(adr) {
-        return Transport.FSend(adr, 'get');
+        return Transport.FSend(urlBack + adr, 'get');
     }
 
     static Post(adr, body) {
-        return Transport.FSend(adr, 'post', body);
+        return Transport.FSend(urlBack + adr, 'post', body);
     }
 
     static FSend(adr, method, body = {}) {
