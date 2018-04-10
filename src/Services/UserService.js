@@ -17,6 +17,10 @@ class UserService {
         return this.user;
     }
 
+    IsLogIn() {
+        return !!this.user;
+    }
+
     LogOut() {
         return Transport.Post('/logout', {}).then((response) => {
             return response;

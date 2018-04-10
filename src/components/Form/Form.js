@@ -7,6 +7,7 @@ import Validator from '../../modules/Validator/Validator.js';
 import Block from '../Block/Block.js';
 import Transport from '../../modules/Transport/Trasport.js';
 import UserService from '../../Services/UserService.js';
+import Router from '../../modules/Router/Router.js';
 
 export default class Form extends MainComponent {
     constructor(data) {
@@ -82,6 +83,9 @@ export default class Form extends MainComponent {
 
             Transport.Post(adr, request).then((response) => {
                 console.log('Response', response);
+                // hmm
+                Router.go('/');
+                location.reload();
             }).catch((response) => {
                if (!response.json) {
                    console.log(response);
