@@ -22,7 +22,7 @@ class UserService {
     }
 
     LogOut() {
-        return Transport.Post('/logout', {}).then((response) => {
+        return Transport.Post('/logout', {}).then(() => {
             this.user = null;
         });
     }

@@ -21,10 +21,7 @@ export default class Menu extends MainComponent {
 
             if (item.url === '/') {
                 button.addEventListener('click', () => {
-                    UserService.LogOut();
-                    UserService.GetData().catch((response) => {
-                        console.log(response);
-                    }).then(() => {
+                    UserService.LogOut().then(() => {
                         Router.getRoute('/').getView().Rebuild();
                     });
                 });
