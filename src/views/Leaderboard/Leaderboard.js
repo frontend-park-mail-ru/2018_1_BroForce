@@ -28,19 +28,21 @@ export default class Leaderboard extends MainComponent {
             this.append(new Button('Back', ['btnDiv'], 'leaderBoardBackBtn').render());
             document.getElementById('main').appendChild(this.render());
 
-            this.render().addEventListener('click', () => {
-                const currentPage = pagination.getCurrentPage();
-                this.GetUsersFromBack(usersOnLeaderBoard, currentPage * usersOnLeaderBoard
-                    - usersOnLeaderBoard).catch((response) => {
-                    console.log(response);
-                }).then(() => {
-                    usersTable.innerHTML(this.pagination(this.usersFromBack));
-                });
-            });
-
-            const leaderBoardBackBtn = document.getElementById('leaderBoardBackBtn');
-            leaderBoardBackBtn.addEventListener('click', () => Router.go('/'));
+            this.initEvents(pagination, usersTable, usersOnLeaderBoard);
         });
+    }
+
+    initEvents(pagination, usersTable, usersOnLeaderBoard) {
+        this.render().addEventListener('click', () => {
+            const currentPage = pagination.getCurrentPage();
+            this.GetUsersFromBack(usersOnLeaderBoard,
+                currentPage * usersOnLeaderBoard - usersOnLeaderBoard).then(() => {
+                usersTable.innerHTML(this.pagination(this.usersFromBack));
+            });
+        });
+
+        const leaderBoardBackBtn = document.getElementById('leaderBoardBackBtn');
+        leaderBoardBackBtn.addEventListener('click', () => Router.go('/'));
     }
 
     GetUsersFromBack(limit, since) {
