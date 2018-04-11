@@ -4,16 +4,12 @@ module.exports = {
         "es6": true
     },
     "rules": {
-        "constructor-super": 0,
-        "generator-star-spacing": 0,
-        "no-this-before-super": 0,
-        "no-var": 0,
         "object-shorthand": 0,
-        "prefer-const": 0,
         "max-len": 0,
         "no-unused-vars": 0,
         "guard-for-in": 0,
         "new-cap": 0,
+        "no-invalid-this": "off",
 
         "require-jsdoc": ["error", {
             "require": {
