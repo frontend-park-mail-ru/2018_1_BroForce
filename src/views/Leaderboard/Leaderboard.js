@@ -16,28 +16,28 @@ export default class Leaderboard extends MainComponent {
     }
 
     build() {
-        const usersOnLeaderBoard = 2;
+        this.usersOnLeaderBoard = 2;
 
-        this.GetUsersFromBack(usersOnLeaderBoard, 0).catch((response) => {
+        this.GetUsersFromBack(this.usersOnLeaderBoard, 0).catch((response) => {
             console.log(response);
         }).then(() => {
-            const usersTable = new Block('p', this.pagination(this.usersFromBack), [], {});
-            this.append(usersTable.render());
-            const pagination = new Pagination(usersOnLeaderBoard, {});
-            this.append(pagination.render());
+            this.usersTable = new Block('p', this.pagination(this.usersFromBack), [], {});
+            this.append(this.usersTable.render());
+            this.usersOnLeaderboard = new Pagination(this.usersOnLeaderBoard, {});
+            this.append(this.usersOnLeaderboard.render());
             this.append(new Button('Back', ['btnDiv'], 'leaderBoardBackBtn').render());
             document.getElementById('main').appendChild(this.render());
 
-            this.initEvents(pagination, usersTable, usersOnLeaderBoard);
+            this.initEvents();
         });
     }
 
-    initEvents(pagination, usersTable, usersOnLeaderBoard) {
+    initEvents() {
         this.render().addEventListener('click', () => {
-            const currentPage = pagination.getCurrentPage();
-            this.GetUsersFromBack(usersOnLeaderBoard,
-                currentPage * usersOnLeaderBoard - usersOnLeaderBoard).then(() => {
-                usersTable.innerHTML(this.pagination(this.usersFromBack));
+            const currentPage = this.usersOnLeaderboard.getCurrentPage();
+            this.GetUsersFromBack(this.usersOnLeaderBoard,
+                (currentPage - 1) * this.usersOnLeaderBoard).then(() => {
+                this.usersTable.innerHTML(this.pagination(this.usersFromBack));
             });
         });
 

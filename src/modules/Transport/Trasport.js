@@ -15,7 +15,7 @@ export default class Transport {
         const url = server+adr;
         const fPar = {
             method: method,
-            // mode: 'cors',
+            mode: 'cors',
             credentials: 'include',
         };
         if (method === 'post') {
