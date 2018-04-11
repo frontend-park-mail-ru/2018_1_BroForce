@@ -30,7 +30,8 @@ export default class Leaderboard extends MainComponent {
 
             this.render().addEventListener('click', () => {
                 const currentPage = pagination.getCurrentPage();
-                this.GetUsersFromBack(usersOnLeaderBoard, currentPage * 2 - 2).catch((response) => {
+                this.GetUsersFromBack(usersOnLeaderBoard, currentPage * usersOnLeaderBoard
+                    - usersOnLeaderBoard).catch((response) => {
                     console.log(response);
                 }).then(() => {
                     usersTable.innerHTML(this.pagination(this.usersFromBack));
