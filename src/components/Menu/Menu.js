@@ -4,7 +4,6 @@ import MainComponent from '../MainComponent/MainComponent.js';
 import Button from '../Button/Button.js';
 import Router from '../../modules/Router/Router.js';
 import UserService from '../../Services/UserService.js';
-import Main from '../../views/Main/Main.js';
 
 export default class Menu extends MainComponent {
     constructor(data) {
@@ -26,18 +25,12 @@ export default class Menu extends MainComponent {
                     UserService.GetData().catch((response) => {
                         console.log(response);
                     }).then(() => {
-                        this.Rebuild();
+                        Router.getRoute('/').getView().Rebuild();
                     });
                 });
             }
 
             this.append(button);
         });
-    }
-
-    Rebuild() {
-        this.removeItems();
-        this.data = Main.GetData();
-        this.Build();
     }
 }

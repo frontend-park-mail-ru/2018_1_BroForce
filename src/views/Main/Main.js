@@ -93,4 +93,11 @@ export default class Main extends MainComponent {
     static GetData() {
         return UserService.IsLogIn() ? logged : unlogged;
     }
+
+    Rebuild() {
+        this.removeItems();
+        this.data = Main.GetData();
+        console.log(this.data);
+        this.build();
+    }
 }
