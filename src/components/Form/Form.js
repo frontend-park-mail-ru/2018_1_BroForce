@@ -65,8 +65,6 @@ export default class Form extends MainComponent {
     }
 
     onSubmit() {
-        console.log('submit');
-
         if (this.isValid(this.inputs, this.errorFields)) {
             let request = {};
             this.inputs.forEach((input) => {
