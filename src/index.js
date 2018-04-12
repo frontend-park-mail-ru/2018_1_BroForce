@@ -15,7 +15,7 @@ import Profile from './views/Profile/Profile.js';
 import About from './views/About/About.js';
 import Loading from './components/Loading/Loading.js';
 
-ServiceWorkerRegister();
+// ServiceWorkerRegister();
 
 const loading = new Loading();
 document.getElementById('main').appendChild(loading.render());
