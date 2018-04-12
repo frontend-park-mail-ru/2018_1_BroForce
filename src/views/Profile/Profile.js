@@ -26,17 +26,17 @@ export default class Profile extends MainComponent {
         this.append((new ImageComp('../img/user-default.jpg', [], 'logo')).render());
         this.append((new Block('p', 'Hello, ' + name + '!', ['form-input'], {})).render());
 
-        const changeLoginInput = new MainComponent('input', ['form-input', 'profile-input'],
+        this.changeLoginInput = new MainComponent('input', ['form-input', 'profile-input'],
             {name: 'changeLoginInput', value: userData.name, placeholder: 'Enter name'});
-        this.append(changeLoginInput.render());
+        this.append(this.changeLoginInput.render());
 
-        const changeEmailInput = new MainComponent('input', ['form-input', 'profile-input'],
+        this.changeEmailInput = new MainComponent('input', ['form-input', 'profile-input'],
             {name: 'changeEmailInput', value: userData.email, placeholder: 'Enter email'});
-        this.append(changeEmailInput.render());
+        this.append(this.changeEmailInput.render());
 
-        const password = new MainComponent('input', ['form-input', 'profile-input'],
+        this.password = new MainComponent('input', ['form-input', 'profile-input'],
             {type: 'hidden', id: 'password', name: 'password', placeholder: 'Enter password'});
-        this.append(password.render());
+        this.append(this.password.render());
 
         this.append(new Button('Change avatar', ['btnDiv'], 'changeAvatarBtn').render());
 
@@ -45,27 +45,27 @@ export default class Profile extends MainComponent {
 
         document.getElementById('main').appendChild(this.render());
 
-        changeLoginInput.render().onfocus = () => {
-            password.render().type = 'password';
+        this.changeLoginInput.render().onfocus = () => {
+            this.password.render().type = 'password';
             buttonBack.render().innerHTML = 'Save and quit';
         };
 
-        changeLoginInput.render().onblur = () => {
-            console.log('onblur', changeLoginInput.render().value, userData.name);
-            if (changeLoginInput.render().value === userData.name) {
-                password.render().type = 'hidden';
+        this.changeLoginInput.render().onblur = () => {
+            console.log('onblur', this.changeLoginInput.render().value, userData.name);
+            if (this.changeLoginInput.render().value === userData.name) {
+                this.password.render().type = 'hidden';
                 buttonBack.render().innerHTML = 'Back';
             }
         };
 
-        changeEmailInput.render().onfocus = () => {
-            password.render().type = 'password';
+        this.changeEmailInput.render().onfocus = () => {
+            this.password.render().type = 'password';
             buttonBack.render().innerHTML = 'Save and quit';
         };
 
-        changeEmailInput.render().onblur = () => {
-            if (changeEmailInput.render().value === userData.email) {
-                password.render().type = 'hidden';
+        this.changeEmailInput.render().onblur = () => {
+            if (this.changeEmailInput.render().value === userData.email) {
+                this.password.render().type = 'hidden';
                 buttonBack.render().innerHTML = 'Back';
             }
         };
@@ -88,14 +88,14 @@ export default class Profile extends MainComponent {
             });
 
             if (backWay !== null) {
-                body.password = password.render().value;
+                body.password = this.password.render().value;
                 Transport.Post(backWay, body).catch((response) => {
                     console.log(response);
                 }).then(() => {
                     UserService.GetData().then(() => {
                         Router.go('/');
                     });
-                })
+                });
             } else {
                 Router.go('/');
             }
