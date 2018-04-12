@@ -8,9 +8,4 @@ export default class Loading extends MainComponent {
         super('div', ['loading'], {});
         this.append(new UL(5, ['loader'], ['circle']).render());
     }
-
-    // build() {
-    //     this.append(new UL(5, ['loader'], ['circle']).render());
-    //     document.getElementById('main').appendChild(this.render());
-    // }
 }

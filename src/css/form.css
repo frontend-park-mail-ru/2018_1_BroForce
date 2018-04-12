@@ -303,16 +303,6 @@ html {
 
 /*------LoadingStart------*/
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background: linear-gradient(#111, #333);
-}
-
 .loader {
     margin: 0;
     padding: 0;

@@ -14,12 +14,13 @@ import About from './views/About/About.js';
 import UserService from './Services/UserService.js';
 import Loading from './components/Loading/Loading.js';
 
-// this.append(new Loading().render());
-// document.getElementById('main').appendChild(this.render());
+const loading = new Loading();
+document.getElementById('main').appendChild(loading.render());
 
 UserService.GetData().catch((response) => {
     console.log(response);
 }).then(() => {
+    loading.remove();
     Router.use('/', MainForm)
         .use('/signin/', SignIn)
         .use('/signup/', SignUp)
