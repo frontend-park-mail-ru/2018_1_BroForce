@@ -12,7 +12,10 @@ import Profile from './views/Profile/Profile.js';
 import About from './views/About/About.js';
 
 import UserService from './Services/UserService.js';
+import Loading from './components/Loading/Loading.js';
 
+// this.append(new Loading().render());
+// document.getElementById('main').appendChild(this.render());
 
 UserService.GetData().catch((response) => {
     console.log(response);
