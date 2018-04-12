@@ -3,6 +3,9 @@
 // Router
 import Router from './modules/Router/Router.js';
 
+import UserService from './Services/UserService/UserService.js';
+import ServiceWorkerRegister from './Services/ServiceWorkerRegister/ServiceWorkerRegister.js';
+
 // Views
 import MainForm from './views/Main/Main.js';
 import SignIn from './views/SignIn/signIn.js';
@@ -10,9 +13,9 @@ import SignUp from './views/SignUp/signUp.js';
 import LeaderBoard from './views/Leaderboard/Leaderboard.js';
 import Profile from './views/Profile/Profile.js';
 import About from './views/About/About.js';
-
-import UserService from './Services/UserService.js';
 import Loading from './components/Loading/Loading.js';
+
+ServiceWorkerRegister();
 
 const loading = new Loading();
 document.getElementById('main').appendChild(loading.render());

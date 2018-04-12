@@ -6,7 +6,7 @@ import ImageComp from '../../components/ImageComp/ImageComp.js';
 import Block from '../../components/Block/Block.js';
 import Router from '../../modules/Router/Router.js';
 import Transport from '../../modules/Transport/Trasport.js';
-import UserService from '../../Services/UserService.js';
+import UserService from '../../Services/UserService/UserService.js';
 import Menu from '../../components/Menu/Menu.js';
 
 const logged = {

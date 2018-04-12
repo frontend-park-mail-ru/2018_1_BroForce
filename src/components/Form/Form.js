@@ -6,7 +6,7 @@ import Button from '../../components/Button/Button.js';
 import Validator from '../../modules/Validator/Validator.js';
 import Block from '../Block/Block.js';
 import Transport from '../../modules/Transport/Trasport.js';
-import UserService from '../../Services/UserService.js';
+import UserService from '../../Services/UserService/UserService.js';
 import Router from '../../modules/Router/Router.js';
 import Menu from '../Menu/Menu.js';
 import Main from '../../views/Main/Main.js';

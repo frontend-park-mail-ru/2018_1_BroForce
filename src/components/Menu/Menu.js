@@ -3,7 +3,7 @@
 import MainComponent from '../MainComponent/MainComponent.js';
 import Button from '../Button/Button.js';
 import Router from '../../modules/Router/Router.js';
-import UserService from '../../Services/UserService.js';
+import UserService from '../../Services/UserService/UserService.js';
 
 export default class Menu extends MainComponent {
     constructor(data) {

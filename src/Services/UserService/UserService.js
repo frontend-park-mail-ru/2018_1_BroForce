@@ -1,6 +1,6 @@
 'use strict';
 
-import Transport from '../modules/Transport/Trasport.js';
+import Transport from '../../modules/Transport/Trasport.js';
 
 class UserService {
     constructor() {

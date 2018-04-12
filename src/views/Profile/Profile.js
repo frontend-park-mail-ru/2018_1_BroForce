@@ -6,7 +6,7 @@ import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
 import ImageComp from '../../components/ImageComp/ImageComp.js';
 import Router from '../../modules/Router/Router.js';
-import UserService from '../../Services/UserService.js';
+import UserService from '../../Services/UserService/UserService.js';
 import Transport from '../../modules/Transport/Trasport.js';
 
 export default class Profile extends MainComponent {
