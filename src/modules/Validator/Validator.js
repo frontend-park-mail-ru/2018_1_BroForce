@@ -1,10 +1,22 @@
 'use strict';
 
+/**
+ * Module with validation for forms
+ * @module Validator
+ * @param {*}asArray - array with inputs
+ * @return {*}
+ */
 const Validator = (asArray) => {
     let passwd = null;
     let passwdc = null;
     const errors = [];
 
+    /**
+     * Generate errors for response
+     * @param {string} text - text of error
+     * @param {string} errorType - type of error (login, email, password, passwordConfirm)
+     * @return {HTMLDivElement}
+     */
     const generateError = (text, errorType) => {
         const error = document.createElement('div');
         error.class = ['error', errorType];
@@ -14,10 +26,19 @@ const Validator = (asArray) => {
         return error;
     };
 
+    /**
+     * Check filed for void
+     * @param {*} field
+     * @return {*}
+     */
     const checkFieldsPresenceBool = (field) => {
         return field.value;
     };
 
+    /**
+     * Check login correct
+     * @param {*} field
+     */
     const checkLoginCorrect = (field) => {
         if (!checkFieldsPresenceBool(field)) {
             errors.push(generateError('Login field is empty', 'login'));
@@ -29,6 +50,10 @@ const Validator = (asArray) => {
         }
     };
 
+    /**
+     * Check email correct
+     * @param {*} field
+     */
     const checkEmailCorr = (field) => {
         if (!checkFieldsPresenceBool(field)) {
             errors.push(generateError('Email field is empty', 'email'));
@@ -41,26 +66,39 @@ const Validator = (asArray) => {
         }
     };
 
+    /**
+     * Check password correct
+     * @param {*} field
+     */
     const checkPasswordCorrect = (field) => {
         if (!checkFieldsPresenceBool(field)) {
             errors.push(generateError('Password field is empty', 'password'));
             return;
         }
-        if (field.value.length < 6) {
+        if (field.value.length < 8) {
             errors.push(generateError('Password is too short', 'password'));
             return;
         }
-        if (field.value.length > 15) {
+        if (field.value.length > 20) {
             errors.push(generateError('Password is too long', 'password'));
         }
     };
 
+    /**
+     * Check equality of password and password confirm
+     * @param {*} paswd
+     * @param {*} paswdc
+     */
     const checkPasswordMatch = (paswd, paswdc) => {
         if (paswd.value !== paswdc.value) {
             errors.push(generateError('Password doesn\'t match', 'passwordConfirm'));
         }
     };
 
+    /**
+     * Check password confirm correct
+     * @param {*} field
+     */
     const checkPasswordConfirm = (field) => {
         if (!checkFieldsPresenceBool(field)) {
             errors.push(generateError('Password confirm field is empty', 'passwordConfirm'));

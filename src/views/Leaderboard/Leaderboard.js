@@ -6,59 +6,71 @@ import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
 import Pagination from '../../components/Pagination/Pagination.js';
 import Router from '../../modules/Router/Router.js';
+import Transport from '../../modules/Transport/Trasport.js';
+import UserService from '../../Services/UserService/UserService.js';
 
 export default class Leaderboard extends MainComponent {
     constructor() {
         super('div', ['leaderBoard'], {});
+        this.usersFromBack = null;
     }
 
     build() {
-        const users = {'users': [
-                {
-                    'email': 'arthurunique24@gmail.com',
-                    'name': 'Arthur',
-                    'score': '15000',
-                },
-                {
-                    'email': 'bigPapa@gmail.com',
-                    'name': 'Papa',
-                    'score': '100500',
-                },
-                {
-                    'email': 'master@gmail.com',
-                    'name': 'master',
-                    'score': '125000',
-                },
-                {
-                    'email': 'lol@mail.ru',
-                    'name': 'Lol',
-                    'score': '100',
-                },
-            ]};
+        this.usersOnLeaderBoard = 2;
 
-        const usersTable = new Block('p', this.pagination(users, 0, 2), [], {});
-        this.append(usersTable.render());
-        const pagination = new Pagination(2, {});
-        this.append(pagination.render());
-        this.append(new Button('Back', ['btnDiv'], 'leaderBoardBackBtn').render());
-        document.getElementById('main').appendChild(this.render());
+        this.GetUsersFromBack(this.usersOnLeaderBoard, 0).catch((response) => {
+            console.log(response);
+        }).then(() => {
+            this.usersTable = new Block('p', this.pagination(this.usersFromBack), [], {});
+            this.append(this.usersTable.render());
+            this.usersOnLeaderboard = new Pagination(this.usersOnLeaderBoard, {});
+            this.append(this.usersOnLeaderboard.render());
+            this.append(new Button('Back', ['btnDiv'], 'leaderBoardBackBtn').render());
+            document.getElementById('main').appendChild(this.render());
 
+            this.initEvents();
+        });
+    }
+
+    initEvents() {
         this.render().addEventListener('click', () => {
-            const currentPage = pagination.getCurrentPage();
-            usersTable.innerHTML(this.pagination(users, currentPage - 1, 2));
+            const currentPage = this.usersOnLeaderboard.getCurrentPage();
+            this.GetUsersFromBack(this.usersOnLeaderBoard,
+                (currentPage - 1) * this.usersOnLeaderBoard).then(() => {
+                this.usersTable.innerHTML(this.pagination(this.usersFromBack));
+            });
         });
 
         const leaderBoardBackBtn = document.getElementById('leaderBoardBackBtn');
         leaderBoardBackBtn.addEventListener('click', () => Router.go('/'));
     }
 
-    pagination(users, page, countOf) {
+    GetUsersFromBack(limit, since) {
+        return Transport.Get('/stop?limit=' + limit + '&since=' + since).then((response) => {
+            this.usersFromBack = response;
+        }).catch((response) => {
+            if (!response.json) {
+                console.log(response);
+                return;
+            }
+            response.json().then((json) => {
+                console.log(json);
+            });
+        });
+    }
+
+    pagination(users) {
         const usersOnPage = {'users': []};
-        usersOnPage.users = users.users.slice(page * countOf, countOf + page * countOf);
+
+        users.forEach((item, i) => {
+            const usersFromBack = {};
+            usersFromBack.email = users[i].email;
+            usersFromBack.name = users[i].login;
+            usersFromBack.score = users[i].sscore;
+            usersOnPage.users.push(usersFromBack);
+        });
 
         const template = Hogan.compile('{{#users}} {{name}}! - {{score}}<br/> {{/users}}');
-        const output = template.render(usersOnPage);
-
-        return output;
+        return template.render(usersOnPage);
     }
 }

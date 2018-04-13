@@ -2,7 +2,15 @@
 
 import Route from './Route.js';
 
+/**
+ * Router class
+ * @module Router
+ */
 class Router {
+    /**
+     * @constructor
+     * @return {Router|*}
+     */
     constructor() {
         if (Router.instance === this) {
             return Router.instance;
@@ -13,6 +21,12 @@ class Router {
         this.routes =[];
     }
 
+    /**
+     * Specify view for path
+     * @param {string} path
+     * @param {MainComponent} viewClass
+     * @return {Router}
+     */
     use(path, viewClass) {
         this.routes.push(new Route(path, viewClass));
         return this;
@@ -22,10 +36,19 @@ class Router {
         return window.location.pathname.toString().toLowerCase();
     }
 
+    /**
+     * Specify Rout for path
+     * @param {string} path
+     * @return {Route}
+     */
     getRoute(path) {
         return this.routes.find((route) => route.isThisPath(path));
     }
 
+    /**
+     * Change view for current path
+     * @private
+     */
     changeView() {
         const route = this.getRoute(Router.getPath());
 
@@ -36,6 +59,9 @@ class Router {
         route.createView();
     }
 
+    /**
+     * Hide all views
+     */
     hideAll() {
         this.routes.forEach((route) => {
             if (route.getView()) {
@@ -44,12 +70,18 @@ class Router {
         });
     }
 
-    // change history and view
+    /**
+     * Change history and view
+     * @param {*}path
+     */
     go(path) {
         window.history.pushState({}, '', path);
         this.changeView();
     }
 
+    /**
+     * Start work of Router
+     */
     start() {
         window.addEventListener('popstate', () => this.changeView());
         this.changeView();
