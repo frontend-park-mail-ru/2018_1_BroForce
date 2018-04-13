@@ -85,7 +85,7 @@ export default class Main extends MainComponent {
     }
 
     build() {
-        this.append((new Block('p', 'Neon Light', ['menu-logo'], {})).render());
+        this.append((new Block('p', 'NEON LIGHT', ['menu-logo'], {})).render());
         this.append(new Menu(Main.GetData()).render());
         document.getElementById('main').appendChild(this.render());
     }
