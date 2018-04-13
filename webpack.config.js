@@ -1,10 +1,14 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractSass = new ExtractTextPlugin({
+    filename: '[name].css',
+});
 
 module.exports = {
     entry: {
         main: [
             'babel-polyfill',
-            './src/static/css/form.scss',
+            './src/css/form.scss',
             './src/index.js',
         ],
     },
