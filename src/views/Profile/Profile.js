@@ -15,23 +15,25 @@ export default class Profile extends MainComponent {
     }
 
     build() {
-        const userData = {
+        this.userData = {
             name: UserService.GetUser().login,
             email: UserService.GetUser().email,
         };
 
         const template = Hogan.compile('{{name}}');
-        const name = template.render(userData);
+        const name = template.render(this.userData);
 
         this.append((new ImageComp('../img/user-default.jpg', [], 'logo')).render());
-        this.append((new Block('p', 'Hello, ' + name + '!', ['form-input'], {})).render());
+
+        this.title = new Block('p', 'Hello, ' + name + '!', ['form-input'], {});
+        this.append(this.title.render());
 
         this.changeLoginInput = new MainComponent('input', ['form-input', 'profile-input'],
-            {name: 'changeLoginInput', value: userData.name, placeholder: 'Enter name'});
+            {name: 'changeLoginInput', value: this.userData.name, placeholder: 'Enter name'});
         this.append(this.changeLoginInput.render());
 
         this.changeEmailInput = new MainComponent('input', ['form-input', 'profile-input'],
-            {name: 'changeEmailInput', value: userData.email, placeholder: 'Enter email'});
+            {name: 'changeEmailInput', value: this.userData.email, placeholder: 'Enter email'});
         this.append(this.changeEmailInput.render());
 
         this.password = new MainComponent('input', ['form-input', 'profile-input'],
@@ -40,48 +42,51 @@ export default class Profile extends MainComponent {
 
         this.append(new Button('Change avatar', ['btnDiv'], 'changeAvatarBtn').render());
 
-        const buttonBack = new Button('Back', ['btnDiv'], 'profileBackBtn');
-        this.append(buttonBack.render());
+        this.buttonBack = new Button('Back', ['btnDiv'], 'profileBackBtn');
+        this.append(this.buttonBack.render());
 
         document.getElementById('main').appendChild(this.render());
 
+        this.initEvents();
+    }
+
+    initEvents() {
         this.changeLoginInput.render().onfocus = () => {
             this.password.render().type = 'password';
-            buttonBack.render().innerHTML = 'Save and quit';
+            this.buttonBack.render().innerHTML = 'Save and quit';
         };
 
         this.changeLoginInput.render().onblur = () => {
-            console.log('onblur', this.changeLoginInput.render().value, userData.name);
-            if (this.changeLoginInput.render().value === userData.name) {
+            if (this.changeLoginInput.render().value === this.userData.name) {
                 this.password.render().type = 'hidden';
-                buttonBack.render().innerHTML = 'Back';
+                this.buttonBack.render().innerHTML = 'Back';
             }
         };
 
         this.changeEmailInput.render().onfocus = () => {
             this.password.render().type = 'password';
-            buttonBack.render().innerHTML = 'Save and quit';
+            this.buttonBack.render().innerHTML = 'Save and quit';
         };
 
         this.changeEmailInput.render().onblur = () => {
-            if (this.changeEmailInput.render().value === userData.email) {
+            if (this.changeEmailInput.render().value === this.userData.email) {
                 this.password.render().type = 'hidden';
-                buttonBack.render().innerHTML = 'Back';
+                this.buttonBack.render().innerHTML = 'Back';
             }
         };
 
-        buttonBack.render().addEventListener('click', () => {
+        this.buttonBack.render().addEventListener('click', () => {
             const newData = [...document.getElementsByClassName('profile-input')];
 
             let backWay = null;
             let body = {};
 
             newData.forEach((input) => {
-                if (input.name === 'changeLoginInput' && input.value !== userData.name) {
+                if (input.name === 'changeLoginInput' && input.value !== this.userData.name) {
                     backWay = '/newlogin';
                     body.change = input.value;
                 }
-                if (input.name === 'changeEmailInput' && input.value !== userData.email) {
+                if (input.name === 'changeEmailInput' && input.value !== this.userData.email) {
                     backWay = '/newemail';
                     body.change = input.value;
                 }
@@ -93,6 +98,11 @@ export default class Profile extends MainComponent {
                     console.log(response);
                 }).then(() => {
                     UserService.GetData().then(() => {
+                        this.password.render().type = 'hidden';
+                        this.userData.name = UserService.GetUser().login;
+                        this.userData.email = UserService.GetUser().email;
+                        this.buttonBack.render().innerHTML = 'Back';
+                        this.title.innerHTML('Hello, ' + UserService.GetUser().login + '!');
                         Router.go('/');
                     });
                 });
