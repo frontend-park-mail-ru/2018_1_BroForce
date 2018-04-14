@@ -14,7 +14,8 @@ export default class GameLogic {
         let userCoord = {
             x: undefined,
             y: undefined,
-            radius: undefined
+            radius: undefined,
+            speed: undefined
         };
 
         const colorArray = ["#fa4c2b", "#6aff6e", "#ffff82", "#ffce72", '#fa4c2b', '#0bfcff'];
@@ -77,9 +78,9 @@ export default class GameLogic {
             userCoord.x = x;
             userCoord.y = y;
             userCoord.radius = radius;
+            userCoord.speed = speed;
 
             this.draw = () => {
-                this.speed = speed;
                 context.save();
                 context.beginPath();
 
@@ -102,19 +103,19 @@ export default class GameLogic {
                 const borderDown = userCoord.y + userCoord.radius < innerHeight;
 
                 if (keyA === true && borderLeft) {
-                    userCoord.x -= this.speed;
+                    userCoord.x -= userCoord.speed;
                     userCoord.radius -= 0.1;
                 }
                 if (keyD === true && borderRight) {
-                    userCoord.x += this.speed;
+                    userCoord.x += userCoord.speed;
                     userCoord.radius -= 0.1;
                 }
                 if (keyW === true && borderUp) {
-                    userCoord.y -= this.speed;
+                    userCoord.y -= userCoord.speed;
                     userCoord.radius -= 0.1;
                 }
                 if (keyS === true && borderDown) {
-                    userCoord.y += this.speed;
+                    userCoord.y += userCoord.speed;
                     userCoord.radius -= 0.1;
                 }
 
@@ -224,7 +225,6 @@ export default class GameLogic {
                     if (userCoord.radius + item <= MaxRadius) {
                         userCoord.radius += item;
                     }
-                    // userCoord.radius += item;
                 });
             }
 
@@ -232,6 +232,11 @@ export default class GameLogic {
                 console.log('You Win!')
             }
         };
+
+        function Stop() {
+            console.log('kek');
+            cancelAnimationFrame(0);
+        }
 
 
         initEnemies();
