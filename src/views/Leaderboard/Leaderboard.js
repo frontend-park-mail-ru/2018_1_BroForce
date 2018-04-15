@@ -8,6 +8,7 @@ import Pagination from '../../components/Pagination/Pagination.js';
 import Router from '../../modules/Router/Router.js';
 import Transport from '../../modules/Transport/Trasport.js';
 import UserService from '../../Services/UserService/UserService.js';
+import * as Hogan from "hogan.js";
 
 export default class Leaderboard extends MainComponent {
     constructor() {

@@ -17,7 +17,7 @@ export default class Game extends MainComponent {
         this.append(new Block('p', '0', ['game-score'], {name: 'gameScore'}).render());
 
         this.append(new MainComponent('canvas', ['game-canvas'], {}).render());
-        this.append(new MainComponent('script', [], {src: 'gameModule.js'}).render());
+        this.append(new MainComponent('script', [], {}).render());
         document.getElementById('main').appendChild(this.render());
 
         new GameLogic();
