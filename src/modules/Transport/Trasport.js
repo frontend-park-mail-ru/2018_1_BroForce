@@ -1,6 +1,6 @@
 const server='';
 
-const urlBack = 'http://localhost:8081';
+const urlBack = 'https://apoj.herokuapp.com';
 
 /**
  * Module with methods for HTTP-requests
