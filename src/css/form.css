@@ -24,12 +24,11 @@ html {
     animation: neon-text 13s steps(1, start) infinite reverse;
 }
 
-.kek {
+.menu-but {
     margin: auto;
     display: flex;
     justify-content: center;
     flex-direction: column;
-
 }
 
 .btnDiv {
@@ -43,14 +42,13 @@ html {
     animation: neon 2s infinite alternate;
 }
 
-
 .login {
     margin-top:5%;
     display: flex;
     justify-content: center;
     flex-direction: column;
-
 }
+
 .signInInput, .signUpInput{
     margin-left: auto;
     margin-right: auto;
@@ -59,16 +57,16 @@ html {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 5vmin;
     border-radius: 25px;
     padding-left: 20px;
     font-size: 2vh;
 }
 
 .login p {
-    margin: auto;
-    font-size: 10vh;
+    margin-top: 5%;
+    margin-bottom: 3%;
     text-align: center;
+    font-size: 10vh;
     color: var(--color2);
     animation: neon-text 13s steps(1, start) infinite reverse;
 }
@@ -125,7 +123,6 @@ html {
 }
 
 .profile {
-
 }
 
 .profile input[type='file'] {
@@ -139,19 +136,16 @@ html {
     animation: neon 1s infinite alternate;
 }
 
-
 .profile p {
     animation: neon-text 13s steps(1, start) infinite reverse;
-
 }
 
 .error {
-    font-size: 6vmin;
+    font-size: 4vh;
     color: var(--color1);
-    margin-left: 5%;
-    margin-bottom: 2%;
+    margin: auto;
+    text-align: center;
 }
-
 
 /*------LoadingStart------*/
 
@@ -178,6 +172,7 @@ html {
 @-webkit-keyframes parent-rotate {
     to {transform: rotate(1turn) translateY(-20vmin);}
 }
+
 @keyframes parent-rotate {
     to {transform: rotate(1turn) translateY(-20vmin);}
 }
