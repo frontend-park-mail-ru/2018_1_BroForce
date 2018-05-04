@@ -4,7 +4,7 @@ import MainComponent from '../MainComponent/MainComponent.js';
 import Button from '../Button/Button.js';
 import Router from '../../modules/Router/Router.js';
 import UserService from '../../Services/UserService/UserService.js';
-import Game from '../../views/Game/GameLogic.js'
+import Game from '../../views/Game/GameLogic.js';
 
 export default class Menu extends MainComponent {
     constructor(data) {
@@ -26,7 +26,7 @@ export default class Menu extends MainComponent {
                     new Game().Start();
                 });
                 this.append(button);
-                return
+                return;
             }
 
             button.addEventListener('click', () => Router.go(item.url));

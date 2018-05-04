@@ -1,7 +1,8 @@
 'use strict';
 
-import PlayerNew from './Player.js'
-import Enemy from './Enemy.js'
+import PlayerNew from './Player.js';
+import Enemy from './Enemy.js';
+import Block from '../../components/Block/Block.js';
 
 export default class GameLogic {
     constructor() {
@@ -9,8 +10,8 @@ export default class GameLogic {
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
 
-        this.MAX_ENEMY_RADIUS = 100;
-        this.ENEMIES_COUNT = 30;
+        this.MAX_ENEMY_RADIUS = 1; // 100
+        this.ENEMIES_COUNT = 1; // 30
         this.USER_RADIUS = 30;
         // this.USER_NEON_LIGHT = 40;
         this.animationId = null;
@@ -115,10 +116,10 @@ export default class GameLogic {
 
         const animate = () => {
             if (player.getUserCoords().radius <= 0) {
-                console.log("You lose");
                 player.getUserCoords().radius = 0;
                 cancelAnimationFrame(this.animationId);
-                return
+                this.Start();
+                return;
             }
             this.animationId = requestAnimationFrame(animate);
             context.clearRect(0, 0, innerWidth, innerHeight);
@@ -141,9 +142,10 @@ export default class GameLogic {
                         eatenEnemiesRadiuses.push(enemyArray[i].getEnemyCoord().radius);
                     } else {
                         if (this.divineShield === false) {
-                            console.log("You lose");
+                            console.log('You lose');
                             player.getUserCoords().radius = 0;
                             cancelAnimationFrame(this.animationId);
+                            this.Start();
                         }
                     }
                 }
@@ -164,6 +166,9 @@ export default class GameLogic {
 
             if (enemyArray.length === 0) {
                 console.log('You Win!');
+                cancelAnimationFrame(this.animationId);
+                const gameText = document.querySelector('.game-win');
+                gameText.innerHTML = 'You win';
             }
         };
 

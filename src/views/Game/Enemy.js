@@ -17,7 +17,7 @@ export default class Enemy {
         };
     }
 
-    draw () {
+    draw() {
         this.context.beginPath();
         this.context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
 
@@ -50,6 +50,6 @@ export default class Enemy {
     };
 
     getEnemyCoord() {
-        return this.enemyCoord
+        return this.enemyCoord;
     }
 }

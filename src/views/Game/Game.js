@@ -15,6 +15,7 @@ export default class Game extends MainComponent {
         const GameBackBtn =new Button('Back', ['btnDiv', 'game-back-btn'], 'btnBack');
         this.append(GameBackBtn.render());
         this.append(new Block('p', '0', ['game-score'], {name: 'gameScore'}).render());
+        this.append(new Block('p', '', ['game-win'], {name: 'gameWin'}).render());
 
         this.append(new MainComponent('canvas', ['game-canvas'], {}).render());
         document.getElementById('main').appendChild(this.render());

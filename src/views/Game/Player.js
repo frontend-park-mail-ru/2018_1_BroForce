@@ -55,7 +55,7 @@ export default class Player {
         this.draw();
     };
 
-    getUserCoords () {
-        return this.userCoord
+    getUserCoords() {
+        return this.userCoord;
     }
 }
