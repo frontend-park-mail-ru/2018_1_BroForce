@@ -10,15 +10,20 @@
 html {
     background-size: cover;
     background: #141414 url("../img/bg3 (4).jpg") center;
-    font-size: 8vmin;
+    font-size: 6vh;
     font-family: "Vibur", cursive;
 }
 
-.body {
-    display: flex;
-    justify-content: center;
-
+.menu-logo {
+    margin-top: 5%;
+    margin-bottom: 3%;
+    text-align: center;
+    color: var(--color1);
+    font-family: Monoton, cursive;
+    font-size: 10vh;
+    animation: neon-text 13s steps(1, start) infinite reverse;
 }
+
 .kek {
     margin: auto;
     display: flex;
@@ -38,51 +43,41 @@ html {
     animation: neon 2s infinite alternate;
 }
 
-.menu-logo {
-    margin-top: 4%;
-    margin-bottom: 4%;
+
+.login {
+    margin-top:5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.signInInput, .signUpInput{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3%;
+    min-height: 4vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 5vmin;
+    border-radius: 25px;
+    padding-left: 20px;
+    font-size: 2vh;
+}
+
+.login p {
+    margin: auto;
+    font-size: 10vh;
     text-align: center;
-    color: var(--color1);
-    font-family: Monoton, cursive;
-    font-size: 8vmax;
+    color: var(--color2);
     animation: neon-text 13s steps(1, start) infinite reverse;
 }
 
-.form-input {
-    height: 30px;
-    width: 100%;
-    margin-bottom: 3%;
-    border-radius: 25px;
-    padding-left: 15px;
-}
-
-.login {
-    margin-top: 10%;
-    margin-left: 35%;
-    margin-right: 35%;
-}
-
-
-.login p {
-    color: var(--color2);
-    margin-bottom: 5%;
-    animation: neon-text 1s infinite alternate;
-}
-
-.login a {
-    color: var(--color3);
-}
-
-.login input {
-    outline: none;
-}
-
-.login input:hover {
-    animation: neon 2s infinite alternate;
-}
-
-.login input:focus {
-    animation: neon 2s infinite alternate;
+.about {
+    margin-top: 5%;
+    text-align: center;
+    color:var(--color3);
+    padding: 5%;
 }
 
 .pagination {
@@ -129,58 +124,33 @@ html {
     animation: neon-text 1s infinite alternate;
 }
 
-
-.about {
-    margin-top: 10%;
-    margin-left: 35%;
-    margin-right: 35%;
-}
-
-.about p {
-    color:var(--color3);
-    margin-bottom: 10%;
-}
-
-
 .profile {
-    margin-top: 10%;
-    margin-left: 35%;
-    margin-right: 35%;
+
 }
 
 .profile input[type='file'] {
-    margin-left: 30%;
-    margin-bottom: 5%;
     position: relative;
     overflow: hidden;
     color: var(--color1);
 }
 
 .profile img {
-    height: 120px;
-    width: 120px;
-    margin-top: 10%;
-    margin-left: 33%;
-    margin-right: 33%;
     border-radius: 50%;
     animation: neon 1s infinite alternate;
 }
 
 
 .profile p {
-    text-align: center;
-    color: #E1F5FE;
     animation: neon-text 13s steps(1, start) infinite reverse;
-    margin-bottom: 20%;
+
 }
 
 .error {
+    font-size: 6vmin;
     color: var(--color1);
     margin-left: 5%;
     margin-bottom: 2%;
 }
-
-
 
 
 /*------LoadingStart------*/

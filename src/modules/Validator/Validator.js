@@ -41,7 +41,7 @@ const Validator = (asArray) => {
      */
     const checkLoginCorrect = (field) => {
         if (!checkFieldsPresenceBool(field)) {
-            errors.push(generateError('Login field is empty', 'login'));
+            errors.push(generateError('Field is empty', 'login'));
             return;
         }
 
@@ -56,7 +56,7 @@ const Validator = (asArray) => {
      */
     const checkEmailCorr = (field) => {
         if (!checkFieldsPresenceBool(field)) {
-            errors.push(generateError('Email field is empty', 'email'));
+            errors.push(generateError('Field is empty', 'email'));
             return;
         }
         const reg = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/i;
@@ -72,7 +72,7 @@ const Validator = (asArray) => {
      */
     const checkPasswordCorrect = (field) => {
         if (!checkFieldsPresenceBool(field)) {
-            errors.push(generateError('Password field is empty', 'password'));
+            errors.push(generateError('Field is empty', 'password'));
             return;
         }
         if (field.value.length < 8) {
@@ -101,7 +101,7 @@ const Validator = (asArray) => {
      */
     const checkPasswordConfirm = (field) => {
         if (!checkFieldsPresenceBool(field)) {
-            errors.push(generateError('Password confirm field is empty', 'passwordConfirm'));
+            errors.push(generateError('Field is empty', 'passwordConfirm'));
         }
     };
 
