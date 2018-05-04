@@ -15,6 +15,10 @@ export default class Profile extends MainComponent {
     }
 
     build() {
+        // if (!UserService.IsLogIn()) {
+        //     Router.go('/')
+        // }
+
         this.userData = {
             name: UserService.GetUser().login,
             email: UserService.GetUser().email,

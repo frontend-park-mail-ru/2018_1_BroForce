@@ -20,9 +20,11 @@ export default class Game extends MainComponent {
         this.append(new MainComponent('script', [], {}).render());
         document.getElementById('main').appendChild(this.render());
 
-        new GameLogic();
+        const game = new GameLogic();
+        game.Start();
 
         GameBackBtn.render().addEventListener('click', () =>{
+            game.Stop();
             Router.go('/');
         });
     }
