@@ -70,6 +70,8 @@ export default class Leaderboard extends MainComponent {
             usersOnPage.users.push(usersFromBack);
         });
 
+        // const Hogan = require("hogan.js");
+
         const template = Hogan.compile('{{#users}} {{name}}! - {{score}}<br/> {{/users}}');
         return template.render(usersOnPage);
     }
