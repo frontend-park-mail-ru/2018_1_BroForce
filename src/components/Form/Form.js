@@ -1,5 +1,4 @@
 'use strict';
-
 import MainComponent from '../MainComponent/MainComponent.js';
 import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
