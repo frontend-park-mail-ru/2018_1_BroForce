@@ -10,8 +10,8 @@ export default class GameLogic {
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
 
-        this.MAX_ENEMY_RADIUS = 1; // 100
-        this.ENEMIES_COUNT = 1; // 30
+        this.MAX_ENEMY_RADIUS = 100;
+        this.ENEMIES_COUNT = 30;
         this.USER_RADIUS = 30;
         // this.USER_NEON_LIGHT = 40;
         this.animationId = null;
