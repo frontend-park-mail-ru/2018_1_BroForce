@@ -89,4 +89,3 @@ npm start
 <a name="backend"></a>
 ### Backend
   * [Владислав Мельников](http://github.com/BatrSens)
-  * [Кудинов Михаил](http://github.com/masyagin1998)
