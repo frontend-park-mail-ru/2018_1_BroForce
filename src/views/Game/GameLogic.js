@@ -12,8 +12,10 @@ export default class GameLogic {
         this.MAX_ENEMY_RADIUS = 100;
         this.ENEMIES_COUNT = 30;
         this.USER_RADIUS = 30;
-        this.USER_NEON_LIGHT = 40;
+        // this.USER_NEON_LIGHT = 40;
         this.animationId = null;
+        this.colorArray = ['#fa4c2b', '#6aff6e', '#ffff82', '#ffce72', '#fa4c2b', '#0bfcff'];
+
 
         this.divineShield = true;
         setTimeout((()=> this.divineShield = false), 3000);
@@ -23,12 +25,6 @@ export default class GameLogic {
         const context = this.canvas.getContext('2d');
 
         let enemyArray = [];
-        const colorArray = ['#fa4c2b', '#6aff6e', '#ffff82', '#ffce72', '#fa4c2b', '#0bfcff'];
-
-        let mouse = {
-            x: undefined,
-            y: undefined,
-        };
 
         let keyW = false;
         let keyA = false;
@@ -40,15 +36,9 @@ export default class GameLogic {
             this.canvas.height = window.innerHeight;
         });
 
-        document.addEventListener('mousemove', (event) => {
-            mouse.x = event.x;
-            mouse.y = event.y;
-        });
-
         document.addEventListener('keydown', (event) => {
             switch (event.keyCode) {
                 case 87 || 38:
-                    console.log('up');
                     keyW = true;
                     break;
                 case 65 || 37:
@@ -118,12 +108,18 @@ export default class GameLogic {
                 const dx = (Math.random() - 0.5);
                 const dy = (Math.random() - 0.5);
 
-                enemyArray.push(new Enemy(x, y, dx, dy, radius, context, colorArray));
+                enemyArray.push(new Enemy(x, y, dx, dy, radius, context, this.colorArray));
             }
         };
+        const player = new PlayerNew(innerWidth / 2, innerHeight / 2, 2, this.USER_RADIUS, context, this.colorArray);
 
-        const player = new PlayerNew(innerWidth / 2, innerHeight / 2, 2, this.USER_RADIUS, context, colorArray);
         const animate = () => {
+            if (player.getUserCoords().radius <= 0) {
+                console.log("You lose");
+                player.getUserCoords().radius = 0;
+                cancelAnimationFrame(this.animationId);
+                return
+            }
             this.animationId = requestAnimationFrame(animate);
             context.clearRect(0, 0, innerWidth, innerHeight);
             player.update(keyW, keyS, keyA, keyD);
@@ -145,6 +141,7 @@ export default class GameLogic {
                         eatenEnemiesRadiuses.push(enemyArray[i].getEnemyCoord().radius);
                     } else {
                         if (this.divineShield === false) {
+                            console.log("You lose");
                             player.getUserCoords().radius = 0;
                             cancelAnimationFrame(this.animationId);
                         }
