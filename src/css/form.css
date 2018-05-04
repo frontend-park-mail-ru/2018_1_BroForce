@@ -31,7 +31,7 @@ html {
     display: flex;
     justify-content: center;
     border: 0;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0);
     color: var(--color4);
@@ -39,12 +39,12 @@ html {
 }
 
 .menu-logo {
-    margin-top: auto;
-    margin-bottom: 8vmin;
+    margin-top: 4%;
+    margin-bottom: 4%;
     text-align: center;
     color: var(--color1);
     font-family: Monoton, cursive;
-    font-size: 9vmax;
+    font-size: 8vmax;
     animation: neon-text 13s steps(1, start) infinite reverse;
 }
 
