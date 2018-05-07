@@ -51,6 +51,7 @@ html {
     border-radius: 25px;
     padding-left: 20px;
     font-size: 2vh;
+    outline:none;
 }
 
 .login-page_error {
