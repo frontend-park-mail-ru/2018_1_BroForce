@@ -54,7 +54,7 @@ html {
 }
 
 .login-page_error {
-    font-size: 4vh;
+    font-size: 3vh;
     color: var(--color1);
     margin: auto;
     text-align: center;

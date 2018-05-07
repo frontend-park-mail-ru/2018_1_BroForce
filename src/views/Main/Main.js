@@ -13,7 +13,7 @@ const logged = {
     buttons: [
         {
             text: 'Singleplayer',
-            class: [''],
+            class: ['main-page__menu__button'],
             id: 'singlePlayerBtn',
             url: '/singleplayer/',
         },
