@@ -7,7 +7,7 @@ import UserService from '../../Services/UserService/UserService.js';
 
 export default class Menu extends MainComponent {
     constructor(data) {
-        super('div', ['menu-but'], {});
+        super('div', ['menu_buttons'], {});
         this.data = data;
 
         this.Build();

@@ -19,7 +19,7 @@ const Validator = (asArray) => {
      */
     const generateError = (text, errorType) => {
         const error = document.createElement('div');
-        error.class = ['error', errorType];
+        error.class = ['login-page_error', errorType];
         error.style.color = 'red';
         error.innerHTML = text;
 

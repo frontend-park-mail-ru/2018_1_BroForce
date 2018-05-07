@@ -10,13 +10,12 @@
 html {
     background-size: cover;
     background: #141414 url("../img/bg3 (4).jpg") center;
-    font-size: 6vh;
     font-family: "Vibur", cursive;
 }
 
-.menu-logo {
-    margin-top: 5%;
-    margin-bottom: 3%;
+.main-page__logo {
+    margin-top: 7vh;
+    margin-bottom: 3vh;
     text-align: center;
     color: var(--color1);
     font-family: Monoton, cursive;
@@ -24,35 +23,27 @@ html {
     animation: neon-text 13s steps(1, start) infinite reverse;
 }
 
-.menu-but {
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+.main-page__menu {
+
 }
 
-.btnDiv {
+.main-page__menu__button {
     display: flex;
     justify-content: center;
     border: 0;
-    margin-bottom: 1%;
+    margin-bottom: 1vh;
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0);
+    font-size: 6vh;
     color: var(--color4);
+    background-color: rgba(0, 0, 0, 0);
     animation: neon 2s infinite alternate;
 }
 
-.login {
-    margin-top:5%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
 
-.signInInput, .signUpInput{
+.login-page__signInInput, .login-page__signUpInput{
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 3%;
+    margin-bottom: 2%;
     min-height: 4vh;
     display: flex;
     justify-content: center;
@@ -62,90 +53,92 @@ html {
     font-size: 2vh;
 }
 
-.login p {
-    margin-top: 5%;
-    margin-bottom: 3%;
+.login-page_error {
+    font-size: 4vh;
+    color: var(--color1);
+    margin: auto;
+    text-align: center;
+}
+
+.menu_title {
+    margin-top: 7vh;
+    margin-bottom: 3vh;
     text-align: center;
     font-size: 10vh;
     color: var(--color2);
     animation: neon-text 13s steps(1, start) infinite reverse;
 }
 
-.about {
-    margin-top: 5%;
+
+.about-page_text {
     text-align: center;
+    font-size: 5vh;
     color:var(--color3);
-    padding: 5%;
 }
 
-.pagination {
-    margin-left: 30%;
-    margin-bottom: 25%;
-}
+/*.leaderboard-page__pagination {*/
+    /*margin-left: 30%;*/
+    /*margin-bottom: 25%;*/
+/*}*/
 
-.pagination a {
-    cursor: default;
-    user-select: none;
-    margin-bottom: 5%;
-    color: var(--color2);
-    float: left;
-    padding: 8px 16px;
-    margin-left: 1px;
-    margin-right: 1px;
-    text-decoration: none;
-}
+/*.leaderboard-page__pagination a {*/
+    /*cursor: default;*/
+    /*user-select: none;*/
+    /*margin-bottom: 5%;*/
+    /*color: var(--color2);*/
+    /*float: left;*/
+    /*padding: 8px 16px;*/
+    /*margin-left: 1px;*/
+    /*margin-right: 1px;*/
+    /*text-decoration: none;*/
+/*}*/
 
-.pagination a.active {
-    background-color: var(--color1);
-    color: black;
-    border-radius: 10px;
-}
+/*.leaderboard-page__pagination a.active {*/
+    /*background-color: var(--color1);*/
+    /*color: black;*/
+    /*border-radius: 10px;*/
+/*}*/
 
-.pagination a:hover:not(.active) {
-    background-color: var(--color1);
-    color: black;
-    border-radius: 10px;
-    cursor: pointer;
-}
+/*.leaderboard-page__pagination a:hover:not(.active) {*/
+    /*background-color: var(--color1);*/
+    /*color: black;*/
+    /*border-radius: 10px;*/
+    /*cursor: pointer;*/
+/*}*/
 
-.leaderBoard {
-    margin-top: 17%;
-    margin-left: 35%;
-    margin-right: 35%;
-    width: 30%;
-}
+/*.leaderboard-page {*/
+    /*margin-top: 17%;*/
+    /*margin-left: 35%;*/
+    /*margin-right: 35%;*/
+    /*width: 30%;*/
+/*}*/
 
-.leaderBoard p {
-    margin-left: 25%;
-    font-size: 200%;
-    color: var(--color3);
-    animation: neon-text 1s infinite alternate;
-}
+/*.leaderboard-page p {*/
+    /*margin-left: 25%;*/
+    /*font-size: 200%;*/
+    /*color: var(--color3);*/
+    /*animation: neon-text 1s infinite alternate;*/
+/*}*/
 
-.profile {
-}
+/*.profile-page {*/
+/*}*/
 
-.profile input[type='file'] {
-    position: relative;
-    overflow: hidden;
-    color: var(--color1);
-}
+/*.profile-page input[type='file'] {*/
+    /*position: relative;*/
+    /*overflow: hidden;*/
+    /*color: var(--color1);*/
+/*}*/
 
-.profile img {
-    border-radius: 50%;
-    animation: neon 1s infinite alternate;
-}
+/*.profile-page img {*/
+    /*border-radius: 50%;*/
+    /*animation: neon 1s infinite alternate;*/
+/*}*/
 
-.profile p {
-    animation: neon-text 13s steps(1, start) infinite reverse;
-}
+/*.profile-page p {*/
+    /*animation: neon-text 13s steps(1, start) infinite reverse;*/
+/*}*/
 
-.error {
-    font-size: 4vh;
-    color: var(--color1);
-    margin: auto;
-    text-align: center;
-}
+
 
 /*------LoadingStart------*/
 

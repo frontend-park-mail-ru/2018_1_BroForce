@@ -13,28 +13,28 @@ const data = {
             type: 'text',
             name: 'login',
             id: 'signUpLoginInput',
-            class: ['form-input', 'signUpInput'],
+            class: ['form-input', 'login-page__signUpInput'],
             placeholder: 'Login',
         },
         {
             type: 'email',
             name: 'email',
             id: 'signUpEmailInput',
-            class: ['form-input', 'signUpInput'],
+            class: ['form-input', 'login-page__signUpInput'],
             placeholder: 'Email address',
         },
         {
             type: 'password',
             name: 'password',
             id: 'inputPassword',
-            class: ['form-input', 'signUpInput'],
+            class: ['form-input', 'login-page__signUpInput'],
             placeholder: 'Password',
         },
         {
             type: 'password',
             name: 'passwordConfirm',
             id: 'confirmPassword',
-            class: ['form-input', 'signUpInput'],
+            class: ['form-input', 'login-page__signUpInput'],
             placeholder: 'Confirm Password',
         },
     ],
@@ -45,18 +45,18 @@ const data = {
             class: 'form-input',
     },
 
-    classToFind: 'signUpInput',
+    classToFind: 'login-page__signUpInput',
 };
 
 export default class SignUp extends MainComponent {
     constructor() {
-        super('div', ['login'], {});
+        super('div', ['login-page'], {});
     }
 
     build() {
-        this.append((new Block('p', 'Sign up', ['form-input'], {})).render());
+        this.append((new Block('p', 'Sign up', ['menu_title'], {})).render());
         this.append(new Form(data).render());
-        this.append(new Button('Back', ['btnDiv'], 'signUpBackBtn').render());
+        this.append(new Button('Back', ['main-page__menu__button'], 'signUpBackBtn').render());
         document.getElementById('main').appendChild(this.render());
 
         const signUpBackBtn = document.getElementById('signUpBackBtn');
