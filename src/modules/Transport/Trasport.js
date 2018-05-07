@@ -1,6 +1,8 @@
 const server='';
 
 const urlBack = 'https://apoj.herokuapp.com';
+// const urlBack = 'https://broforce-02-2018.herokuapp.com/api';
+
 
 /**
  * Module with methods for HTTP-requests
@@ -37,7 +39,7 @@ export default class Transport {
         const url = server+adr;
         const fPar = {
             method: method,
-            mode: 'cors',
+            // mode: 'cors',
             credentials: 'include',
         };
         if (method === 'post') {
