@@ -139,6 +139,19 @@ html {
 /*}*/
 
 
+.game-back-btn {
+    width: 10%;
+    position: absolute;
+    margin: 0;
+}
+
+.game-score {
+    position: absolute;
+    color: white;
+    margin-left: 48%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
 
 /*------LoadingStart------*/
 
