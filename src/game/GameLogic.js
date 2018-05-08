@@ -10,13 +10,17 @@ export default class GameLogic {
         this.canvas.height = window.innerHeight;
         this.context = this.canvas.getContext('2d');
 
-        this.MAX_ENEMY_RADIUS = 100;
+        console.log(this.canvas.width, this.canvas.height);
+
+        this.MAX_USER_RADIUS = 100;
+        this.MAX_ENEMY_RADIUS = 50;
         this.ENEMIES_COUNT = 30;
         this.USER_RADIUS = 30;
         this.animationId = null;
         this.colorArray = ['#fa4c2b', '#6aff6e', '#ffff82', '#ffce72', '#fa4c2b', '#0bfcff'];
         this.divineShield = true;
         setTimeout((()=> this.divineShield = false), 3000);
+        this.enemyArray = [];
 
         this.keyW = false;
         this.keyA = false;
@@ -29,8 +33,9 @@ export default class GameLogic {
         gameText.innerHTML = '';
 
         this.eventResize = window.addEventListener('resize', function() {
-            this.canvas.width = window.innerWidth;
-            this.canvas.height = window.innerHeight;
+            let canvas = document.querySelector('canvas');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         });
 
         this.eventKeyDown = document.addEventListener('keydown', (event) => {
@@ -97,18 +102,17 @@ export default class GameLogic {
             }
         });
 
-        const enemyArray = [];
         const player = new PlayerNew(innerWidth / 2, innerHeight / 2, 2, this.USER_RADIUS, this.context, this.colorArray);
 
         const initEnemies = () => {
             for (let i = 0; i < this.ENEMIES_COUNT; i++) {
-                const radius = Math.random() * 50 + 5;
+                const radius = Math.random() * this.MAX_ENEMY_RADIUS + 5;
                 const x = Math.random() * (innerWidth - radius * 2) + radius;
                 const y = Math.random() * (innerHeight - radius * 2) + radius;
                 const dx = (Math.random() - 0.5);
                 const dy = (Math.random() - 0.5);
 
-                enemyArray.push(new Enemy(x, y, dx, dy, radius, this.context, this.colorArray));
+                this.enemyArray.push(new Enemy(x, y, dx, dy, radius, this.context, this.colorArray));
             }
         };
 
@@ -129,18 +133,18 @@ export default class GameLogic {
             const eatenEnemies = [];
             const eatenEnemiesRadius = [];
 
-            for (let i = 0; i < enemyArray.length; i++) {
-                enemyArray[i].update();
+            for (let i = 0; i < this.enemyArray.length; i++) {
+                this.enemyArray[i].update();
 
                 // Eating
-                const distance = Math.sqrt(Math.pow((enemyArray[i].getEnemyCoord().x - player.getUserCoords().x), 2)
-                    + Math.pow((enemyArray[i].getEnemyCoord().y - player.getUserCoords().y), 2));
-                if (distance < player.getUserCoords().radius / 3 + enemyArray[i].getEnemyCoord().radius) {
-                    if (player.getUserCoords().radius > enemyArray[i].getEnemyCoord().radius) {
+                const distance = Math.sqrt(Math.pow((this.enemyArray[i].getEnemyCoord().x - player.getUserCoords().x), 2)
+                    + Math.pow((this.enemyArray[i].getEnemyCoord().y - player.getUserCoords().y), 2));
+                if (distance < player.getUserCoords().radius / 3 + this.enemyArray[i].getEnemyCoord().radius) {
+                    if (player.getUserCoords().radius > this.enemyArray[i].getEnemyCoord().radius) {
                         const score = document.querySelector('p[name=gameScore]');
-                        score.innerHTML = (+score.innerHTML + Math.round(enemyArray[i].getEnemyCoord().radius)).toString();
+                        score.innerHTML = (+score.innerHTML + Math.round(this.enemyArray[i].getEnemyCoord().radius)).toString();
                         eatenEnemies.push(i);
-                        eatenEnemiesRadius.push(enemyArray[i].getEnemyCoord().radius);
+                        eatenEnemiesRadius.push(this.enemyArray[i].getEnemyCoord().radius);
                     } else {
                         // If user lose
                         if (this.divineShield === false) {
@@ -156,18 +160,18 @@ export default class GameLogic {
             }
             if (eatenEnemies.length !== 0) {
                 eatenEnemies.forEach((item) => {
-                    enemyArray.splice(item, 1);
+                    this.enemyArray.splice(item, 1);
                 });
                 eatenEnemiesRadius.forEach((item) => {
-                    if (player.getUserCoords().radius + item <= this.MAX_ENEMY_RADIUS) {
+                    if (player.getUserCoords().radius + item <= this.MAX_USER_RADIUS) {
                         player.getUserCoords().radius += item;
                     } else {
-                        player.getUserCoords().radius = this.MAX_ENEMY_RADIUS;
+                        player.getUserCoords().radius = this.MAX_USER_RADIUS;
                     }
                 });
             }
             // If user win
-            if (enemyArray.length === 0) {
+            if (this.enemyArray.length === 0) {
                 cancelAnimationFrame(this.animationId);
                 // const gameText = document.querySelector('.game-win');
                 // gameText.innerHTML = "You win";
