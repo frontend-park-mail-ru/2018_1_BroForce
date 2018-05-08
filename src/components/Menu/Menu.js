@@ -8,7 +8,7 @@ import Game from '../../views/Game/GameLogic.js';
 
 export default class Menu extends MainComponent {
     constructor(data) {
-        super('div', [], {});
+        super('div', ['menu_buttons'], {});
         this.data = data;
 
         this.Build();

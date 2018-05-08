@@ -13,14 +13,14 @@ const data = {
             type: 'text',
             name: 'login',
             id: 'signUpLoginInput',
-            class: ['form-input', 'signInInput'],
+            class: ['form-input', 'login-page__signUpInput'],
             placeholder: 'Login',
         },
         {
             type: 'password',
             name: 'password',
             id: 'signInPasswordInput',
-            class: ['form-input', 'signInInput'],
+            class: ['form-input', 'login-page__signUpInput'],
             placeholder: 'Password',
         },
     ],
@@ -31,18 +31,18 @@ const data = {
         class: 'form-input',
     },
 
-    classToFind: 'signInInput',
+    classToFind: 'login-page__signUpInput',
 };
 
 export default class SignIn extends MainComponent {
     constructor() {
-        super('form', ['login'], {});
+        super('form', ['login-page'], {});
     }
 
     build() {
-        this.append((new Block('p', 'Sign in', ['form-input'], {})).render());
+        this.append((new Block('p', 'Sign in', ['menu_title'], {})).render());
         this.append(new Form(data).render());
-        this.append(new Button('Back', ['btnDiv'], 'signInBackBtn').render());
+        this.append(new Button('Back', ['main-page__menu__button'], 'signInBackBtn').render());
         document.getElementById('main').appendChild(this.render());
 
         const signInBackBtn = document.getElementById('signInBackBtn');

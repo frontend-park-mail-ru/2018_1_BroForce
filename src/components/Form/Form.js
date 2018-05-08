@@ -1,5 +1,4 @@
 'use strict';
-
 import MainComponent from '../MainComponent/MainComponent.js';
 import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
@@ -18,17 +17,17 @@ export default class Form extends MainComponent {
         this.classToFind = data.classToFind;
 
         data.fields.forEach((field) => {
-            this.append(new Block('div', '', ['error'], {name: field.name}).render());
+            this.append(new Block('div', '', ['login-page_error'], {name: field.name}).render());
             this.append(new Input(field.type, field.id, field.name, field.class, field.placeholder).render());
         });
 
-        this.backBtn = new Button(data.button.text, ['btnDiv'], data.button.id).render();
+        this.backBtn = new Button(data.button.text, ['main-page__menu__button'], data.button.id).render();
         this.append(this.backBtn);
 
         this.backBtn.addEventListener('click', this.onSubmit.bind(this));
 
         this.inputs = [...this.render().getElementsByClassName(this.classToFind)];
-        this.errorFields = [...this.render().getElementsByClassName('error')];
+        this.errorFields = [...this.render().getElementsByClassName('login-page_error')];
 
         this.inputs.forEach((input, i) => {
                 input.addEventListener('blur', () => {

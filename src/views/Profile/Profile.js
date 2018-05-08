@@ -11,7 +11,7 @@ import Transport from '../../modules/Transport/Trasport.js';
 
 export default class Profile extends MainComponent {
     constructor() {
-        super('div', ['profile'], {style: 'margin-top: 2%'});
+        super('div', ['profile-page'], {style: 'margin-top: 2%'});
     }
 
     build() {
@@ -44,9 +44,9 @@ export default class Profile extends MainComponent {
             {type: 'hidden', id: 'password', name: 'password', placeholder: 'Enter password'});
         this.append(this.password.render());
 
-        this.append(new Button('Change avatar', ['btnDiv'], 'changeAvatarBtn').render());
+        this.append(new Button('Change avatar', ['main-page__menu__button'], 'changeAvatarBtn').render());
 
-        this.buttonBack = new Button('Back', ['btnDiv'], 'profileBackBtn');
+        this.buttonBack = new Button('Back', ['main-page__menu__button'], 'profileBackBtn');
         this.append(this.buttonBack.render());
 
         document.getElementById('main').appendChild(this.render());

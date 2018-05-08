@@ -13,37 +13,37 @@ const logged = {
     buttons: [
         {
             text: 'Singleplayer',
-            class: ['btnDiv'],
+            class: ['main-page__menu__button'],
             id: 'singlePlayerBtn',
             url: '/singleplayer/',
         },
         {
             text: 'Multiplayer',
-            class: ['btnDiv'],
+            class: ['main-page__menu__button'],
             id: 'multiPlayerBtn',
             url: '/multiplayer/',
         },
         {
             text: 'Leaders',
-            class: ['btnDiv'],
+            class: ['main-page__menu__button'],
             id: 'leadersBtn',
             url: '/leaderboard/',
         },
         {
             text: 'Profile',
-            class: ['btnDiv'],
+            class: ['main-page__menu__button'],
             id: 'profileBtn',
             url: '/profile/',
         },
         {
             text: 'About',
-            class: ['btnDiv'],
+            class: ['main-page__menu__button'],
             id: 'aboutBtn',
             url: '/about/',
         },
         {
             text: 'Sign Out',
-            class: ['btnDiv'],
+            class: ['main-page__menu__button'],
             id: 'signOutBtn',
             url: '/',
         },
@@ -54,25 +54,25 @@ const unlogged = {
     buttons: [
         {
             text: 'Play',
-            class: ['btnDiv'],
+            class: ['main-page__menu__button'],
             id: 'singlePlayerBtn',
             url: '/singleplayer/',
         },
         {
             text: 'Sign In',
-            class: ['btnDiv'],
+            class: ['main-page__menu__button'],
             id: 'signInBtn',
             url: '/signin/',
         },
         {
             text: 'Sign Up',
-            class: ['btnDiv'],
+            class: ['main-page__menu__button'],
             id: 'signUpBtn',
             url: '/signup/',
         },
         {
             text: 'About',
-            class: ['btnDiv'],
+            class: ['main-page__menu__button'],
             id: 'aboutBtn',
             url: '/about/',
         },
@@ -81,11 +81,11 @@ const unlogged = {
 
 export default class Main extends MainComponent {
     constructor() {
-        super('div', ['menu'], {});
+        super('div', ['main-page__menu'], {});
     }
 
     build() {
-        this.append((new Block('p', 'Neon Light', ['menu-logo'], {})).render());
+        this.append((new Block('p', 'NEON FIGHT', ['main-page__logo'], {})).render());
         this.append(new Menu(Main.GetData()).render());
         document.getElementById('main').appendChild(this.render());
     }
