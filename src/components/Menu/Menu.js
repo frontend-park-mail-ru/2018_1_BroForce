@@ -4,7 +4,7 @@ import MainComponent from '../MainComponent/MainComponent.js';
 import Button from '../Button/Button.js';
 import Router from '../../modules/Router/Router.js';
 import UserService from '../../Services/UserService/UserService.js';
-import Game from '../../views/Game/GameLogic.js';
+import Game from '../../game/GameLogic.js';
 
 export default class Menu extends MainComponent {
     constructor(data) {
@@ -19,9 +19,7 @@ export default class Menu extends MainComponent {
             const button = new Button(item.text, [item.class], item.id).render();
 
             if (item.url === '/singleplayer/') {
-                console.log('fuk');
                 button.addEventListener('click', () => {
-                    console.log('keeeek');
                     Router.go(item.url);
                     new Game().Start();
                 });
