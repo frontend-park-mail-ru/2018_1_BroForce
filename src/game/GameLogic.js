@@ -113,11 +113,14 @@ export default class GameLogic {
         };
 
         const animate = () => {
+            // User lose
             if (player.getUserCoords().radius <= 0) {
                 player.getUserCoords().radius = 0;
                 cancelAnimationFrame(this.animationId);
                 this.Start();
-                return;
+                const score = document.querySelector('p[name=gameScore]');
+                score.innerHTML = "0";
+                return
             }
             this.animationId = requestAnimationFrame(animate);
             this.context.clearRect(0, 0, innerWidth, innerHeight);
@@ -144,11 +147,13 @@ export default class GameLogic {
                             player.getUserCoords().radius = 0;
                             cancelAnimationFrame(this.animationId);
                             this.Start();
+                            const score = document.querySelector('p[name=gameScore]');
+                            score.innerHTML = "0";
+                            return
                         }
                     }
                 }
             }
-
             if (eatenEnemies.length !== 0) {
                 eatenEnemies.forEach((item) => {
                     enemyArray.splice(item, 1);
@@ -161,12 +166,11 @@ export default class GameLogic {
                     }
                 });
             }
-
             //If user win
             if (enemyArray.length === 0) {
                 cancelAnimationFrame(this.animationId);
                 const gameText = document.querySelector('.game-win');
-                gameText.innerHTML = "You win";
+                // gameText.innerHTML = "You win";
             }
         };
 
@@ -176,9 +180,9 @@ export default class GameLogic {
 
     Stop() {
         cancelAnimationFrame(this.animationId);
-        removeEventListener(this.eventResize);
-        removeEventListener(this.eventKeyDown);
-        removeEventListener(this.eventKeyUp);
+        document.removeEventListener("resize", this.eventResize, false);
+        document.removeEventListener("keydown", this.eventKeyDown, false);
+        document.removeEventListener("keyup", this.eventKeyUp, false);
     }
 }
 

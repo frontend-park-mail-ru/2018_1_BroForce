@@ -30,10 +30,10 @@ export default class Player {
     };
 
     update(keyW, keyS, keyA, keyD) {
-        const borderLeft = this.userCoord.x - this.userCoord.radius >= 0;
-        const borderRight = this.userCoord.x + this.userCoord.radius <= innerWidth;
-        const borderUp = this.userCoord.y - this.userCoord.radius > 0;
-        const borderDown = this.userCoord.y + this.userCoord.radius < innerHeight;
+        const borderLeft = this.userCoord.x - this.userCoord.radius / 1.3 >= 0;
+        const borderRight = this.userCoord.x + this.userCoord.radius / 1.3 <= innerWidth;
+        const borderUp = this.userCoord.y - this.userCoord.radius / 1.3 > 0;
+        const borderDown = this.userCoord.y + this.userCoord.radius / 1.3 < innerHeight;
 
         if (keyA === true && borderLeft) {
             this.userCoord.x -= this.userCoord.speed;
