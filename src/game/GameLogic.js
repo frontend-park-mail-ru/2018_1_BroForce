@@ -26,7 +26,7 @@ export default class GameLogic {
 
     Start() {
         const gameText = document.querySelector('.game-win');
-        gameText.innerHTML = "";
+        gameText.innerHTML = '';
 
         this.eventResize = window.addEventListener('resize', function() {
             this.canvas.width = window.innerWidth;
@@ -119,8 +119,8 @@ export default class GameLogic {
                 cancelAnimationFrame(this.animationId);
                 this.Start();
                 const score = document.querySelector('p[name=gameScore]');
-                score.innerHTML = "0";
-                return
+                score.innerHTML = '0';
+                return;
             }
             this.animationId = requestAnimationFrame(animate);
             this.context.clearRect(0, 0, innerWidth, innerHeight);
@@ -142,14 +142,14 @@ export default class GameLogic {
                         eatenEnemies.push(i);
                         eatenEnemiesRadius.push(enemyArray[i].getEnemyCoord().radius);
                     } else {
-                        //If user lose
+                        // If user lose
                         if (this.divineShield === false) {
                             player.getUserCoords().radius = 0;
                             cancelAnimationFrame(this.animationId);
                             this.Start();
                             const score = document.querySelector('p[name=gameScore]');
-                            score.innerHTML = "0";
-                            return
+                            score.innerHTML = '0';
+                            return;
                         }
                     }
                 }
@@ -166,10 +166,10 @@ export default class GameLogic {
                     }
                 });
             }
-            //If user win
+            // If user win
             if (enemyArray.length === 0) {
                 cancelAnimationFrame(this.animationId);
-                const gameText = document.querySelector('.game-win');
+                // const gameText = document.querySelector('.game-win');
                 // gameText.innerHTML = "You win";
             }
         };
@@ -180,9 +180,9 @@ export default class GameLogic {
 
     Stop() {
         cancelAnimationFrame(this.animationId);
-        document.removeEventListener("resize", this.eventResize, false);
-        document.removeEventListener("keydown", this.eventKeyDown, false);
-        document.removeEventListener("keyup", this.eventKeyUp, false);
+        document.removeEventListener('resize', this.eventResize, false);
+        document.removeEventListener('keydown', this.eventKeyDown, false);
+        document.removeEventListener('keyup', this.eventKeyUp, false);
     }
 }
 
