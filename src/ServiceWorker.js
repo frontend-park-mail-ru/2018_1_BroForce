@@ -14,11 +14,13 @@ this.addEventListener('install', (event) => {
 
 this.addEventListener('fetch', (event) => {
     event.respondWith(caches.match(event.request).then((cachedResponse) => {
-            // Get cache
-            if (cachedResponse) {
-                return cachedResponse;
-            }
-
+        if (navigator.onLine) {
             return fetch(event.request);
-        }));
+        }
+        // Get cache
+        if (cachedResponse) {
+            return cachedResponse;
+        }
+        return fetch(event.request);
+    }));
 });

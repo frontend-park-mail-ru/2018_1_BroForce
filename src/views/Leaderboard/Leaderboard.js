@@ -11,7 +11,7 @@ import UserService from '../../Services/UserService/UserService.js';
 
 export default class Leaderboard extends MainComponent {
     constructor() {
-        super('div', ['leaderBoard'], {});
+        super('div', ['leaderboard-page'], {});
         this.usersFromBack = null;
     }
 
@@ -25,7 +25,7 @@ export default class Leaderboard extends MainComponent {
             this.append(this.usersTable.render());
             this.usersOnLeaderboard = new Pagination(this.usersOnLeaderBoard, {});
             this.append(this.usersOnLeaderboard.render());
-            this.append(new Button('Back', ['btnDiv'], 'leaderBoardBackBtn').render());
+            this.append(new Button('Back', ['main-page__menu__button'], 'leaderBoardBackBtn').render());
             document.getElementById('main').appendChild(this.render());
 
             this.initEvents();
@@ -69,6 +69,8 @@ export default class Leaderboard extends MainComponent {
             usersFromBack.score = users[i].sscore;
             usersOnPage.users.push(usersFromBack);
         });
+
+        // const Hogan = require("hogan.js");
 
         const template = Hogan.compile('{{#users}} {{name}}! - {{score}}<br/> {{/users}}');
         return template.render(usersOnPage);

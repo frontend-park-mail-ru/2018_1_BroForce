@@ -19,7 +19,7 @@ class UserService {
      * @return {Transport|*}
      */
     GetData() {
-        return Transport.Get('/user').then((userData) => {
+        return Transport.Get('/loginfo').then((userData) => {
             this.user = userData;
         });
     }
