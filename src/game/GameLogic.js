@@ -121,7 +121,7 @@ export default class GameLogic {
             if (player.getUserCoords().radius <= 0) {
                 player.getUserCoords().radius = 0;
                 cancelAnimationFrame(this.animationId);
-                this.Start();
+                // this.Start();
                 const score = document.querySelector('p[name=gameScore]');
                 score.innerHTML = '0';
                 return;
@@ -150,7 +150,7 @@ export default class GameLogic {
                         if (this.divineShield === false) {
                             player.getUserCoords().radius = 0;
                             cancelAnimationFrame(this.animationId);
-                            this.Start();
+                            // this.Start();
                             const score = document.querySelector('p[name=gameScore]');
                             score.innerHTML = '0';
                             return;
