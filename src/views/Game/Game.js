@@ -1,7 +1,7 @@
 'use strict';
 
 import MainComponent from '../../components/MainComponent/MainComponent.js';
-import GameLogic from './GameLogic.js';
+import GameLogic from '../../game/GameLogic.js';
 import Button from '../../components/Button/Button.js';
 import Router from '../../modules/Router/Router.js';
 import Block from '../../components/Block/Block.js';
