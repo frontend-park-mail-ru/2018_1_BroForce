@@ -10,17 +10,14 @@ export default class GameLogic {
         this.canvas.height = window.innerHeight;
         this.context = this.canvas.getContext('2d');
 
-        console.log(this.canvas.width, this.canvas.height);
-
         this.MAX_USER_RADIUS = 100;
         this.MAX_ENEMY_RADIUS = 50;
         this.ENEMIES_COUNT = 30;
         this.USER_RADIUS = 30;
         this.animationId = null;
         this.colorArray = ['#fa4c2b', '#6aff6e', '#ffff82', '#ffce72', '#fa4c2b', '#0bfcff'];
-        this.divineShield = true;
-        setTimeout((()=> this.divineShield = false), 3000);
         this.enemyArray = [];
+        this.userWin = false;
 
         this.keyW = false;
         this.keyA = false;
@@ -29,8 +26,8 @@ export default class GameLogic {
     }
 
     Start() {
-        const gameText = document.querySelector('.game-win');
-        gameText.innerHTML = '';
+        let divineShield = true;
+        setTimeout((()=> divineShield = false), 3000);
 
         this.eventResize = window.addEventListener('resize', function() {
             let canvas = document.querySelector('canvas');
@@ -117,13 +114,9 @@ export default class GameLogic {
         };
 
         const animate = () => {
-            // User lose
-            if (player.getUserCoords().radius <= 0) {
-                player.getUserCoords().radius = 0;
-                cancelAnimationFrame(this.animationId);
-                // this.Start();
-                const score = document.querySelector('p[name=gameScore]');
-                score.innerHTML = '0';
+            // User too small, lose
+            if (player.getUserCoords().radius <= 0.5) {
+                this.Restart();
                 return;
             }
             this.animationId = requestAnimationFrame(animate);
@@ -146,13 +139,10 @@ export default class GameLogic {
                         eatenEnemies.push(i);
                         eatenEnemiesRadius.push(this.enemyArray[i].getEnemyCoord().radius);
                     } else {
-                        // If user lose
-                        if (this.divineShield === false) {
-                            player.getUserCoords().radius = 0;
-                            cancelAnimationFrame(this.animationId);
-                            // this.Start();
-                            const score = document.querySelector('p[name=gameScore]');
-                            score.innerHTML = '0';
+                        // If user was eaten
+                        if (divineShield === false) {
+                            this.Restart();
+
                             return;
                         }
                     }
@@ -172,9 +162,8 @@ export default class GameLogic {
             }
             // If user win
             if (this.enemyArray.length === 0) {
-                cancelAnimationFrame(this.animationId);
-                // const gameText = document.querySelector('.game-win');
-                // gameText.innerHTML = "You win";
+                this.userWin = true;
+                this.Restart();
             }
         };
 
@@ -183,10 +172,29 @@ export default class GameLogic {
     }
 
     Stop() {
+        this.enemyArray = [];
         cancelAnimationFrame(this.animationId);
         document.removeEventListener('resize', this.eventResize, false);
         document.removeEventListener('keydown', this.eventKeyDown, false);
         document.removeEventListener('keyup', this.eventKeyUp, false);
     }
-}
 
+    Restart() {
+        cancelAnimationFrame(this.animationId);
+        this.Stop();
+
+        const score = document.querySelector('p[name=gameScore]');
+        const gameText = document.querySelector('.game-page__text__ending');
+        const gameRestartBtn = document.querySelector('.game-page__button__restart');
+
+        let gameEndingText = 'Fail. ';
+
+        if (this.userWin === true) {
+            gameEndingText = 'You are win! ';
+        }
+
+        gameText.innerHTML = gameEndingText + 'Score: ' + score.innerHTML;
+        gameRestartBtn.style.display = 'block';
+        score.innerHTML = '0';
+    }
+}
