@@ -134,6 +134,7 @@ html {
 
 .profile-page img {
     border-radius: 50%;
+    size: 50px;
     animation: neon 1s infinite alternate;
 }
 
