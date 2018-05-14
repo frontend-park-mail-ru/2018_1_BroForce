@@ -122,8 +122,8 @@ export default class GameLogic {
             }
         });
 
-        this.eventMouseDown = document.addEventListener('mousedown', (event) => {
-            player.getUserCoords()
+        this.eventMouseDown = document.addEventListener('mousemove', (event) => {
+            console.log(event.x, event.y);
             if (event.x < player.getUserCoords().x) {
                 this.keyD = true;
                 setTimeout((()=> this.keyD = false), 100);
@@ -146,7 +146,7 @@ export default class GameLogic {
                 this.Start();
                 windowResize = false;
                 const score = document.querySelector('p[name=gameScore]');
-                score.innerHTML = '0'
+                score.innerHTML = '0';
             }
 
             // User too small, lose
