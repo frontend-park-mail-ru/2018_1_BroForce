@@ -8,6 +8,7 @@ import ImageComp from '../../components/ImageComp/ImageComp.js';
 import Router from '../../modules/Router/Router.js';
 import UserService from '../../Services/UserService/UserService.js';
 import Transport from '../../modules/Transport/Trasport.js';
+import * as Hogan from 'hogan.js';
 
 export default class Profile extends MainComponent {
     constructor() {

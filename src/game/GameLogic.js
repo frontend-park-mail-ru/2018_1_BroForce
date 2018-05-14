@@ -10,17 +10,14 @@ export default class GameLogic {
         this.canvas.height = window.innerHeight;
         this.context = this.canvas.getContext('2d');
 
-        console.log(this.canvas.width, this.canvas.height);
-
         this.MAX_USER_RADIUS = 100;
         this.MAX_ENEMY_RADIUS = 50;
         this.ENEMIES_COUNT = 30;
         this.USER_RADIUS = 30;
         this.animationId = null;
         this.colorArray = ['#fa4c2b', '#6aff6e', '#ffff82', '#ffce72', '#fa4c2b', '#0bfcff'];
-        this.divineShield = true;
-        setTimeout((()=> this.divineShield = false), 3000);
         this.enemyArray = [];
+        this.userWin = false;
 
         this.keyW = false;
         this.keyA = false;
@@ -29,13 +26,36 @@ export default class GameLogic {
     }
 
     Start() {
-        const gameText = document.querySelector('.game-win');
-        gameText.innerHTML = '';
+        let divineShield = true;
+        setTimeout((()=> divineShield = false), 3000);
+        let windowResize = false;
+
+        // if (this.canvas.height > this.canvas.width) {
+        //     // this.ENEMIES_COUNT = 100
+        //     const testSize = this.canvas.width * this.canvas.height
+        // } else {
+        //     this.ENEMIES_COUNT = 30
+        // }
+
+        const player = new PlayerNew(innerWidth / 2, innerHeight / 2, 2, this.USER_RADIUS, this.context, this.colorArray);
+
+        const initEnemies = () => {
+            for (let i = 0; i < this.ENEMIES_COUNT; i++) {
+                const radius = Math.random() * this.MAX_ENEMY_RADIUS + 5;
+                const x = Math.random() * (innerWidth - radius * 2) + radius;
+                const y = Math.random() * (innerHeight - radius * 2) + radius;
+                const dx = (Math.random() - 0.5);
+                const dy = (Math.random() - 0.5);
+
+                this.enemyArray.push(new Enemy(x, y, dx, dy, radius, this.context, this.colorArray));
+            }
+        };
 
         this.eventResize = window.addEventListener('resize', function() {
             let canvas = document.querySelector('canvas');
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            windowResize = true;
         });
 
         this.eventKeyDown = document.addEventListener('keydown', (event) => {
@@ -102,28 +122,36 @@ export default class GameLogic {
             }
         });
 
-        const player = new PlayerNew(innerWidth / 2, innerHeight / 2, 2, this.USER_RADIUS, this.context, this.colorArray);
-
-        const initEnemies = () => {
-            for (let i = 0; i < this.ENEMIES_COUNT; i++) {
-                const radius = Math.random() * this.MAX_ENEMY_RADIUS + 5;
-                const x = Math.random() * (innerWidth - radius * 2) + radius;
-                const y = Math.random() * (innerHeight - radius * 2) + radius;
-                const dx = (Math.random() - 0.5);
-                const dy = (Math.random() - 0.5);
-
-                this.enemyArray.push(new Enemy(x, y, dx, dy, radius, this.context, this.colorArray));
+        this.eventMouseDown = document.addEventListener('mousemove', (event) => {
+            console.log(event.x, event.y);
+            if (event.x < player.getUserCoords().x) {
+                this.keyD = true;
+                setTimeout((()=> this.keyD = false), 100);
+            } else if (event.x > player.getUserCoords().x) {
+                this.keyA = true;
+                setTimeout((()=> this.keyA = false), 100);
             }
-        };
+            if (event.y > player.getUserCoords().y) {
+                this.keyW = true;
+                setTimeout((()=> this.keyW = false), 100);
+            } else if (event.y < player.getUserCoords().y) {
+                this.keyS = true;
+                setTimeout((()=> this.keyS = false), 100);
+            }
+        });
 
         const animate = () => {
-            // User lose
-            if (player.getUserCoords().radius <= 0) {
-                player.getUserCoords().radius = 0;
-                cancelAnimationFrame(this.animationId);
-                // this.Start();
+            if (windowResize === true) {
+                this.Stop();
+                this.Start();
+                windowResize = false;
                 const score = document.querySelector('p[name=gameScore]');
                 score.innerHTML = '0';
+            }
+
+            // User too small, lose
+            if (player.getUserCoords().radius <= 0.5) {
+                this.Restart();
                 return;
             }
             this.animationId = requestAnimationFrame(animate);
@@ -142,17 +170,14 @@ export default class GameLogic {
                 if (distance < player.getUserCoords().radius / 3 + this.enemyArray[i].getEnemyCoord().radius) {
                     if (player.getUserCoords().radius > this.enemyArray[i].getEnemyCoord().radius) {
                         const score = document.querySelector('p[name=gameScore]');
-                        score.innerHTML = (+score.innerHTML + Math.round(this.enemyArray[i].getEnemyCoord().radius)).toString();
+                        score.innerHTML = (+score.innerHTML +
+                            Math.round(this.enemyArray[i].getEnemyCoord().radius)).toString();
                         eatenEnemies.push(i);
                         eatenEnemiesRadius.push(this.enemyArray[i].getEnemyCoord().radius);
                     } else {
-                        // If user lose
-                        if (this.divineShield === false) {
-                            player.getUserCoords().radius = 0;
-                            cancelAnimationFrame(this.animationId);
-                            // this.Start();
-                            const score = document.querySelector('p[name=gameScore]');
-                            score.innerHTML = '0';
+                        // If user was eaten
+                        if (divineShield === false) {
+                            this.Restart();
                             return;
                         }
                     }
@@ -172,21 +197,42 @@ export default class GameLogic {
             }
             // If user win
             if (this.enemyArray.length === 0) {
-                cancelAnimationFrame(this.animationId);
-                // const gameText = document.querySelector('.game-win');
-                // gameText.innerHTML = "You win";
+                this.userWin = true;
+                this.Restart();
             }
         };
-
         initEnemies();
         animate();
     }
 
     Stop() {
+        this.enemyArray = [];
         cancelAnimationFrame(this.animationId);
         document.removeEventListener('resize', this.eventResize, false);
         document.removeEventListener('keydown', this.eventKeyDown, false);
         document.removeEventListener('keyup', this.eventKeyUp, false);
+        document.removeEventListener('mousedown', this.eventMouseDown, false);
+    }
+
+    Restart() {
+        cancelAnimationFrame(this.animationId);
+        this.Stop();
+
+        const score = document.querySelector('p[name=gameScore]');
+        const gameText = document.querySelector('.game-page__text__ending');
+        const gameRestartBtn = document.querySelector('.game-page__button__restart');
+        let gameEndingText = 'Fail. ';
+
+        if (this.userWin === true) {
+            gameEndingText = 'You win! ';
+        }
+
+        gameText.innerHTML = gameEndingText + 'Score: ' + score.innerHTML;
+        gameRestartBtn.style.display = 'block';
+        score.innerHTML = '0';
+
+        if (this.userWin === true) {
+            this.userWin = false;
+        }
     }
 }
-

@@ -51,6 +51,9 @@ export default class Player {
             this.userCoord.y += this.userCoord.speed;
             this.userCoord.radius -= 0.1;
         }
+        if (keyW === false && keyD === false && keyA === false && keyD === false) {
+            this.userCoord.radius -= 0.02;
+        }
 
         this.draw();
     };
