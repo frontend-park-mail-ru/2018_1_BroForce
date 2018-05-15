@@ -17,12 +17,12 @@ export default class Leaderboard extends MainComponent {
     }
 
     build() {
-        this.usersOnLeaderBoard = 2;
-
+        this.usersOnLeaderBoard = 4;
+        this.append((new Block('p', 'Leaders', ['menu_title'], {})).render());
         this.GetUsersFromBack(this.usersOnLeaderBoard, 0).catch((response) => {
             console.log(response);
         }).then(() => {
-            this.usersTable = new Block('p', this.pagination(this.usersFromBack), [], {});
+            this.usersTable = new Block('p', this.pagination(this.usersFromBack), ['leaderboard-page__users'], {});
             this.append(this.usersTable.render());
             this.usersOnLeaderboard = new Pagination(this.usersOnLeaderBoard, {});
             this.append(this.usersOnLeaderboard.render());

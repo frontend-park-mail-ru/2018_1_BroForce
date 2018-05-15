@@ -5,18 +5,18 @@ import Block from '../Block/Block.js';
 
 export default class Pagination extends MainComponent {
     constructor(countOfPages, attrs ={}) {
-        super('div', ['pagination'], attrs);
+        super('div', ['leaderboard-page__pagination'], attrs);
         this.countOfPages = countOfPages;
         this.currentPage = 1;
 
         this.initEvents();
 
-        this.append((new Block('a', '<<', [], {})).render());
-        this.append((new Block('a', 1, ['active'], {})).render());
+        this.append((new Block('a', '<<', ['leaderboard-page__pagination_arrow'], {})).render());
+        this.append((new Block('a', 1, ['leaderboard-page__pagination_active', 'leaderboard-page__pagination_leaf'], {})).render());
         for (let i = 1; i < this.countOfPages; i++) {
-            this.append((new Block('a', i + 1, [], {})).render());
+            this.append((new Block('a', i + 1, ['leaderboard-page__pagination_leaf'], {})).render());
         }
-        this.append((new Block('a', '>>', [], {})).render());
+        this.append((new Block('a', '>>', ['leaderboard-page__pagination_arrow'], {})).render());
     }
 
     getNewPage(selectedPage) {
@@ -41,7 +41,7 @@ export default class Pagination extends MainComponent {
     }
 
     changeActive(page) {
-        this.render().querySelector('.active').classList.remove('active');
-        this.render().querySelectorAll('a')[page].setAttribute('class', 'active');
+        this.render().querySelector('.leaderboard-page__pagination_active').classList.remove('leaderboard-page__pagination_active');
+        this.render().querySelectorAll('a')[page].setAttribute('class', 'leaderboard-page__pagination_active');
     }
 }
