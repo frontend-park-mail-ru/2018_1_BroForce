@@ -8,16 +8,21 @@ import Block from '../../components/Block/Block.js';
 
 export default class Game extends MainComponent {
     constructor() {
-        super('div', ['game'], {});
+        super('div', ['game-page'], {});
     }
 
     build() {
-        const GameBackBtn =new Button('Back', ['main-page__menu__button', 'game-back-btn'], 'btnBack');
+        const GameBackBtn =new Button('Back', ['main-page__menu__button', 'game-page__button__back'], 'btnBack');
         this.append(GameBackBtn.render());
-        this.append(new Block('p', '0', ['game-score'], {name: 'gameScore'}).render());
-        this.append(new Block('p', '', ['game-win'], {name: 'gameWin'}).render());
+        this.append(new Block('p', '0', ['game-page__text__score'], {name: 'gameScore'}).render());
+        this.append(new Block('p', '', ['game-page__text__ending'], {name: 'gameWin'}).render());
 
-        this.append(new MainComponent('canvas', ['game-canvas'], {}).render());
+        // Trying to do restart btn
+        const GameRestartBtn =new Button('Restart', ['main-page__menu__button', 'game-page__button__restart'], 'btnRestart');
+        GameRestartBtn.render().style.display = 'none';
+        this.append(GameRestartBtn.render());
+
+        this.append(new MainComponent('canvas', ['game-page__canvas'], {}).render());
         document.getElementById('main').appendChild(this.render());
 
         const game = new GameLogic();
@@ -26,6 +31,14 @@ export default class Game extends MainComponent {
         GameBackBtn.render().addEventListener('click', () =>{
             game.Stop();
             Router.go('/');
+        });
+
+        GameRestartBtn.render().addEventListener('click', () => {
+            game.Start();
+            GameRestartBtn.render().style.display = 'none';
+
+            const gameText = document.querySelector('.game-page__text__ending');
+            gameText.innerHTML = '';
         });
     }
 }
