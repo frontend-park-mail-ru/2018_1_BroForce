@@ -4,7 +4,10 @@ this.addEventListener('install', (event) => {
         .then((cache) => {
             // Upload in cache files
             return cache.addAll([
+                '/build/main.js',
+                '/build/main.css',
                 '/img/user-default.jpg',
+                '/img/background.jpg',
                 '/index.html',
             ]);
         }).catch((error) => {
