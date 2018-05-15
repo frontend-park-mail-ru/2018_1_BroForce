@@ -122,7 +122,7 @@ export default class GameLogic {
             }
         });
 
-        this.eventMouseDown = document.addEventListener('mousemove', (event) => {
+        this.eventMouseDown = document.addEventListener('mousedown', (event) => {
             console.log(event.x, event.y);
             if (event.x < player.getUserCoords().x) {
                 this.keyD = true;
