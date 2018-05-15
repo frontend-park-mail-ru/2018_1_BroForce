@@ -85,7 +85,7 @@ export default class Main extends MainComponent {
     }
 
     build() {
-        this.append((new Block('p', 'NEON FIGHT', ['main-page__logo'], {})).render());
+        this.append((new Block('p', 'NEON FIGHT', ['main-page__menu__logo'], {})).render());
         this.append(new Menu(Main.GetData()).render());
         document.getElementById('main').appendChild(this.render());
     }
@@ -101,3 +101,4 @@ export default class Main extends MainComponent {
         this.build();
     }
 }
+

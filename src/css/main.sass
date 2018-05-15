@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Comfortaa|Monoton|Vibur|Raleway|Bangers')
+@import url("https://fonts.googleapis.com/css?family=Monoton|Vibur|Raleway|Bangers")
 @import "flicker-animation"
 @import "loading-animation"
 @import "game-style"
@@ -7,60 +7,64 @@ $color1: #E8175D
 $color2: #E84A5F
 $color3: #FF847C
 $color4: #E1F5FE
+$color5: #141414
 
-html 
-    background-size: cover
-    background: #141414 url("../img/background.jpg") center
-    font-family: "Vibur", cursive
-
-.main-page__menu 
-  .main-page__menu__button
-      display: flex
-      justify-content: center
-      border: 0
-      margin-bottom: 1vh
-      cursor: pointer
-      font-size: 6vh
-      color: $color4
-      background-color: rgba(0, 0, 0, 0)
-      animation: neon 2s infinite alternate
-  .main-page__menu__logo
-    margin:
-      top: 7vh
-      bottom: 3vh
-    text-align: center
-    color: $color1
-    font-family: Monoton, cursive
-    font-size: 10vh
-    animation: neon-text 13s steps(1, start) infinite reverse
-
-.login-page
-  .login-page__signInInput
-    @extend %login
-  .login-page__signUpInput
-    @extend %login
-  .login-page_error
-      font-size: 3vh
-      color: $color1
-      margin: auto
-      text-align: center
-
-%login
+%center
+  display: flex
+  align-items: center
+  justify-content: center
   margin:
     left: auto
     right: auto
-    bottom: 2%
+    bottom: 2vh
+
+%input
   min-height: 4vh
-  display: flex
-  justify-content: center
   flex-direction: column
   border-radius: 25px
   padding-left: 20px
   font-size: 2vh
   outline: none
 
+html 
+    background-size: cover
+    background: $color5 url("../img/background.jpg") center
+    font-family: "Vibur", cursive
+
+
+.main-page__menu__button
+  @extend %center
+  border: 0
+  cursor: pointer
+  font-size: 6vh
+  color: $color4
+  background-color: rgba(0, 0, 0, 0)
+  animation: neon 2s infinite alternate
+.main-page__menu__logo
+  margin:
+    top: 7vh
+    bottom: 3vh
+  text-align: center
+  color: $color1
+  font-family: Monoton, cursive
+  font-size: 10vh
+  animation: neon-text 13s steps(1, start) infinite reverse
+
+.login-page
+  .login-page__signInInput
+    @extend %input
+    @extend %center
+  .login-page__signUpInput
+    @extend %input
+    @extend %center
+  .login-page_error
+      font-size: 3vh
+      color: $color1
+      margin: auto
+      text-align: center
+
 .menu_title
-    margin-top: 7vh
+    margin-top: 5vh
     margin-bottom: 3vh
     text-align: center
     font-size: 10vh
@@ -72,67 +76,11 @@ html
     font-size: 5vh
     color: $color3
 
-
-/*Start of non bem*/
-
-.leaderboard-page__pagination
-    margin-left: 30%
-    margin-bottom: 25%
-
-
-.leaderboard-page__pagination a
-    cursor: default
-    user-select: none
-    margin-bottom: 5%
-    color: var(--color2)
-    float: left
-    padding: 8px 16px
-    margin-left: 1px
-    margin-right: 1px
-    text-decoration: none
-
-
-.leaderboard-page__pagination a.active
-    background-color: var(--color1)
-    color: black
-    border-radius: 10px
-
-
-.leaderboard-page__pagination a:hover:not(.active)
-    background-color: var(--color1)
-    color: black
-    border-radius: 10px
-    cursor: pointer
-
-
-.leaderboard-page
-    margin-top: 17%
-    margin-left: 35%
-    margin-right: 35%
-    width: 30%
-
-
-.leaderboard-page p
-    margin-left: 25%
-    font-size: 200%
-    color: var(--color3)
-    animation: neon-text 1s infinite alternate
-
-
 .profile-page
-
-
-.profile-page input[type='file']
-    position: relative
-    overflow: hidden
-    color: $color1
-
-
-.profile-page img
+  .profile-page__dataInput
+    @extend %input
+    @extend %center
+  .profile-page__avatar
+    @extend %center
     border-radius: 50%
-    size: 50px
-    animation: neon 1s infinite alternate
-
-
-.profile-page p
-    animation: neon-text 13s steps(1, start) infinite reverse
+    max-height: 20vh

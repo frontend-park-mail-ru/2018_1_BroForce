@@ -30,8 +30,11 @@ html {
 .main-page__menu__button {
     display: flex;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
     border: 0;
-    margin-bottom: 1vh;
+    margin-bottom: 2vh;
     cursor: pointer;
     font-size: 6vh;
     color: var(--color4);
@@ -43,7 +46,8 @@ html {
 .login-page__signInInput, .login-page__signUpInput{
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 2%;
+    margin-bottom: 2vh;
+    align-items: center;
     min-height: 4vh;
     display: flex;
     justify-content: center;
@@ -79,71 +83,78 @@ html {
 
 /*Start of non bem*/
 
-.leaderboard-page__pagination {
-    margin-left: 30%;
-    margin-bottom: 25%;
+/*.leaderboard-page__pagination {*/
+    /*margin-left: 30%;*/
+    /*margin-bottom: 25%;*/
+/*}*/
+
+/*.leaderboard-page__pagination a {*/
+    /*cursor: default;*/
+    /*user-select: none;*/
+    /*margin-bottom: 5%;*/
+    /*color: var(--color2);*/
+    /*float: left;*/
+    /*padding: 8px 16px;*/
+    /*margin-left: 1px;*/
+    /*margin-right: 1px;*/
+    /*text-decoration: none;*/
+/*}*/
+
+/*.leaderboard-page__pagination a.active {*/
+    /*background-color: var(--color1);*/
+    /*color: black;*/
+    /*border-radius: 10px;*/
+/*}*/
+
+/*.leaderboard-page__pagination a:hover:not(.active) {*/
+    /*background-color: var(--color1);*/
+    /*color: black;*/
+    /*border-radius: 10px;*/
+    /*cursor: pointer;*/
+/*}*/
+
+/*.leaderboard-page {*/
+    /*margin-top: 17%;*/
+    /*margin-left: 35%;*/
+    /*margin-right: 35%;*/
+    /*width: 30%;*/
+/*}*/
+
+/*.leaderboard-page p {*/
+    /*margin-left: 25%;*/
+    /*font-size: 200%;*/
+    /*color: var(--color3);*/
+    /*animation: neon-text 1s infinite alternate;*/
+/*}*/
+
+
+.profile-page__dataInput{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    margin-bottom: 2vh;
+    min-height: 4vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 25px;
+    padding-left: 20px;
+    font-size: 2vh;
+    outline:none;
+
 }
 
-.leaderboard-page__pagination a {
-    cursor: default;
-    user-select: none;
-    margin-bottom: 5%;
-    color: var(--color2);
-    float: left;
-    padding: 8px 16px;
-    margin-left: 1px;
-    margin-right: 1px;
-    text-decoration: none;
-}
-
-.leaderboard-page__pagination a.active {
-    background-color: var(--color1);
-    color: black;
-    border-radius: 10px;
-}
-
-.leaderboard-page__pagination a:hover:not(.active) {
-    background-color: var(--color1);
-    color: black;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.leaderboard-page {
-    margin-top: 17%;
-    margin-left: 35%;
-    margin-right: 35%;
-    width: 30%;
-}
-
-.leaderboard-page p {
-    margin-left: 25%;
-    font-size: 200%;
-    color: var(--color3);
-    animation: neon-text 1s infinite alternate;
-}
-
-.profile-page {
-}
-
-.profile-page input[type='file'] {
-    position: relative;
-    overflow: hidden;
-    color: var(--color1);
-}
-
-.profile-page img {
+.profile-page__avatar {
     border-radius: 50%;
-    size: 50px;
-    animation: neon 1s infinite alternate;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    max-height: 20vh;
 }
 
-.profile-page p {
-    animation: neon-text 13s steps(1, start) infinite reverse;
-}
-
-
-/*End of non bem*/
 
 .game-page {
 

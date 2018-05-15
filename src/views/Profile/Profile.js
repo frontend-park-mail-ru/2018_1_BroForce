@@ -12,7 +12,7 @@ import * as Hogan from 'hogan.js';
 
 export default class Profile extends MainComponent {
     constructor() {
-        super('div', ['profile-page'], {style: 'margin-top: 2%'});
+        super('div', ['profile-page']);
     }
 
     build() {
@@ -28,20 +28,20 @@ export default class Profile extends MainComponent {
         const template = Hogan.compile('{{name}}');
         const name = template.render(this.userData);
 
-        this.append((new ImageComp('../img/user-default.jpg', [], 'logo')).render());
-
-        this.title = new Block('p', 'Hello, ' + name + '!', ['form-input'], {});
+        this.title = new Block('p', name, ['menu_title'], {});
         this.append(this.title.render());
 
-        this.changeLoginInput = new MainComponent('input', ['form-input', 'profile-input'],
-            {name: 'changeLoginInput', value: this.userData.name, placeholder: 'Enter name'});
+        this.append((new ImageComp('../img/user-default.jpg', ['profile-page__avatar'], 'logo')).render());
+
+        this.changeLoginInput = new MainComponent('input', ['form-input', 'profile-page__dataInput'],
+            {name: 'changeLoginInput', placeholder: 'Change name'});
         this.append(this.changeLoginInput.render());
 
-        this.changeEmailInput = new MainComponent('input', ['form-input', 'profile-input'],
-            {name: 'changeEmailInput', value: this.userData.email, placeholder: 'Enter email'});
+        this.changeEmailInput = new MainComponent('input', ['form-input', 'profile-page__dataInput'],
+            {name: 'changeEmailInput', placeholder: 'Change email'});
         this.append(this.changeEmailInput.render());
 
-        this.password = new MainComponent('input', ['form-input', 'profile-input'],
+        this.password = new MainComponent('input', ['form-input', 'profile-page__dataInput'],
             {type: 'hidden', id: 'password', name: 'password', placeholder: 'Enter password'});
         this.append(this.password.render());
 
@@ -58,7 +58,7 @@ export default class Profile extends MainComponent {
     initEvents() {
         this.changeLoginInput.render().onfocus = () => {
             this.password.render().type = 'password';
-            this.buttonBack.render().innerHTML = 'Save and quit';
+            this.buttonBack.render().innerHTML = 'Save';
         };
 
         this.changeLoginInput.render().onblur = () => {
@@ -70,7 +70,7 @@ export default class Profile extends MainComponent {
 
         this.changeEmailInput.render().onfocus = () => {
             this.password.render().type = 'password';
-            this.buttonBack.render().innerHTML = 'Save and quit';
+            this.buttonBack.render().innerHTML = 'Save';
         };
 
         this.changeEmailInput.render().onblur = () => {
@@ -81,7 +81,7 @@ export default class Profile extends MainComponent {
         };
 
         this.buttonBack.render().addEventListener('click', () => {
-            const newData = [...document.getElementsByClassName('profile-input')];
+            const newData = [...document.getElementsByClassName('profile-page__dataInput')];
 
             let backWay = null;
             let body = {};
@@ -107,7 +107,7 @@ export default class Profile extends MainComponent {
                         this.userData.name = UserService.GetUser().login;
                         this.userData.email = UserService.GetUser().email;
                         this.buttonBack.render().innerHTML = 'Back';
-                        this.title.innerHTML('Hello, ' + UserService.GetUser().login + '!');
+                        this.title.innerHTML(UserService.GetUser().login);
                         Router.go('/');
                     });
                 });
@@ -117,3 +117,4 @@ export default class Profile extends MainComponent {
         });
     }
 }
+
