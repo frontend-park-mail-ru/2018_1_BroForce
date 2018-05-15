@@ -20,34 +20,34 @@
 
 @keyframes neon-text {
     0%{
-        color: #343434
+        color: #343434;
         text-shadow: 0 0 7px #000, 0 0 8px #000
     }
     80%{
-        color: #fff
+        color: #fff;
         text-shadow: 0 0 500px #E8175D,0 0 500px #E8175D,0 0 6px #fff,0 0 10px #fff,0 0 50px #79a7fc
     }
     81%{
-        color: #E1F5FE
+        color: #E1F5FE;
         text-shadow: 0 0 500px #E8175D,0 0 500px #E8175D,0 0 6px #fff,0 0 10px #fff,0 0 50px #E8175D
     }
-    82%{color: #343434
+    82%{color: #343434;
         text-shadow: 0 0 7px #000, 0 0 8px #000
     }
     83%{
-        color: #E1F5FE
+        color: #E1F5FE;
         text-shadow: 0 0 500px #E8175D,0 0 500px #E8175D,0 0 6px #fff,0 0 10px #fff,0 0 50px #79a7fc
     }
     84%{
-        color: #343434
+        color: #343434;
         text-shadow: 0 0 7px #000, 0 0 8px #000
     }
     85%{
-        color: #E1F5FE
+        color: #E1F5FE;
         text-shadow: 0 0 500px #E8175D,0 0 500px #E8175D,0 0 6px #fff,0 0 10px #fff,0 0 50px #79a7fc
     }
     100%{
-        color: #343434
+        color: #343434;
         text-shadow: 0 0 7px #000,0 0 8px #000
     }
 }
