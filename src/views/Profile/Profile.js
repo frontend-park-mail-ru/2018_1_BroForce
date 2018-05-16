@@ -45,12 +45,21 @@ export default class Profile extends MainComponent {
             {type: 'hidden', id: 'password', name: 'password', placeholder: 'Enter password'});
         this.append(this.password.render());
 
+        const signOutBtn = new Button('Sign Out', ['main-page__menu__button'], 'signOutBtn')
+
         this.append(new Button('New Avatar', ['main-page__menu__button'], 'changeAvatarBtn').render());
-        this.append(new Button('Sign Out', ['main-page__menu__button'], 'signOutBtn').render());
+        this.append(signOutBtn.render());
         this.buttonBack = new Button('Back', ['main-page__menu__button'], 'profileBackBtn');
         this.append(this.buttonBack.render());
 
         document.getElementById('main').appendChild(this.render());
+
+        signOutBtn.render().addEventListener('click', () => {
+            UserService.LogOut().then(() => {
+                Router.getRoute('/').getView().Rebuild();
+                Router.go('/');
+            });
+        });
 
         this.initEvents();
     }
