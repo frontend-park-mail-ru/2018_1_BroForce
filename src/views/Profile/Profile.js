@@ -45,8 +45,8 @@ export default class Profile extends MainComponent {
             {type: 'hidden', id: 'password', name: 'password', placeholder: 'Enter password'});
         this.append(this.password.render());
 
-        this.append(new Button('Change avatar', ['main-page__menu__button'], 'changeAvatarBtn').render());
-
+        this.append(new Button('New Avatar', ['main-page__menu__button'], 'changeAvatarBtn').render());
+        this.append(new Button('Sign Out', ['main-page__menu__button'], 'signOutBtn').render());
         this.buttonBack = new Button('Back', ['main-page__menu__button'], 'profileBackBtn');
         this.append(this.buttonBack.render());
 

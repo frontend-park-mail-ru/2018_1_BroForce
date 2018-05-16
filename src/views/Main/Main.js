@@ -41,12 +41,12 @@ const logged = {
             id: 'aboutBtn',
             url: '/about/',
         },
-        {
-            text: 'Sign Out',
-            class: ['main-page__menu__button'],
-            id: 'signOutBtn',
-            url: '/',
-        },
+        // {
+        //     text: 'Sign Out',
+        //     class: ['main-page__menu__button'],
+        //     id: 'signOutBtn',
+        //     url: '/',
+        // },
     ],
 };
 
