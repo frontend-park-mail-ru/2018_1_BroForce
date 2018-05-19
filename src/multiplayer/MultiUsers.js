@@ -2,18 +2,12 @@
 
 import Player from '../game/Player.js';
 
-export default class multiUsers extends Player {
+export default class MultiUsers extends Player {
     constructor(x, y, radius, context, colorArray = ['white']) {
         super(x, y, 0, radius, context, colorArray);
 
         this.context = context;
         this.colorArray = colorArray;
-
-        this.userCoord = {
-            x: x,
-            y: y,
-            radius: radius,
-        };
     }
 
     update(x, y, radius) {

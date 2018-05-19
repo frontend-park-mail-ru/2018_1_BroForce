@@ -18,24 +18,18 @@ export default class GameLogic {
         this.colorArray = ['#fa4c2b', '#6aff6e', '#ffff82', '#ffce72', '#fa4c2b', '#0bfcff'];
         this.enemyArray = [];
         this.userWin = false;
+        this.divineShield = true;
+    }
 
+    Start() {
         this.keyW = false;
         this.keyA = false;
         this.keyS = false;
         this.keyD = false;
-    }
 
-    Start() {
-        let divineShield = true;
-        setTimeout((()=> divineShield = false), 3000);
+        this.divineShield = true;
+        setTimeout((()=> this.divineShield = false), 3000);
         let windowResize = false;
-
-        // if (this.canvas.height > this.canvas.width) {
-        //     // this.ENEMIES_COUNT = 100
-        //     const testSize = this.canvas.width * this.canvas.height
-        // } else {
-        //     this.ENEMIES_COUNT = 30
-        // }
 
         const player = new PlayerNew(innerWidth / 2, innerHeight / 2, 2, this.USER_RADIUS, this.context, this.colorArray);
 
@@ -175,7 +169,7 @@ export default class GameLogic {
                         eatenEnemiesRadius.push(this.enemyArray[i].getEnemyCoord().radius);
                     } else {
                         // If user was eaten
-                        if (divineShield === false) {
+                        if (this.divineShield === false) {
                             this.Restart();
                             return;
                         }
