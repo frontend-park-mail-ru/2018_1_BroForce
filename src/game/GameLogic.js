@@ -30,6 +30,7 @@ export default class GameLogic {
         this.divineShield = true;
         setTimeout((()=> this.divineShield = false), 3000);
         let windowResize = false;
+        this.score = 0;
 
         const player = new PlayerNew(innerWidth / 2, innerHeight / 2, 2, this.USER_RADIUS, this.context, this.colorArray);
 
@@ -163,8 +164,8 @@ export default class GameLogic {
                 if (distance < player.getUserCoords().radius / 3 + this.enemyArray[i].getEnemyCoord().radius) {
                     if (player.getUserCoords().radius > this.enemyArray[i].getEnemyCoord().radius) {
                         const score = document.querySelector('p[name=gameScore]');
-                        score.innerHTML = (+score.innerHTML +
-                            Math.round(this.enemyArray[i].getEnemyCoord().radius)).toString();
+                        this.score += Math.round(this.enemyArray[i].getEnemyCoord().radius);
+                        score.innerHTML = (+score.innerHTML + this.score).toString();
                         eatenEnemies.push(i);
                         eatenEnemiesRadius.push(this.enemyArray[i].getEnemyCoord().radius);
                     } else if (player.getUserCoords().radius < this.enemyArray[i].getEnemyCoord().radius) {
@@ -219,8 +220,10 @@ export default class GameLogic {
             gameEndingText = 'You win! ';
         }
 
-        gameText.innerHTML = gameEndingText + 'Score: ' + score.innerHTML;
+        gameText.innerHTML = gameEndingText + 'Score: ' + this.score;
         gameRestartBtn.style.display = 'block';
+        gameText.style.display = 'block';
+
         score.innerHTML = '0';
 
         if (this.userWin === true) {
