@@ -1,12 +1,10 @@
 .game-page
-
   display: flex
   align-items: center
   justify-content: center
   flex-direction: column
 
 .game-page__button
-  margin-bottom: 0
   cursor: pointer
   border: 0
   font-size: 6vh
@@ -14,6 +12,14 @@
   background-color: rgba(0, 0, 0, 0)
   animation: neon 2s infinite alternate
 
+.game-page__button__back
+  margin-top: 65vh
+
+
+.game-page__button__restart
+  position: absolute
+  z-index: 2
+  margin-top: 9vh
 
 .game-page__canvas
   overflow: hidden
@@ -31,9 +37,14 @@
   animation: neon 2s infinite alternate
 
 .game-page__text__ending
+  position: absolute
+  text-align: center
+  z-index: 2
+  margin-top: 0
   border: 0
   font-size: 6vh
   color: #E1F5FE
   background-color: rgba(0, 0, 0, 0)
   animation: neon 2s infinite alternate
+
 
