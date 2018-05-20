@@ -114,7 +114,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2vh; }
@@ -132,6 +131,9 @@
   color: #E1F5FE;
   background-color: transparent;
   animation: neon 2s infinite alternate; }
+
+.game-page {
+  flex-direction: column; }
 
 .game-page__button {
   cursor: pointer; }
@@ -162,7 +164,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2vh; }
@@ -210,7 +211,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2vh; }
