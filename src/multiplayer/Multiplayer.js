@@ -2,7 +2,7 @@
 
 import GameLogic from '../game/GameLogic.js';
 import MultiUsers from './MultiUsers.js';
-import Enemy from '../game/Enemy.js';
+import MultiEnemies from './MultiEnemies';
 
 export default class Multiplayer extends GameLogic {
     constructor() {
@@ -11,8 +11,8 @@ export default class Multiplayer extends GameLogic {
         this.socket = new WebSocket('some::/Server');
 
         this.GameSettings = {
-            'innerWidth': window.innerWidth,
-            'innerHeight': window.innerHeight,
+            // 'innerWidth': window.innerWidth,
+            // 'innerHeight': window.innerHeight,
             'MAX_USER_RADIUS': this.MAX_USER_RADIUS,
             'MAX_ENEMY_RADIUS': this.MAX_ENEMY_RADIUS,
             'ENEMIES_COUNT': this.ENEMIES_COUNT,
@@ -21,9 +21,6 @@ export default class Multiplayer extends GameLogic {
     }
 
     Start() {
-        // Sending game information to the server
-        this.socket.send(JSON.stringify(this.GameSettings));
-
         let windowResize = false;
 
         this.eventResize = window.addEventListener('resize', function() {
@@ -114,21 +111,31 @@ export default class Multiplayer extends GameLogic {
             }
         });
 
-
         // ---------------- Pseudocode ----------------
 
-        // Init some players
-        const player1 = new MultiUsers(100, 100, 30, this.context, this.colorArray);
-        const player2 = new MultiUsers(200, 200, 30, this.context, this.colorArray);
+        // Init Game
+        // Sending game information to the server
+        this.socket.send(JSON.stringify(this.GameSettings));
 
-        // this.socket.onmessage = (event) => {
-        // }
+        this.socket.onmessage = (event) => {
+            const response = JSON.parse(event.data);
 
-        const initEnemies = () => {
+            this.player1 = new MultiUsers(response.userCoord[0].x, response.userCoord[0].y,
+                response.userCoord[0].radius, this.context, this.colorArray);
+            this.player2 = new MultiUsers(response.userCoord[1].x, response.userCoord[1].y,
+                response.userCoord[1].radius, this.context, this.colorArray);
+
             for (let i = 0; i < this.ENEMIES_COUNT; i++) {
-               // Init enemies
+                this.enemyArray.push(new MultiEnemies(response.enemyCoord[i].x, response.enemyCoord[i].y,
+                    response.enemyCoord[i].radius, this.context, this.colorArray));
             }
         };
+
+        const GameReady = {
+            'gameReady': 1,
+        };
+
+        this.socket.send(JSON.stringify(GameReady));
 
         const animate = () => {
             if (windowResize === true) {
@@ -143,15 +150,15 @@ export default class Multiplayer extends GameLogic {
             this.context.clearRect(0, 0, innerWidth, innerHeight);
 
             this.socket.onmessage = (event) => {
-                alert('Data ' + event.data);
                 const response = JSON.parse(event.data);
 
-                player1.update(response.userCoord[0].x, response.userCoord[0].y, response.userCoord[0].radius);
-                player2.update(response.userCoord[1].x, response.userCoord[1].y, response.userCoord[1].radius);
+                this.player1.update(response.userCoord[0].x, response.userCoord[0].y, response.userCoord[0].radius);
+                this.player2.update(response.userCoord[1].x, response.userCoord[1].y, response.userCoord[1].radius);
 
                 // Update enemies
                 for (let i = 0; i < this.enemyArray.length; i++) {
-                    this.enemyArray[i].update(response.enemyCoord[i].x, response.enemyCoord[i].y, response.enemyCoord[i].radius);
+                    this.enemyArray[i].update(response.enemyCoord[i].x, response.enemyCoord[i].y,
+                        response.enemyCoord[i].radius);
                 }
             };
 
@@ -160,7 +167,6 @@ export default class Multiplayer extends GameLogic {
             };
         };
 
-        initEnemies();
         animate();
     }
 
