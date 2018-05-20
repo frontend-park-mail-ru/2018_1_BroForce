@@ -208,7 +208,6 @@ export default class GameLogic {
     }
 
     Restart() {
-        cancelAnimationFrame(this.animationId);
         this.Stop();
 
         const score = document.querySelector('p[name=gameScore]');
