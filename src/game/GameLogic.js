@@ -167,7 +167,7 @@ export default class GameLogic {
                             Math.round(this.enemyArray[i].getEnemyCoord().radius)).toString();
                         eatenEnemies.push(i);
                         eatenEnemiesRadius.push(this.enemyArray[i].getEnemyCoord().radius);
-                    } else {
+                    } else if (player.getUserCoords().radius < this.enemyArray[i].getEnemyCoord().radius) {
                         // If user was eaten
                         if (this.divineShield === false) {
                             this.Restart();
