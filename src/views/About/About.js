@@ -13,7 +13,7 @@ export default class About extends MainComponent {
 
     build() {
         this.append((new Block('p', 'About', ['menu_title'], {})).render());
-        const aboutText = 'Neon Fight - it is web game about neon and fights! Developed by BroForce team.';
+        const aboutText = 'Developed by BroForce team.';
         this.append((new Block('p', aboutText, ['about-page_text'], {})).render());
         this.append((new Button('Back', ['main-page__menu__button'], 'AboutBackBtn')).render());
         document.getElementById('main').appendChild(this.render());

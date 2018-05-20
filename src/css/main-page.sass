@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css?family=Monoton|Vibur|Raleway|Bangers")
+@import "flicker-animation"
+@import "loading-animation"
+@import "game-page"
+@import "leaderboard-page"
+@import "templates"
+
+
+html 
+    background-size: cover
+    background: $color5 url("../img/background.jpg") center
+    font-family: "Vibur", cursive
+
+.main-page__menu__button
+  @extend %center
+  @extend %inter
+  cursor: pointer
+
+.main-page__menu__logo
+  margin:
+    top: 7vh
+    bottom: 3vh
+  text-align: center
+  color: $color1
+  font-family: Monoton, cursive
+  font-size: 10vh
+  animation: neon-text 13s steps(1, start) infinite reverse
+
+.login-page
+  .login-page__signInInput
+    @extend %input
+    @extend %center
+  .login-page__signUpInput
+    @extend %input
+    @extend %center
+  .login-page_error
+      font-size: 3vh
+      color: $color1
+      margin: auto
+      text-align: center
+
+.profile-page
+  .profile-page__dataInput
+    @extend %input
+    @extend %center
+  .profile-page__avatar
+    @extend %center
+    border-radius: 50%
+    max-height: 16vh
+
+.menu_title
+  margin-top: 5vh
+  margin-bottom: 3vh
+  text-align: center
+  font-size: 10vh
+  color: $color2
+  animation: neon-text 13s steps(1, start) infinite reverse
+
+.about-page_text
+  text-align: center
+  font-size: 5vh
+  color: $color3

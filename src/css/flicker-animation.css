@@ -1,0 +1,53 @@
+
+@keyframes neon {
+    from {
+        text-shadow: 0 0 6px rgba(202, 228, 225, 0.82),
+        0 0 30px rgba(202, 228, 225, 0.24),
+        0 0 12px rgba(30, 132, 242, 0.42),
+        0 0 21px rgba(30, 132, 242, 0.82),
+        0 0 34px rgba(30, 132, 242, 0.68),
+        0 0 64px rgba(30, 132, 242, 0.92)
+    }
+    to {
+        text-shadow: 0 0 6px rgba(202, 228, 225, 0.98),
+        0 0 30px rgba(202, 228, 225, 0.62),
+        0 0 12px rgba(30, 132, 242, 0.68),
+        0 0 22px rgba(30, 132, 242, 0.94),
+        0 0 38px rgba(30, 132, 242, 0.98),
+        0 0 90px rgba(30, 132, 242, 1)
+    }
+}
+
+@keyframes neon-text {
+    0%{
+        color: #343434;
+        text-shadow: 0 0 7px #000, 0 0 8px #000
+    }
+    80%{
+        color: #fff;
+        text-shadow: 0 0 500px #E8175D,0 0 500px #E8175D,0 0 6px #fff,0 0 10px #fff,0 0 50px #79a7fc
+    }
+    81%{
+        color: #E1F5FE;
+        text-shadow: 0 0 500px #E8175D,0 0 500px #E8175D,0 0 6px #fff,0 0 10px #fff,0 0 50px #E8175D
+    }
+    82%{color: #343434;
+        text-shadow: 0 0 7px #000, 0 0 8px #000
+    }
+    83%{
+        color: #E1F5FE;
+        text-shadow: 0 0 500px #E8175D,0 0 500px #E8175D,0 0 6px #fff,0 0 10px #fff,0 0 50px #79a7fc
+    }
+    84%{
+        color: #343434;
+        text-shadow: 0 0 7px #000, 0 0 8px #000
+    }
+    85%{
+        color: #E1F5FE;
+        text-shadow: 0 0 500px #E8175D,0 0 500px #E8175D,0 0 6px #fff,0 0 10px #fff,0 0 50px #79a7fc
+    }
+    100%{
+        color: #343434;
+        text-shadow: 0 0 7px #000,0 0 8px #000
+    }
+}
