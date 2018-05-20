@@ -165,7 +165,7 @@ export default class GameLogic {
                     if (player.getUserCoords().radius > this.enemyArray[i].getEnemyCoord().radius) {
                         const score = document.querySelector('p[name=gameScore]');
                         this.score += Math.round(this.enemyArray[i].getEnemyCoord().radius);
-                        score.innerHTML = (+score.innerHTML + this.score).toString();
+                        score.innerHTML = this.score.toString();
                         eatenEnemies.push(i);
                         eatenEnemiesRadius.push(this.enemyArray[i].getEnemyCoord().radius);
                     } else if (player.getUserCoords().radius < this.enemyArray[i].getEnemyCoord().radius) {
