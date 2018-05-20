@@ -110,6 +110,29 @@
   to {
     filter: hue-rotate(360deg); } }
 
+.game-page, .leaderboard-page .leaderboard-page__pagination, .main-page__menu__button, .login-page .login-page__signInInput, .login-page .login-page__signUpInput, .profile-page .profile-page__dataInput, .profile-page .profile-page__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2vh; }
+
+.login-page .login-page__signInInput, .login-page .login-page__signUpInput, .profile-page .profile-page__dataInput {
+  min-height: 4vh;
+  border-radius: 25px;
+  padding-left: 20px;
+  font-size: 2vh;
+  outline: none; }
+
+.game-page__button, .game-page__text__score, .game-page__text__ending, .main-page__menu__button {
+  border: 0;
+  font-size: 6vh;
+  color: #E1F5FE;
+  background-color: transparent;
+  animation: neon 2s infinite alternate; }
+
 .game-page__button {
   cursor: pointer; }
 
@@ -135,7 +158,55 @@
   right: 0;
   z-index: -1; }
 
-.game-page, .main-page__menu__button, .login-page .login-page__signInInput, .login-page .login-page__signUpInput, .leaderboard-page .leaderboard-page__pagination, .profile-page .profile-page__dataInput, .profile-page .profile-page__avatar {
+.game-page, .leaderboard-page .leaderboard-page__pagination, .main-page__menu__button, .login-page .login-page__signInInput, .login-page .login-page__signUpInput, .profile-page .profile-page__dataInput, .profile-page .profile-page__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2vh; }
+
+.login-page .login-page__signInInput, .login-page .login-page__signUpInput, .profile-page .profile-page__dataInput {
+  min-height: 4vh;
+  border-radius: 25px;
+  padding-left: 20px;
+  font-size: 2vh;
+  outline: none; }
+
+.game-page__button, .game-page__text__score, .game-page__text__ending, .main-page__menu__button {
+  border: 0;
+  font-size: 6vh;
+  color: #E1F5FE;
+  background-color: transparent;
+  animation: neon 2s infinite alternate; }
+
+.leaderboard-page .leaderboard-page__pagination {
+  color: #E1F5FE;
+  cursor: pointer;
+  flex-direction: row;
+  user-select: none;
+  text-decoration: none;
+  font-size: 5vh;
+  animation: neon 2s infinite alternate; }
+
+.leaderboard-page .leaderboard-page__pagination_active {
+  padding-left: 1.5vh;
+  padding-right: 1.5vh;
+  background-color: #79a7fc;
+  border-radius: 10px; }
+
+.leaderboard-page .leaderboard-page__pagination_arrow {
+  margin-left: 2vh;
+  margin-right: 2vh; }
+
+.leaderboard-page .leaderboard-page__users {
+  font-size: 5vh;
+  text-align: center;
+  color: #FF847C;
+  margin-top: 0; }
+
+.game-page, .leaderboard-page .leaderboard-page__pagination, .main-page__menu__button, .login-page .login-page__signInInput, .login-page .login-page__signUpInput, .profile-page .profile-page__dataInput, .profile-page .profile-page__avatar {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -181,6 +252,10 @@ html {
   margin: auto;
   text-align: center; }
 
+.profile-page .profile-page__avatar {
+  border-radius: 50%;
+  max-height: 16vh; }
+
 .menu_title {
   margin-top: 5vh;
   margin-bottom: 3vh;
@@ -189,36 +264,7 @@ html {
   color: #E84A5F;
   animation: neon-text 13s steps(1, start) infinite reverse; }
 
-.leaderboard-page .leaderboard-page__pagination {
-  color: #E1F5FE;
-  cursor: pointer;
-  flex-direction: row;
-  user-select: none;
-  text-decoration: none;
-  font-size: 5vh;
-  animation: neon 2s infinite alternate; }
-
-.leaderboard-page .leaderboard-page__pagination_active {
-  padding-left: 1.5vh;
-  padding-right: 1.5vh;
-  background-color: #79a7fc;
-  border-radius: 10px; }
-
-.leaderboard-page .leaderboard-page__pagination_arrow {
-  margin-left: 2vh;
-  margin-right: 2vh; }
-
-.leaderboard-page .leaderboard-page__users {
-  font-size: 5vh;
-  text-align: center;
-  color: #FF847C;
-  margin-top: 0; }
-
 .about-page_text {
   text-align: center;
   font-size: 5vh;
   color: #FF847C; }
-
-.profile-page .profile-page__avatar {
-  border-radius: 50%;
-  max-height: 16vh; }
