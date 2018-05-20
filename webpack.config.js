@@ -8,7 +8,7 @@ module.exports = {
     entry: {
         main: [
             'babel-polyfill',
-            './src/css/main.sass',
+            './src/css/main-page.sass',
             './src/index.js',
         ],
     },

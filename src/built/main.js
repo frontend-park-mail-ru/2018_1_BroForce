@@ -10936,7 +10936,7 @@ module.exports = function (regExp, replace) {
 /* 342 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: ENOENT: no such file or directory, open 'C:\\Users\\Vipolion\\Documents\\BroForce\\src\\css\\main.sass'\n    at runLoaders (C:\\Users\\Vipolion\\Documents\\BroForce\\node_modules\\webpack\\lib\\NormalModule.js:195:19)\n    at C:\\Users\\Vipolion\\Documents\\BroForce\\node_modules\\loader-runner\\lib\\LoaderRunner.js:364:11\n    at C:\\Users\\Vipolion\\Documents\\BroForce\\node_modules\\loader-runner\\lib\\LoaderRunner.js:200:19\n    at C:\\Users\\Vipolion\\Documents\\BroForce\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:70:14\n    at process._tickCallback (internal/process/next_tick.js:150:11)");
 
 /***/ }),
 /* 343 */

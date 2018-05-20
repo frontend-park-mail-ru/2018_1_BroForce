@@ -110,27 +110,22 @@
   to {
     filter: hue-rotate(360deg); } }
 
-.game-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column; }
-
 .game-page__button {
-  cursor: pointer;
-  border: 0;
-  font-size: 6vh;
-  color: #E1F5FE;
-  background-color: transparent;
-  animation: neon 2s infinite alternate; }
+  cursor: pointer; }
 
 .game-page__button__back {
   margin-top: 65vh; }
 
 .game-page__button__restart {
+  margin-top: 9vh;
   position: absolute;
+  z-index: 2; }
+
+.game-page__text__ending {
+  position: absolute;
+  text-align: center;
   z-index: 2;
-  margin-top: 9vh; }
+  margin-top: 0; }
 
 .game-page__canvas {
   overflow: hidden;
@@ -140,39 +135,28 @@
   right: 0;
   z-index: -1; }
 
-.game-page__text__score {
-  border: 0;
-  font-size: 6vh;
-  color: #E1F5FE;
-  background-color: transparent;
-  animation: neon 2s infinite alternate; }
-
-.game-page__text__ending {
-  position: absolute;
-  text-align: center;
-  z-index: 2;
-  margin-top: 0;
-  border: 0;
-  font-size: 6vh;
-  color: #E1F5FE;
-  background-color: transparent;
-  animation: neon 2s infinite alternate; }
-
-.main-page__menu__button, .login-page .login-page__signInInput, .login-page .login-page__signUpInput, .leaderboard-page .leaderboard-page__pagination, .profile-page .profile-page__dataInput, .profile-page .profile-page__avatar {
+.game-page, .main-page__menu__button, .login-page .login-page__signInInput, .login-page .login-page__signUpInput, .leaderboard-page .leaderboard-page__pagination, .profile-page .profile-page__dataInput, .profile-page .profile-page__avatar {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2vh; }
 
 .login-page .login-page__signInInput, .login-page .login-page__signUpInput, .profile-page .profile-page__dataInput {
   min-height: 4vh;
-  flex-direction: column;
   border-radius: 25px;
   padding-left: 20px;
   font-size: 2vh;
   outline: none; }
+
+.game-page__button, .game-page__text__score, .game-page__text__ending, .main-page__menu__button {
+  border: 0;
+  font-size: 6vh;
+  color: #E1F5FE;
+  background-color: transparent;
+  animation: neon 2s infinite alternate; }
 
 html {
   background-size: cover;
@@ -180,12 +164,7 @@ html {
   font-family: "Vibur", cursive; }
 
 .main-page__menu__button {
-  border: 0;
-  cursor: pointer;
-  font-size: 6vh;
-  color: #E1F5FE;
-  background-color: transparent;
-  animation: neon 2s infinite alternate; }
+  cursor: pointer; }
 
 .main-page__menu__logo {
   margin-top: 7vh;
