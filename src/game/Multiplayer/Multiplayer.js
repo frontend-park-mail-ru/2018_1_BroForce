@@ -1,6 +1,6 @@
 'use strict';
 
-import GameLogic from '../game/GameLogic.js';
+import GameLogic from '../Singleplayer/GameLogic.js';
 import MultiUsers from './MultiUsers.js';
 import MultiEnemies from './MultiEnemies';
 

@@ -1,6 +1,6 @@
 'use strict';
 
-import Enemy from '../game/Enemy.js';
+import Enemy from '../Singleplayer/Enemy.js';
 
 export default class MultiEnemies extends Enemy {
     constructor(x, y, radius, context, colorArray) {
