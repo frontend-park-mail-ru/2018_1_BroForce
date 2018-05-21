@@ -219,6 +219,7 @@ export default class GameLogic {
         gameText.innerHTML = gameEndingText + 'Score: ' + this.score;
         gameRestartBtn.style.display = 'block';
         gameText.style.display = 'block';
+        score.style.display = 'none';
 
         score.innerHTML = '0';
 

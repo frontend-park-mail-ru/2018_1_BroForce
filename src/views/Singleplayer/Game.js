@@ -16,9 +16,10 @@ export default class Game extends MainComponent {
         const GameEndingText = new Block('p', '', ['game-page__text__ending'], {name: 'gameWin'});
         const GameRestartBtn =new Button('Restart', ['game-page__button', 'game-page__button__restart'], 'btnRestart');
         GameRestartBtn.render().style.display = 'none';
-        const GameBackBtn =new Button('Back', ['game-page__button', 'game-page__button__back'], 'btnBack');
+        const GameBackBtn = new Button('Back', ['game-page__button', 'game-page__button__back'], 'btnBack');
+        const ScoreText = new Block('p', '0', ['game-page__text__score'], {name: 'gameScore'});
 
-        MainDiv.render().appendChild(new Block('p', '0', ['game-page__text__score'], {name: 'gameScore'}).render());
+        MainDiv.render().appendChild(ScoreText.render());
         MainDiv.render().appendChild(GameEndingText.render());
         MainDiv.render().appendChild(GameRestartBtn.render());
         MainDiv.render().appendChild(GameBackBtn.render());
@@ -41,6 +42,7 @@ export default class Game extends MainComponent {
         GameRestartBtn.render().addEventListener('click', () => {
             game.Start();
             GameRestartBtn.render().style.display = 'none';
+            ScoreText.render().style.display = 'block';
 
             const gameText = document.querySelector('.game-page__text__ending');
             gameText.innerHTML = '';
