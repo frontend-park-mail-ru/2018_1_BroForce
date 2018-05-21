@@ -1,6 +1,6 @@
 'use strict';
 
-import GameLogic from '../game/GameLogic.js';
+import GameLogic from '../SingleplayerLogic/GameLogic.js';
 import MultiUsers from './MultiUsers.js';
 import MultiEnemies from './MultiEnemies';
 
@@ -11,8 +11,6 @@ export default class Multiplayer extends GameLogic {
         this.socket = new WebSocket('some::/Server');
 
         this.GameSettings = {
-            // 'innerWidth': window.innerWidth,
-            // 'innerHeight': window.innerHeight,
             'MAX_USER_RADIUS': this.MAX_USER_RADIUS,
             'MAX_ENEMY_RADIUS': this.MAX_ENEMY_RADIUS,
             'ENEMIES_COUNT': this.ENEMIES_COUNT,
@@ -111,10 +109,6 @@ export default class Multiplayer extends GameLogic {
             }
         });
 
-        // ---------------- Pseudocode ----------------
-
-        // Init Game
-        // Sending game information to the server
         this.socket.send(JSON.stringify(this.GameSettings));
 
         this.socket.onmessage = (event) => {
@@ -145,6 +139,15 @@ export default class Multiplayer extends GameLogic {
                 const score = document.querySelector('p[name=gameScore]');
                 score.innerHTML = '0';
             }
+
+            this.userKey = {
+                keyW: this.keyW,
+                keyA: this.keyA,
+                keyS: this.keyS,
+                keyD: this.keyD,
+            };
+
+            this.socket.send(JSON.stringify(this.userKey));
 
             this.animationId = requestAnimationFrame(animate);
             this.context.clearRect(0, 0, innerWidth, innerHeight);
