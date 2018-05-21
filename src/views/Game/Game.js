@@ -12,20 +12,20 @@ export default class Game extends MainComponent {
     }
 
     build() {
-        this.append(new Block('p', '0', ['game-page__text__score'], {name: 'gameScore'}).render());
+        const MainDiv = new Block('div', '', ['game-page'], {});
         const GameEndingText = new Block('p', '', ['game-page__text__ending'], {name: 'gameWin'});
-        this.append(GameEndingText.render());
-
-        // Trying to do restart btn
         const GameRestartBtn =new Button('Restart', ['game-page__button', 'game-page__button__restart'], 'btnRestart');
         GameRestartBtn.render().style.display = 'none';
-        this.append(GameRestartBtn.render());
-
         const GameBackBtn =new Button('Back', ['game-page__button', 'game-page__button__back'], 'btnBack');
-        this.append(GameBackBtn.render());
 
-        this.append(new MainComponent('canvas', ['game-page__canvas'], {}).render());
+        MainDiv.render().appendChild(new Block('p', '0', ['game-page__text__score'], {name: 'gameScore'}).render());
+        MainDiv.render().appendChild(GameEndingText.render());
+        MainDiv.render().appendChild(GameRestartBtn.render());
+        MainDiv.render().appendChild(GameBackBtn.render());
+        MainDiv.render().appendChild(new MainComponent('canvas', ['game-page__canvas'], {}).render());
         document.getElementById('main').appendChild(this.render());
+
+        this.append(MainDiv.render());
 
         const game = new GameLogic();
         game.Start();
