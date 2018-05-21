@@ -143,7 +143,6 @@ export default class GameLogic {
                 score.innerHTML = '0';
             }
 
-            // User too small, lose
             if (player.getUserCoords().radius <= 0.5) {
                 this.Restart();
                 return;
@@ -158,7 +157,6 @@ export default class GameLogic {
             for (let i = 0; i < this.enemyArray.length; i++) {
                 this.enemyArray[i].update();
 
-                // Eating
                 const distance = Math.sqrt(Math.pow((this.enemyArray[i].getEnemyCoord().x - player.getUserCoords().x), 2)
                     + Math.pow((this.enemyArray[i].getEnemyCoord().y - player.getUserCoords().y), 2));
                 if (distance < player.getUserCoords().radius / 3 + this.enemyArray[i].getEnemyCoord().radius) {
@@ -169,7 +167,6 @@ export default class GameLogic {
                         eatenEnemies.push(i);
                         eatenEnemiesRadius.push(this.enemyArray[i].getEnemyCoord().radius);
                     } else if (player.getUserCoords().radius < this.enemyArray[i].getEnemyCoord().radius) {
-                        // If user was eaten
                         if (this.divineShield === false) {
                             this.Restart();
                             return;
@@ -189,7 +186,6 @@ export default class GameLogic {
                     }
                 });
             }
-            // If user win
             if (this.enemyArray.length === 0) {
                 this.userWin = true;
                 this.Restart();
