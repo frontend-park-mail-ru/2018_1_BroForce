@@ -1,12 +1,12 @@
 'use strict';
 
 import MainComponent from '../../components/MainComponent/MainComponent.js';
-import GameLogic from '../../game/Singleplayer/GameLogic.js';
-import Button from '../../components/Button/Button.js';
 import Router from '../../modules/Router/Router.js';
 import Block from '../../components/Block/Block.js';
+import Button from '../../components/Button/Button.js';
+import Multiplayer from '../../game/MultiplayerLogic/MultiplayerLogic.js';
 
-export default class Game extends MainComponent {
+export default class MultiplayerView extends MainComponent {
     constructor() {
         super('div', ['game-page'], {});
     }
@@ -27,7 +27,7 @@ export default class Game extends MainComponent {
 
         this.append(MainDiv.render());
 
-        const game = new GameLogic();
+        const game = new Multiplayer();
         game.Start();
 
         GameBackBtn.render().addEventListener('click', () =>{

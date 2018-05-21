@@ -8,5 +8,6 @@ app.use('/leaderBoard', express.static('src'));
 app.use('/profile', express.static('src'));
 app.use('/about', express.static('src'));
 app.use('/singleplayer', express.static('src'));
+app.use('/multiplayer', express.static('src'));
 
 app.listen(process.env.PORT || 3000);

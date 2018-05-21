@@ -1,6 +1,6 @@
 'use strict';
 
-import Player from '../Singleplayer/Player.js';
+import Player from '../SingleplayerLogic/Player.js';
 
 export default class MultiUsers extends Player {
     constructor(x, y, radius, context, colorArray = ['white']) {

@@ -14,7 +14,8 @@ import LeaderBoard from './views/Leaderboard/Leaderboard.js';
 import Profile from './views/Profile/Profile.js';
 import About from './views/About/About.js';
 import Loading from './components/Loading/Loading.js';
-import Game from './views/Game/Game.js';
+import Game from './views/Singleplayer/Game.js';
+import Multiplayer from './game/MultiplayerLogic/MultiplayerLogic.js';
 
 ServiceWorkerRegister();
 
@@ -32,5 +33,6 @@ UserService.GetData().catch((response) => {
         .use('/profile/', Profile)
         .use('/about/', About)
         .use('/singleplayer/', Game)
+        .use('/multiplayer/', Multiplayer)
         .start();
 });

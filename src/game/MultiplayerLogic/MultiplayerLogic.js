@@ -1,6 +1,6 @@
 'use strict';
 
-import GameLogic from '../Singleplayer/GameLogic.js';
+import GameLogic from '../SingleplayerLogic/GameLogic.js';
 import MultiUsers from './MultiUsers.js';
 import MultiEnemies from './MultiEnemies';
 
@@ -113,7 +113,7 @@ export default class Multiplayer extends GameLogic {
 
         // ---------------- Pseudocode ----------------
 
-        // Init Game
+        // Init SingleplayerLogic
         // Sending game information to the server
         this.socket.send(JSON.stringify(this.GameSettings));
 
