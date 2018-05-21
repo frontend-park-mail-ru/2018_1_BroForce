@@ -13,7 +13,8 @@ export default class Game extends MainComponent {
 
     build() {
         this.append(new Block('p', '0', ['game-page__text__score'], {name: 'gameScore'}).render());
-        this.append(new Block('p', '', ['game-page__text__ending'], {name: 'gameWin'}).render());
+        const GameEndingText = new Block('p', '', ['game-page__text__ending'], {name: 'gameWin'});
+        this.append(GameEndingText.render());
 
         // Trying to do restart btn
         const GameRestartBtn =new Button('Restart', ['game-page__button', 'game-page__button__restart'], 'btnRestart');
@@ -30,6 +31,9 @@ export default class Game extends MainComponent {
         game.Start();
 
         GameBackBtn.render().addEventListener('click', () =>{
+            GameRestartBtn.render().style.display = 'none';
+            GameEndingText.render().style.display = 'none';
+
             game.Stop();
             Router.go('/');
         });

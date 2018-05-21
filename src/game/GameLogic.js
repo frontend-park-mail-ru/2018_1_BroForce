@@ -18,24 +18,19 @@ export default class GameLogic {
         this.colorArray = ['#fa4c2b', '#6aff6e', '#ffff82', '#ffce72', '#fa4c2b', '#0bfcff'];
         this.enemyArray = [];
         this.userWin = false;
+        this.divineShield = true;
+    }
 
+    Start() {
         this.keyW = false;
         this.keyA = false;
         this.keyS = false;
         this.keyD = false;
-    }
 
-    Start() {
-        let divineShield = true;
-        setTimeout((()=> divineShield = false), 3000);
+        this.divineShield = true;
+        setTimeout((()=> this.divineShield = false), 3000);
         let windowResize = false;
-
-        // if (this.canvas.height > this.canvas.width) {
-        //     // this.ENEMIES_COUNT = 100
-        //     const testSize = this.canvas.width * this.canvas.height
-        // } else {
-        //     this.ENEMIES_COUNT = 30
-        // }
+        this.score = 0;
 
         const player = new PlayerNew(innerWidth / 2, innerHeight / 2, 2, this.USER_RADIUS, this.context, this.colorArray);
 
@@ -169,13 +164,13 @@ export default class GameLogic {
                 if (distance < player.getUserCoords().radius / 3 + this.enemyArray[i].getEnemyCoord().radius) {
                     if (player.getUserCoords().radius > this.enemyArray[i].getEnemyCoord().radius) {
                         const score = document.querySelector('p[name=gameScore]');
-                        score.innerHTML = (+score.innerHTML +
-                            Math.round(this.enemyArray[i].getEnemyCoord().radius)).toString();
+                        this.score += Math.round(this.enemyArray[i].getEnemyCoord().radius);
+                        score.innerHTML = this.score.toString();
                         eatenEnemies.push(i);
                         eatenEnemiesRadius.push(this.enemyArray[i].getEnemyCoord().radius);
-                    } else {
+                    } else if (player.getUserCoords().radius < this.enemyArray[i].getEnemyCoord().radius) {
                         // If user was eaten
-                        if (divineShield === false) {
+                        if (this.divineShield === false) {
                             this.Restart();
                             return;
                         }
@@ -214,7 +209,6 @@ export default class GameLogic {
     }
 
     Restart() {
-        cancelAnimationFrame(this.animationId);
         this.Stop();
 
         const score = document.querySelector('p[name=gameScore]');
@@ -226,8 +220,10 @@ export default class GameLogic {
             gameEndingText = 'You win! ';
         }
 
-        gameText.innerHTML = gameEndingText + 'Score: ' + score.innerHTML;
+        gameText.innerHTML = gameEndingText + 'Score: ' + this.score;
         gameRestartBtn.style.display = 'block';
+        gameText.style.display = 'block';
+
         score.innerHTML = '0';
 
         if (this.userWin === true) {
