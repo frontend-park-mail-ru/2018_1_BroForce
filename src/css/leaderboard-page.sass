@@ -1,0 +1,32 @@
+@import "templates"
+
+.leaderboard-page
+  .leaderboard-page__pagination
+    @extend %center
+    color: $color4
+    cursor: pointer
+    flex-direction: row
+    user-select: none
+    text-decoration: none
+    font-size: 5vh
+    animation: neon 2s infinite alternate
+
+  .leaderboard-page__pagination_leaf
+
+  .leaderboard-page__pagination_active
+    padding:
+      left: 1.5vh
+      right: 1.5vh
+    background-color: #79a7fc
+    border-radius: 10px
+
+  .leaderboard-page__pagination_arrow
+    margin:
+      left: 2vh
+      right: 2vh
+
+  .leaderboard-page__users
+    font-size: 5vh
+    text-align: center
+    color: $color3
+    margin-top: 0
