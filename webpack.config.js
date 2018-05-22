@@ -8,7 +8,7 @@ module.exports = {
     entry: {
         main: [
             'babel-polyfill',
-            './src/css/form.css',
+            './src/css/main-page.sass',
             './src/index.js',
         ],
     },
@@ -38,14 +38,13 @@ module.exports = {
                 loader: 'tp-fest-loader',
             },
             {
-                test: /\.css$/,
+                test: /\.sass$/,
                 use: extractSass.extract({
                     use: [{
                         loader: 'css-loader',
                     }, {
                         loader: 'sass-loader',
                     }],
-                    // use style-loader in development
                     fallback: 'style-loader',
                 }),
             },

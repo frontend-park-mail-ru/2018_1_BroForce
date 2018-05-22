@@ -8,6 +8,7 @@ import Pagination from '../../components/Pagination/Pagination.js';
 import Router from '../../modules/Router/Router.js';
 import Transport from '../../modules/Transport/Trasport.js';
 import UserService from '../../Services/UserService/UserService.js';
+import * as Hogan from 'hogan.js';
 
 export default class Leaderboard extends MainComponent {
     constructor() {
@@ -16,12 +17,12 @@ export default class Leaderboard extends MainComponent {
     }
 
     build() {
-        this.usersOnLeaderBoard = 2;
-
+        this.usersOnLeaderBoard = 4;
+        this.append((new Block('p', 'Leaders', ['menu_title'], {})).render());
         this.GetUsersFromBack(this.usersOnLeaderBoard, 0).catch((response) => {
             console.log(response);
         }).then(() => {
-            this.usersTable = new Block('p', this.pagination(this.usersFromBack), [], {});
+            this.usersTable = new Block('p', this.pagination(this.usersFromBack), ['leaderboard-page__users'], {});
             this.append(this.usersTable.render());
             this.usersOnLeaderboard = new Pagination(this.usersOnLeaderBoard, {});
             this.append(this.usersOnLeaderboard.render());
@@ -69,8 +70,6 @@ export default class Leaderboard extends MainComponent {
             usersFromBack.score = users[i].sscore;
             usersOnPage.users.push(usersFromBack);
         });
-
-        // const Hogan = require("hogan.js");
 
         const template = Hogan.compile('{{#users}} {{name}}! - {{score}}<br/> {{/users}}');
         return template.render(usersOnPage);

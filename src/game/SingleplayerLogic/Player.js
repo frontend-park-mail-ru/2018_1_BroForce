@@ -35,21 +35,25 @@ export default class Player {
         const borderUp = this.userCoord.y - this.userCoord.radius / 1.3 > 0;
         const borderDown = this.userCoord.y + this.userCoord.radius / 1.3 < innerHeight;
 
+        const move = keyW === true && keyD === true && keyA === true && keyD === true;
+
         if (keyA === true && borderLeft) {
             this.userCoord.x -= this.userCoord.speed;
-            this.userCoord.radius -= 0.1;
         }
         if (keyD === true && borderRight) {
             this.userCoord.x += this.userCoord.speed;
-            this.userCoord.radius -= 0.1;
         }
         if (keyW === true && borderUp) {
             this.userCoord.y -= this.userCoord.speed;
-            this.userCoord.radius -= 0.1;
         }
         if (keyS === true && borderDown) {
             this.userCoord.y += this.userCoord.speed;
+        }
+        if (keyW === true || keyD === true || keyA === true || keyD === true) {
             this.userCoord.radius -= 0.1;
+        }
+        if (keyW === false && keyD === false && keyA === false && keyD === false) {
+            this.userCoord.radius -= 0.02;
         }
 
         this.draw();

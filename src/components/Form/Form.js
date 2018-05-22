@@ -81,11 +81,15 @@ export default class Form extends MainComponent {
             const adr = request.email === undefined ? '/signin' : '/signup';
 
             Transport.Post(adr, request).then(() => {
+                console.log('Then');
                 UserService.GetData().then(() => {
                     Router.getRoute('/').getView().Rebuild();
                     Router.go('/');
+                }).catch((response) => {
+                    console.log(response);
                 });
             }).catch((response) => {
+                console.log('Then');
                if (!response.json) {
                    console.log(response);
                    return;
