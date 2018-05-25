@@ -5,8 +5,8 @@ this.addEventListener('install', (event) => {
             // Upload in cache files
             return cache.addAll([
                 '/',
-                '/build/main.js',
-                '/build/main.css',
+                '/built/main.js',
+                '/built/main.css',
                 '/img/user-default.jpg',
                 '/img/background.jpg',
                 '/index.html',
