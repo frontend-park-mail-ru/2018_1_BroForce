@@ -18,17 +18,19 @@ export default class MultiplayerView extends MainComponent {
         GameRestartBtn.render().style.display = 'none';
         const GameBackBtn = new Button('Back', ['game-page__button', 'game-page__button__back'], 'btnBack');
         const ScoreText = new Block('p', '0', ['game-page__text__score'], {name: 'gameScore'});
+        const Canvas = new MainComponent('canvas', ['multiplayer-page__canvas'], {});
 
         MainDiv.render().appendChild(ScoreText.render());
         MainDiv.render().appendChild(GameEndingText.render());
         MainDiv.render().appendChild(GameRestartBtn.render());
         MainDiv.render().appendChild(GameBackBtn.render());
-        MainDiv.render().appendChild(new MainComponent('canvas', ['game-page__canvas'], {}).render());
+        MainDiv.render().appendChild(Canvas.render());
         document.getElementById('main').appendChild(this.render());
 
         this.append(MainDiv.render());
 
         const game = new Multiplayer();
+        console.log('MultiplayerLogic');
         game.Start();
 
         GameBackBtn.render().addEventListener('click', () =>{

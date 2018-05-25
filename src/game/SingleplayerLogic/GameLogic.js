@@ -5,7 +5,7 @@ import Enemy from './Enemy.js';
 
 export default class GameLogic {
     constructor() {
-        this.canvas = document.querySelector('canvas');
+        this.canvas = document.querySelector('.game-page__canvas');
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
         this.context = this.canvas.getContext('2d');
