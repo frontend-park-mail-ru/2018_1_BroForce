@@ -35,6 +35,7 @@ export default class Game extends MainComponent {
         GameBackBtn.render().addEventListener('click', () =>{
             GameRestartBtn.render().style.display = 'none';
             GameEndingText.render().style.display = 'none';
+            ScoreText.render().style.display = 'block';
 
             game.Stop();
             Router.go('/');

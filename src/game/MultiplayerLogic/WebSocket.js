@@ -20,7 +20,7 @@ class WebSocket {
     }
 
     Send(data) {
-        this.socket.send(data);
+        // this.socket.send(data);
     }
 
     Close() {

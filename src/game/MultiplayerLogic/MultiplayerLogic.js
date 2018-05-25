@@ -5,19 +5,19 @@ import MultiUsers from './MultiUsers.js';
 import MultiEnemies from './MultiEnemies';
 import webSocket from './WebSocket.js';
 
-export default class MultiplayerLogic extends GameLogic {
+export default class MultiplayerLogic {
     constructor() {
-        super();
-
-        // this.socket = new WebSocket('ws://javascript.ru/ws');
         webSocket.Open();
 
-        // this.GameSettings = {
-        //     'MAX_USER_RADIUS': this.MAX_USER_RADIUS,
-        //     'MAX_ENEMY_RADIUS': this.MAX_ENEMY_RADIUS,
-        //     'ENEMIES_COUNT': this.ENEMIES_COUNT,
-        //     'USER_RADIUS': this.USER_RADIUS,
-        // };
+        this.canvas = document.querySelector('.game-page__canvas');
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.context = this.canvas.getContext('2d');
+
+        this.colorArray = ['#fa4c2b', '#6aff6e', '#ffff82', '#ffce72', '#fa4c2b', '#0bfcff'];
+        this.enemyArray = [];
+        this.userWin = false;
+        this.divineShield = true;
 
         this.GameStatus = {
             'status': undefined,
