@@ -1,6 +1,5 @@
 'use strict';
 
-import GameLogic from '../SingleplayerLogic/GameLogic.js';
 import MultiUsers from './MultiUsers.js';
 import MultiEnemies from './MultiEnemies';
 import webSocket from './WebSocket.js';
@@ -9,7 +8,7 @@ export default class MultiplayerLogic {
     constructor() {
         webSocket.Open();
 
-        this.canvas = document.querySelector('.game-page__canvas');
+        this.canvas = document.querySelector('.multiplayer-page__canvas');
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
         this.context = this.canvas.getContext('2d');
@@ -119,17 +118,17 @@ export default class MultiplayerLogic {
         webSocket.Send(JSON.stringify(this.GameStatus));
 
         if (webSocket.message !== undefined) {
-                const response = JSON.parse(webSocket.message);
+            const response = JSON.parse(webSocket.message);
 
-                this.player1 = new MultiUsers(response.userCoord[0].x, response.userCoord[0].y,
-                    response.userCoord[0].radius, this.context, this.colorArray);
-                this.player2 = new MultiUsers(response.userCoord[1].x, response.userCoord[1].y,
-                    response.userCoord[1].radius, this.context, this.colorArray);
+            this.player1 = new MultiUsers(response.userCoord[0].x, response.userCoord[0].y,
+                response.userCoord[0].radius, this.context, this.colorArray);
+            this.player2 = new MultiUsers(response.userCoord[1].x, response.userCoord[1].y,
+                response.userCoord[1].radius, this.context, this.colorArray);
 
-                for (let i = 0; i < this.ENEMIES_COUNT; i++) {
-                    this.enemyArray.push(new MultiEnemies(response.enemyCoord[i].x, response.enemyCoord[i].y,
-                        response.enemyCoord[i].radius, this.context, this.colorArray));
-                }
+            for (let i = 0; i < this.ENEMIES_COUNT; i++) {
+                this.enemyArray.push(new MultiEnemies(response.enemyCoord[i].x, response.enemyCoord[i].y,
+                    response.enemyCoord[i].radius, this.context, this.colorArray));
+            }
         }
 
         this.GameStatus.status = 'Ready';
@@ -157,6 +156,7 @@ export default class MultiplayerLogic {
             this.context.clearRect(0, 0, innerWidth, innerHeight);
 
             if (webSocket.GetMessage !== undefined) {
+                console.log(webSocket.GetMessage);
                 this.player1.update(webSocket.GetMessage.userCoord[0].x, webSocket.GetMessage.userCoord[0].y, webSocket.GetMessage.userCoord[0].radius);
                 this.player2.update(webSocket.GetMessage.userCoord[1].x, webSocket.GetMessage.userCoord[1].y, webSocket.GetMessage.userCoord[1].radius);
 

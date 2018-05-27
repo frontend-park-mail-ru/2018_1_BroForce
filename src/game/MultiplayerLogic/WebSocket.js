@@ -35,7 +35,7 @@ class WebSocket {
     }
 
     GetMessage() {
-        return JSON.parse(this.message);
+        return this.message;
     }
 
     GetError() {
