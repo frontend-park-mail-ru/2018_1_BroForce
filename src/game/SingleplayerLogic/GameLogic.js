@@ -5,7 +5,7 @@ import Enemy from './Enemy.js';
 
 export default class GameLogic {
     constructor() {
-        this.canvas = document.querySelector('canvas');
+        this.canvas = document.querySelector('.game-page__canvas');
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
         this.context = this.canvas.getContext('2d');
@@ -117,18 +117,21 @@ export default class GameLogic {
             }
         });
 
-        this.eventMouseDown = document.addEventListener('mousedown', (event) => {
-            if (event.x < player.getUserCoords().x) {
+        this.eventMouseDown = document.addEventListener('touchstart', (event) => {
+            const x = event.touches[0].clientX;
+            const y = event.touches[0].clientY;
+
+            if (x < player.getUserCoords().x) {
                 this.keyD = true;
                 setTimeout((()=> this.keyD = false), 100);
-            } else if (event.x > player.getUserCoords().x) {
+            } else if (x > player.getUserCoords().x) {
                 this.keyA = true;
                 setTimeout((()=> this.keyA = false), 100);
             }
-            if (event.y > player.getUserCoords().y) {
+            if (y > player.getUserCoords().y) {
                 this.keyW = true;
                 setTimeout((()=> this.keyW = false), 100);
-            } else if (event.y < player.getUserCoords().y) {
+            } else if (y < player.getUserCoords().y) {
                 this.keyS = true;
                 setTimeout((()=> this.keyS = false), 100);
             }
