@@ -20,7 +20,7 @@ class WebSocket {
     }
 
     Send(data) {
-        this.socket.send(data);
+        // this.socket.send(data);
     }
 
     Close() {
@@ -35,7 +35,7 @@ class WebSocket {
     }
 
     GetMessage() {
-        return JSON.parse(this.message);
+        return this.message;
     }
 
     GetError() {

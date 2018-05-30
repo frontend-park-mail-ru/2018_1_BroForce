@@ -1,0 +1,36 @@
+@import "templates"
+
+.multiplayer-page
+  @extend %center
+  flex-direction: column
+
+.multiplayer-page__button
+  @extend %inter
+  cursor: pointer
+
+.multiplayer-page__button__back
+  margin-top: 65vh
+
+.multiplayer-page__button__restart
+  margin-top: 9vh
+  position: absolute
+  z-index: 2
+
+.multiplayer-page__text__score
+  @extend %inter
+
+.multiplayer-page__text__ending
+  @extend %inter
+  position: absolute
+  text-align: center
+  z-index: 2
+  margin-top: 0
+
+.multiplayer-page__canvas
+  overflow: hidden
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  z-index: -1
+
