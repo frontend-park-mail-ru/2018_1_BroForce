@@ -47,7 +47,7 @@ export default class Leaderboard extends MainComponent {
     }
 
     GetUsersFromBack(limit, since) {
-        return Transport.Get('/stop?limit=' + limit + '&since=' + since).then((response) => {
+        return Transport.Get('/tops?limit=' + limit + '&since=' + since).then((response) => {
             this.usersFromBack = response;
         }).catch((response) => {
             if (!response.json) {
@@ -67,7 +67,7 @@ export default class Leaderboard extends MainComponent {
             const usersFromBack = {};
             usersFromBack.email = users[i].email;
             usersFromBack.name = users[i].login;
-            usersFromBack.score = users[i].sscore;
+            usersFromBack.score = users[i].scoreS;
             usersOnPage.users.push(usersFromBack);
         });
 
