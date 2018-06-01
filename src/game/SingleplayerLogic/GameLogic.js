@@ -164,7 +164,7 @@ export default class GameLogic {
 
                 const distance = Math.sqrt(Math.pow((this.enemyArray[i].getEnemyCoord().x - player.getUserCoords().x), 2)
                     + Math.pow((this.enemyArray[i].getEnemyCoord().y - player.getUserCoords().y), 2));
-                if (distance < player.getUserCoords().radius / 3 + this.enemyArray[i].getEnemyCoord().radius) {
+                if (distance < player.getUserCoords().radius / 2 + this.enemyArray[i].getEnemyCoord().radius) {
                     if (player.getUserCoords().radius > this.enemyArray[i].getEnemyCoord().radius) {
                         const score = document.querySelector('p[name=gameScore]');
                         this.score += Math.round(this.enemyArray[i].getEnemyCoord().radius);
