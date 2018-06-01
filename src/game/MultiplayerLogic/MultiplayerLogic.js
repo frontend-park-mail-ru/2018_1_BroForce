@@ -1,20 +1,25 @@
 'use strict';
 
-import GameLogic from '../SingleplayerLogic/GameLogic.js';
 import MultiUsers from './MultiUsers.js';
 import MultiEnemies from './MultiEnemies';
+import webSocket from './WebSocket.js';
 
-export default class Multiplayer extends GameLogic {
+export default class MultiplayerLogic {
     constructor() {
-        super();
+        webSocket.Open();
 
-        this.socket = new WebSocket('some::/Server');
+        this.canvas = document.querySelector('.multiplayer-page__canvas');
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.context = this.canvas.getContext('2d');
 
-        this.GameSettings = {
-            'MAX_USER_RADIUS': this.MAX_USER_RADIUS,
-            'MAX_ENEMY_RADIUS': this.MAX_ENEMY_RADIUS,
-            'ENEMIES_COUNT': this.ENEMIES_COUNT,
-            'USER_RADIUS': this.USER_RADIUS,
+        this.colorArray = ['#fa4c2b', '#6aff6e', '#ffff82', '#ffce72', '#fa4c2b', '#0bfcff'];
+        this.enemyArray = [];
+        this.userWin = false;
+        this.divineShield = true;
+
+        this.GameStatus = {
+            'status': undefined,
         };
     }
 
@@ -109,10 +114,11 @@ export default class Multiplayer extends GameLogic {
             }
         });
 
-        this.socket.send(JSON.stringify(this.GameSettings));
+        this.GameStatus.status = 'Init';
+        webSocket.Send(JSON.stringify(this.GameStatus));
 
-        this.socket.onmessage = (event) => {
-            const response = JSON.parse(event.data);
+        if (webSocket.message !== undefined) {
+            const response = JSON.parse(webSocket.message);
 
             this.player1 = new MultiUsers(response.userCoord[0].x, response.userCoord[0].y,
                 response.userCoord[0].radius, this.context, this.colorArray);
@@ -123,13 +129,10 @@ export default class Multiplayer extends GameLogic {
                 this.enemyArray.push(new MultiEnemies(response.enemyCoord[i].x, response.enemyCoord[i].y,
                     response.enemyCoord[i].radius, this.context, this.colorArray));
             }
-        };
+        }
 
-        const GameReady = {
-            'gameReady': 1,
-        };
-
-        this.socket.send(JSON.stringify(GameReady));
+        this.GameStatus.status = 'Ready';
+        webSocket.Send(JSON.stringify(this.GameStatus));
 
         const animate = () => {
             if (windowResize === true) {
@@ -147,41 +150,29 @@ export default class Multiplayer extends GameLogic {
                 keyD: this.keyD,
             };
 
-            this.socket.send(JSON.stringify(this.userKey));
+            webSocket.Send(JSON.stringify(this.userKey));
 
             this.animationId = requestAnimationFrame(animate);
             this.context.clearRect(0, 0, innerWidth, innerHeight);
 
-            this.socket.onmessage = (event) => {
-                const response = JSON.parse(event.data);
-
-                this.player1.update(response.userCoord[0].x, response.userCoord[0].y, response.userCoord[0].radius);
-                this.player2.update(response.userCoord[1].x, response.userCoord[1].y, response.userCoord[1].radius);
+            if (webSocket.GetMessage !== undefined) {
+                console.log(webSocket.GetMessage);
+                this.player1.update(webSocket.GetMessage.userCoord[0].x, webSocket.GetMessage.userCoord[0].y, webSocket.GetMessage.userCoord[0].radius);
+                this.player2.update(webSocket.GetMessage.userCoord[1].x, webSocket.GetMessage.userCoord[1].y, webSocket.GetMessage.userCoord[1].radius);
 
                 // Update enemies
                 for (let i = 0; i < this.enemyArray.length; i++) {
-                    this.enemyArray[i].update(response.enemyCoord[i].x, response.enemyCoord[i].y,
-                        response.enemyCoord[i].radius);
+                    this.enemyArray[i].update(webSocket.GetMessage.enemyCoord[i].x, webSocket.GetMessage.enemyCoord[i].y,
+                        webSocket.GetMessage.enemyCoord[i].radius);
                 }
-            };
-
-            this.socket.onerror = (error) => {
-                alert('Error ' + error.message);
-            };
+            }
         };
 
         animate();
     }
 
     Stop() {
-        this.socket.onclose = (event) => {
-            if (event.wasClean) {
-                alert('Socked was closed');
-            } else {
-                alert('Обрыв соединения'); // например, "убит" процесс сервера
-            }
-            alert('Код: ' + event.code + ' причина: ' + event.reason);
-        };
+        webSocket.Close();
 
         this.enemyArray = [];
         cancelAnimationFrame(this.animationId);

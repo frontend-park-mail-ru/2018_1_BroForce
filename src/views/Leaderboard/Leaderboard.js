@@ -67,7 +67,7 @@ export default class Leaderboard extends MainComponent {
             const usersFromBack = {};
             usersFromBack.email = users[i].email;
             usersFromBack.name = users[i].login;
-            usersFromBack.score = users[i].sscore;
+            usersFromBack.score = users[i].scoreS;
             usersOnPage.users.push(usersFromBack);
         });
 

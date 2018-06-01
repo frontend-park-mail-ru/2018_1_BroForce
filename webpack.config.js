@@ -49,10 +49,13 @@ module.exports = {
                 }),
             },
             {
-                test: /\.(png|jpg|gid|svg)$/,
-                use: [
-                    'file-loader',
-                ],
+                test: /\.(png|jpg|gid|svg|ico)$/,
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        name: "[name].[ext]",
+                    },
+                },
             },
         ],
     },
