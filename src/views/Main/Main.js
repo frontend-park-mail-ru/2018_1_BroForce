@@ -12,13 +12,13 @@ import Menu from '../../components/Menu/Menu.js';
 const logged = {
     buttons: [
         {
-            text: 'SingleplayerLogic',
+            text: 'Singleplayer',
             class: ['main-page__menu__button'],
             id: 'singlePlayerBtn',
             url: '/singleplayer/',
         },
         {
-            text: 'MultiplayerLogic',
+            text: 'Multiplayer run ',
             class: ['main-page__menu__button'],
             id: 'multiPlayerBtn',
             url: '/multiplayer/',

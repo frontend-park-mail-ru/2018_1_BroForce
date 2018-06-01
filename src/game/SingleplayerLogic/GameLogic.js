@@ -171,8 +171,10 @@ export default class GameLogic {
                         score.innerHTML = this.score.toString();
                         eatenEnemies.push(i);
                         eatenEnemiesRadius.push(this.enemyArray[i].getEnemyCoord().radius);
-                    } else if (player.getUserCoords().radius < this.enemyArray[i].getEnemyCoord().radius) {
+                    } else if (player.getUserCoords().radius <= this.enemyArray[i].getEnemyCoord().radius) {
                         if (this.divineShield === false) {
+                            console.log(player.getUserCoords().radius);
+                            console.log(this.enemyArray[i].getEnemyCoord().radius);
                             console.log('divineShield');
                             this.Restart();
                         }
@@ -212,6 +214,7 @@ export default class GameLogic {
     }
 
     Restart() {
+        console.log('Fuck');
         this.Stop();
 
         const score = document.querySelector('p[name=gameScore]');
