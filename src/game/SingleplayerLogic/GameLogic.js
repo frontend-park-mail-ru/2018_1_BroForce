@@ -26,9 +26,10 @@ export default class GameLogic {
         this.keyA = false;
         this.keyS = false;
         this.keyD = false;
+        this.enemies = this.ENEMIES_COUNT;
 
         this.divineShield = true;
-        setTimeout((()=> this.divineShield = false), 3000);
+        setTimeout((()=> this.divineShield = false), 1000);
         let windowResize = false;
         this.score = 0;
 
@@ -139,14 +140,15 @@ export default class GameLogic {
 
         const animate = () => {
             if (windowResize === true) {
-                this.Stop();
-                this.Start();
+                console.log('resize');
+                this.Restart();
                 windowResize = false;
                 const score = document.querySelector('p[name=gameScore]');
                 score.innerHTML = '0';
             }
 
             if (player.getUserCoords().radius <= 0.5) {
+                console.log('Radius kek');
                 this.Restart();
                 return;
             }
@@ -171,8 +173,8 @@ export default class GameLogic {
                         eatenEnemiesRadius.push(this.enemyArray[i].getEnemyCoord().radius);
                     } else if (player.getUserCoords().radius < this.enemyArray[i].getEnemyCoord().radius) {
                         if (this.divineShield === false) {
+                            console.log('divineShield');
                             this.Restart();
-                            return;
                         }
                     }
                 }
@@ -180,6 +182,7 @@ export default class GameLogic {
             if (eatenEnemies.length !== 0) {
                 eatenEnemies.forEach((item) => {
                     this.enemyArray.splice(item, 1);
+                    this.enemies -= 1;
                 });
                 eatenEnemiesRadius.forEach((item) => {
                     if (player.getUserCoords().radius + item <= this.MAX_USER_RADIUS) {
@@ -189,7 +192,8 @@ export default class GameLogic {
                     }
                 });
             }
-            if (this.enemyArray.length === 0) {
+            if (this.enemies === 0) {
+                console.log('Win');
                 this.userWin = true;
                 this.Restart();
             }
@@ -216,7 +220,7 @@ export default class GameLogic {
         let gameEndingText = 'Fail. ';
 
         if (this.userWin === true) {
-            gameEndingText = 'You win! ';
+            gameEndingText = 'Win! ';
         }
 
         gameText.innerHTML = gameEndingText + 'Score: ' + this.score;

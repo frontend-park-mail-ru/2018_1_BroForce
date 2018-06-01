@@ -47,7 +47,7 @@ export default class Leaderboard extends MainComponent {
     }
 
     GetUsersFromBack(limit, since) {
-        return Transport.Get('/tops?limit=' + limit + '&since=' + since).then((response) => {
+        return Transport.Get('/stop?limit=' + limit + '&since=' + since).then((response) => {
             this.usersFromBack = response;
         }).catch((response) => {
             if (!response.json) {
