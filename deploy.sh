@@ -3,7 +3,6 @@
 mkdir archive 
 mv ./src/built archive 
 mv ./src/index.html archive
-mv ./src/img archive
 mv ./src/ServiceWorker.js archive
 
 tar -czf package.tgz archive 
