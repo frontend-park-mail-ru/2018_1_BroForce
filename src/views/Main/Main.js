@@ -18,7 +18,7 @@ const logged = {
             url: '/singleplayer/',
         },
         {
-            text: 'Multiplayer run ',
+            text: 'Multiplayer',
             class: ['main-page__menu__button'],
             id: 'multiPlayerBtn',
             url: '/multiplayer/',
