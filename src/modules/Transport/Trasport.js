@@ -1,7 +1,7 @@
 const server='';
 
-// const urlBack = 'https://apoj.herokuapp.com';
-const urlBack = 'https://broforce-02-2018.herokuapp.com/api';
+const urlBack = 'https://apoj.herokuapp.com';
+// const urlBack = 'https://broforce-02-2018.herokuapp.com/api';
 
 
 /**
