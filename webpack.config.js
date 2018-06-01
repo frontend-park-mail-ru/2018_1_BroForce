@@ -50,9 +50,12 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gid|svg|ico)$/,
-                use: [
-                    'file-loader',
-                ],
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        name: "[name].[ext]",
+                    },
+                },
             },
         ],
     },
