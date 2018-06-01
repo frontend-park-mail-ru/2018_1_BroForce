@@ -29,7 +29,7 @@ export default class GameLogic {
         this.enemies = this.ENEMIES_COUNT;
 
         this.divineShield = true;
-        setTimeout((()=> this.divineShield = false), 1000);
+        setTimeout((()=> this.divineShield = false), 2000);
         let windowResize = false;
         this.score = 0;
 

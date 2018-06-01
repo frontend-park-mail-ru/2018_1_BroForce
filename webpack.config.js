@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const extractSass = new ExtractTextPlugin({
     filename: '[name].css',
 });
@@ -49,14 +50,20 @@ module.exports = {
                 }),
             },
             {
-                test: /\.(png|jpg|gid|svg)$/,
-                use: [
-                    'file-loader',
-                ],
+                test: /\.(png|jpg|gid|svg|ico)$/,
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        name: "/images/[name].[ext]",
+                    },
+                },
             },
         ],
     },
     plugins: [
         extractSass,
+        new CopyWebpackPlugin([
+            {from:'src/img',to:'images'}
+        ]),
     ],
 };
