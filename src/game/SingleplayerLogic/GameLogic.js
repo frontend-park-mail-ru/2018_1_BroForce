@@ -175,7 +175,6 @@ export default class GameLogic {
                         if (this.divineShield === false) {
                             console.log(player.getUserCoords().radius);
                             console.log(this.enemyArray[i].getEnemyCoord().radius);
-                            console.log(this.divineShield);
                             console.log('divineShield');
                             this.Restart();
                         }
