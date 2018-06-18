@@ -53,6 +53,7 @@ class Router {
         const route = this.getRoute(Router.getPath());
 
         if (!route) {
+            this.go('/');
             return;
         }
         this.hideAll();

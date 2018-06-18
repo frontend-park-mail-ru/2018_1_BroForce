@@ -31,7 +31,7 @@ export default class Profile extends MainComponent {
         this.title = new Block('p', name, ['menu_title'], {});
         this.append(this.title.render());
 
-        this.append((new ImageComp('../img/user-default.jpg', ['profile-page__avatar'], 'logo')).render());
+        this.append((new ImageComp('', ['profile-page__avatar'], 'logo')).render());
 
         this.changeLoginInput = new MainComponent('input', ['form-input', 'profile-page__dataInput'],
             {name: 'changeLoginInput', placeholder: 'Change name'});

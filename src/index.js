@@ -16,6 +16,7 @@ import About from './views/About/About.js';
 import Loading from './components/Loading/Loading.js';
 import Game from './views/Singleplayer/Game.js';
 import Multiplayer from './game/MultiplayerLogic/MultiplayerLogic.js';
+import MultiplayerView from './views/Multiplayer/Multiplayer';
 
 ServiceWorkerRegister();
 
@@ -33,6 +34,6 @@ UserService.GetData().catch((response) => {
         .use('/profile/', Profile)
         .use('/about/', About)
         .use('/singleplayer/', Game)
-        .use('/multiplayer/', Multiplayer)
+        .use('/multiplayer/', MultiplayerView)
         .start();
 });
